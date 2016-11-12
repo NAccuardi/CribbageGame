@@ -40,6 +40,10 @@ public class CribageMain extends GameMainActivity {
         return null;
     }//End createLocalGame()
 
+
+    /**
+     * This is the constructor for our main state.
+     */
     public void CribageMain()
     {
         score0 = 0;
@@ -58,7 +62,7 @@ public class CribageMain extends GameMainActivity {
         player0ToPlay = null;
         player1Hand = null;
     }
-    //SETTERS AND GETTERS
+    //***************************************SETTERS AND GETTERS*********************************************************
     //sets a players score
     public void setScore(int player, int score)
     {
@@ -96,16 +100,23 @@ public class CribageMain extends GameMainActivity {
     {
 
     }
+
+
     //gets the player id
     public int getPlayerId()
     {
         return 0;
     }
+
+
+
     //sets the hand for a player
     public void setHand(int player)
     {
 
     }
+
+
     //gets the hand of a player
     public Deck getHand(int player)
     {
@@ -122,48 +133,68 @@ public class CribageMain extends GameMainActivity {
             return null;
         }
     }
+
+
     //set which players turn it is
     public void setWhoseTurn()
     {
 
     }
+
+
     //returns the int of whose turn it is
     public int getWhoseTurn()
     {
         return 0;
     }
+
+
     //sets the dealer
     public void setDealer()
     {
 
     }
+
+
     //gets who the dealer is
     public int getDealer()
+
     {
         return 0;
     }
+
+
     //set the stage of the game
     public void setStage()
     {
 
     }
+
+
     //returns the int value of the stage of the game
     //0=cut,1=deal,2=crib,3=play,4=score
     public int getStage()
     {
         return 0;
     }
-    //END SETTERS AND GETTERS
+    //****************************END SETTERS AND GETTERS**********************************************
+
+
     //returns true if a score is over 121
     public boolean isScore121(int player)
     {
         return false;
     }
+
+
+
     //returns true if a Go action is allowed
     public boolean isGo(int player)
     {
         return false;
     }
+
+
     //places six cards in each players hands
     public void deal()
     {
@@ -174,17 +205,25 @@ public class CribageMain extends GameMainActivity {
             mainDeck.moveTopCardTo(player1Hand);
         }
     }
+
+
+
     //cuts the deck, returns a single card
     public Deck cut()
     {
         Deck card = new Deck();
         return card;
     }
+
+
+
     //runs the scoring algortihm
     public int score()
     {
         return 0;
     }
+
+
 }//End Cribage Main
 
 
