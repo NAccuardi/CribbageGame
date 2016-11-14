@@ -1,6 +1,6 @@
 package edu.up.cs301.slapjack;
 
-import edu.up.cs301.Criggabage.Deck;
+import edu.up.cs301.Cribbage.Deck;
 import edu.up.cs301.card.Card;
 import edu.up.cs301.card.Rank;
 import edu.up.cs301.game.GameComputerPlayer;

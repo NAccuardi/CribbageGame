@@ -1,4 +1,4 @@
-package edu.up.cs301.Criggabage;
+package edu.up.cs301.Cribbage;
 
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.LocalGame;
@@ -9,7 +9,7 @@ import edu.up.cs301.game.config.GameConfig;
  * This is our game state
  */
 
-public class CribageMain extends GameMainActivity {
+public class CribMain extends GameMainActivity {
 
     private int score0;//player 0's score
     private int score1;//player 1's score

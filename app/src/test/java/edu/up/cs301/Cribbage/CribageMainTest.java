@@ -1,8 +1,6 @@
-package edu.up.cs301.Criggabage;
+package edu.up.cs301.Cribbage;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Robot Laptop on 11/9/2016.
@@ -26,7 +24,7 @@ public class CribageMainTest {
     @Test
     public void isScore121() throws Exception {
 
- //       CribageMain testMain = new CribageMain();
+ //       CribMain testMain = new CribMain();
    //     testMain.setPlayerScore(0,125);
      //   boolean test = testMain.isScore121();
        // assertEquals(test, true);
@@ -39,11 +37,11 @@ public class CribageMainTest {
      */
     @Test
     public void makeCopy() throws Exception {
-        //CribageMain testMain = new CribageMain();
+        //CribMain testMain = new CribMain();
 //        testMain.score = 100;
   //      testMain.player[0].hand[6H,KS,QH,2C,3S,9D];
 
-//        CribageMain copyTest = new CribageMain();
+//        CribMain copyTest = new CribMain();
   //      copyTest.makeCopy(testMain);
     //    assertSame(testMain,copyTest);
     }
@@ -57,7 +55,7 @@ public class CribageMainTest {
      */
     @Test
     public void deal() throws Exception {
-        //CribageMain testMain = new CribageMain();
+        //CribMain testMain = new CribMain();
 
         //make a testState here.
 
@@ -83,7 +81,7 @@ public class CribageMainTest {
     @Test
     public void cut() throws Exception
     {
-        //CribageMain testMain = new CribageMain();
+        //CribMain testMain = new CribMain();
         //testMain.cut();
         //int counter = 0;
         //for(int i; i < mainDeck.size();i++)
@@ -102,7 +100,7 @@ public class CribageMainTest {
     @Test
 public void addScore() throws Exception {
 
-        //CribageMain testMain = new CribageMain();
+        //CribMain testMain = new CribMain();
         //int firstScore = testMain.getScore();
         //testMain.addScore(0,10);
         //assertNotEquals(firstScore,testMain.getScore());
@@ -117,7 +115,7 @@ public void addScore() throws Exception {
     @Test
     public void scoreingAlgo() throws Exception {
         //int score =0;
-        //CribageMain testMain = new CribageMain();
+        //CribMain testMain = new CribMain();
         //testMain.setPlayerHand(0,[3D,3H,5H,5H, 6H])
         //testMain.scoreingAlgo;
         //score = testMain.getScore(0);
