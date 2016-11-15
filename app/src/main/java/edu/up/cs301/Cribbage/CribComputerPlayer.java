@@ -1,5 +1,7 @@
 package edu.up.cs301.Cribbage;
 
+import edu.up.cs301.card.Card;
+import edu.up.cs301.card.Rank;
 import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
@@ -8,6 +10,12 @@ import edu.up.cs301.game.infoMsg.GameInfo;
  */
 
 public class CribComputerPlayer extends GameComputerPlayer {
+
+    //most recent state of the game
+    private CribState savedState;
+
+    //
+    private int myPlayerId = savedState.getPlayerId();
 
     /**
      * constructor
@@ -18,8 +26,20 @@ public class CribComputerPlayer extends GameComputerPlayer {
         super(name);
     }
 
+
     @Override
     protected void receiveInfo(GameInfo info) {
+
+        // if we don't have a game-state, ignore
+        if (!(info instanceof CribState)) {
+            return;
+        }
+
+        // update our state variable
+        savedState = (CribState) info;
+
+
+
 
     }
 
