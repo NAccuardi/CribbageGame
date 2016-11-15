@@ -1,4 +1,4 @@
-package edu.up.cs301.Criggabage;
+package edu.up.cs301.Cribbage;
 
 import java.io.Serializable;
 import java.util.ArrayList;

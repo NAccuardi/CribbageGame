@@ -1,4 +1,4 @@
-package edu.up.cs301.Criggabage;
+package edu.up.cs301.Cribbage;
 
 import android.graphics.Canvas;
 import android.view.MotionEvent;
@@ -13,7 +13,7 @@ import edu.up.cs301.game.infoMsg.GameInfo;
  * Created by Nick Accuardi on 10/20/2016.
  */
 
-public class CribbageHumanPlayer extends GameHumanPlayer implements Animator {
+public class CribHumanPlayer extends GameHumanPlayer implements Animator {
 
 
     /**
@@ -21,7 +21,7 @@ public class CribbageHumanPlayer extends GameHumanPlayer implements Animator {
      *
      * @param name the name of the player
      */
-    public CribbageHumanPlayer(String name) {
+    public CribHumanPlayer(String name) {
         super(name);
     }
 

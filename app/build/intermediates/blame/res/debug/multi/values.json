@@ -586,7 +586,14 @@
                     "endOffset": 87
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\color.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\color.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 36,
+                        "endOffset": 89
+                    }
                 }
             },
             {
@@ -598,7 +605,14 @@
                     "endOffset": 126
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\color.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\color.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 172,
+                        "endColumn": 38,
+                        "endOffset": 206
+                    }
                 }
             },
             {
@@ -610,7 +624,14 @@
                     "endOffset": 163
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\color.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\color.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 95,
+                        "endColumn": 36,
+                        "endOffset": 127
+                    }
                 }
             },
             {
@@ -622,7 +643,14 @@
                     "endOffset": 201
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\color.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\color.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 133,
+                        "endColumn": 37,
+                        "endOffset": 166
+                    }
                 }
             },
             {
@@ -634,7 +662,14 @@
                     "endOffset": 252
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 314,
+                        "endColumn": 50,
+                        "endOffset": 360
+                    }
                 }
             },
             {
@@ -646,7 +681,14 @@
                     "endOffset": 306
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 53,
+                        "endOffset": 106
+                    }
                 }
             },
             {
@@ -658,7 +700,14 @@
                     "endOffset": 348
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 168,
+                        "endColumn": 41,
+                        "endOffset": 205
+                    }
                 }
             },
             {
@@ -670,7 +719,14 @@
                     "endOffset": 403
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 112,
+                        "endColumn": 54,
+                        "endOffset": 162
+                    }
                 }
             },
             {
@@ -682,7 +738,14 @@
                     "endOffset": 454
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 262,
+                        "endColumn": 50,
+                        "endOffset": 308
+                    }
                 }
             },
             {
@@ -694,7 +757,14 @@
                     "endOffset": 504
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\dimen.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 211,
+                        "endColumn": 49,
+                        "endOffset": 256
+                    }
                 }
             },
             {
@@ -706,7 +776,14 @@
                     "endOffset": 554
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 482,
+                        "endColumn": 49,
+                        "endOffset": 527
+                    }
                 }
             },
             {
@@ -737,7 +814,14 @@
                     "endOffset": 650
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 265,
+                        "endColumn": 49,
+                        "endOffset": 310
+                    }
                 }
             },
             {
@@ -749,7 +833,14 @@
                     "endOffset": 722
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 827,
+                        "endColumn": 71,
+                        "endOffset": 894
+                    }
                 }
             },
             {
@@ -761,7 +852,14 @@
                     "endOffset": 773
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 900,
+                        "endColumn": 50,
+                        "endOffset": 946
+                    }
                 }
             },
             {
@@ -773,7 +871,14 @@
                     "endOffset": 850
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 952,
+                        "endColumn": 76,
+                        "endOffset": 1024
+                    }
                 }
             },
             {
@@ -785,7 +890,14 @@
                     "endOffset": 890
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 639,
+                        "endColumn": 39,
+                        "endOffset": 674
+                    }
                 }
             },
             {
@@ -797,7 +909,14 @@
                     "endOffset": 939
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1030,
+                        "endColumn": 48,
+                        "endOffset": 1074
+                    }
                 }
             },
             {
@@ -809,7 +928,14 @@
                     "endOffset": 990
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 66,
+                        "endColumn": 50,
+                        "endOffset": 112
+                    }
                 }
             },
             {
@@ -821,7 +947,14 @@
                     "endOffset": 1035
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 316,
+                        "endColumn": 44,
+                        "endOffset": 356
+                    }
                 }
             },
             {
@@ -833,7 +966,14 @@
                     "endOffset": 1087
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 533,
+                        "endColumn": 51,
+                        "endOffset": 580
+                    }
                 }
             },
             {
@@ -845,7 +985,14 @@
                     "endOffset": 1139
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 586,
+                        "endColumn": 51,
+                        "endOffset": 633
+                    }
                 }
             },
             {
@@ -857,7 +1004,14 @@
                     "endOffset": 1190
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1080,
+                        "endColumn": 50,
+                        "endOffset": 1126
+                    }
                 }
             },
             {
@@ -869,7 +1023,14 @@
                     "endOffset": 1246
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 425,
+                        "endColumn": 55,
+                        "endOffset": 476
+                    }
                 }
             },
             {
@@ -881,7 +1042,14 @@
                     "endOffset": 1316
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 194,
+                        "endColumn": 69,
+                        "endOffset": 259
+                    }
                 }
             },
             {
@@ -893,7 +1061,14 @@
                     "endOffset": 1406
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 680,
+                        "endColumn": 89,
+                        "endOffset": 765
+                    }
                 }
             },
             {
@@ -905,7 +1080,14 @@
                     "endOffset": 1468
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 362,
+                        "endColumn": 61,
+                        "endOffset": 419
+                    }
                 }
             },
             {
@@ -917,7 +1099,14 @@
                     "endOffset": 1523
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 89,
+                        "startOffset": 765,
+                        "endColumn": 139,
+                        "endOffset": 815
+                    }
                 }
             },
             {
@@ -929,7 +1118,14 @@
                     "endOffset": 1598
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 118,
+                        "endColumn": 74,
+                        "endOffset": 188
+                    }
                 }
             },
             {
@@ -941,7 +1137,14 @@
                     "endOffset": 1656
                 },
                 "from": {
-                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\styles.xml"
+                    "file": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 19,
+                        "endColumn": 58,
+                        "endOffset": 73
+                    }
                 }
             }
         ]
