@@ -41,7 +41,7 @@ public class CribState extends GameState {
         playDeck = null;
         cutDeck = null;
         player0ToPlay = null;
-        player1Hand = null;
+        player1ToPlay = null;
 
 
     }
