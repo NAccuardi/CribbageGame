@@ -24,4 +24,6 @@ public class CribLocalGame extends LocalGame {
     protected boolean makeMove(GameAction action) {
         return false;
     }
+
+
 }

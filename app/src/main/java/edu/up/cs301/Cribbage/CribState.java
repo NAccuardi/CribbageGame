@@ -1,5 +1,6 @@
 package edu.up.cs301.Cribbage;
 
+import edu.up.cs301.card.Rank;
 import edu.up.cs301.game.infoMsg.GameState;
 
 /**
@@ -151,19 +152,21 @@ public class CribState extends GameState {
     //sets the dealer
     public void setDealer()
     {
+        //snag two cards from the deck
+        //assign one to each player
+        //compare values
+        //player with lower card is assign dealer
         mainDeck.moveTopCardTo(player0Hand);
         mainDeck.moveTopCardTo(player1Hand);
-        //if()
+
 
 
     }
 
-
-
     //gets who the dealer is
     public int getDealer()
     {
-        return 0;
+        return dealer;
     }
 
 
