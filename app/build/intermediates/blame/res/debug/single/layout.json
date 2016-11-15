@@ -1,98 +1,34 @@
 [
     {
-        "merged": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
-        "source": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
+        "merged": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_local_tab.xml",
+        "source": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\src\\main\\res\\layout\\game_local_tab.xml"
     },
     {
-        "merged": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
-        "source": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\src\\main\\res\\layout\\game_no_gui.xml"
+        "merged": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\counter_human_player.xml",
+        "source": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\src\\main\\res\\layout\\counter_human_player.xml"
     },
     {
-        "merged": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
-        "source": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\layout\\game_no_gui.xml"
+        "merged": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\crib_human_player.xml",
+        "source": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\src\\main\\res\\layout\\crib_human_player.xml"
     },
     {
-        "merged": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_local_tab.xml",
-        "source": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\src\\main\\res\\layout\\game_local_tab.xml"
+        "merged": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
+        "source": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
     },
     {
-        "merged": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sj_human_player.xml",
-        "source": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\layout\\sj_human_player.xml"
+        "merged": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
+        "source": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
     },
     {
-        "merged": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_local_tab.xml",
-        "source": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\src\\main\\res\\layout\\game_local_tab.xml"
+        "merged": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sj_human_player.xml",
+        "source": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\src\\main\\res\\layout\\sj_human_player.xml"
     },
     {
-        "merged": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
-        "source": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\src\\main\\res\\layout\\game_config_main.xml"
+        "merged": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
+        "source": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\src\\main\\res\\layout\\game_config_main.xml"
     },
     {
-        "merged": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
-        "source": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
-    },
-    {
-        "merged": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
-        "source": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\src\\main\\res\\layout\\game_config_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
-        "source": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
-    },
-    {
-        "merged": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\counter_human_player.xml",
-        "source": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\src\\main\\res\\layout\\counter_human_player.xml"
-    },
-    {
-        "merged": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
-        "source": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
-    },
-    {
-        "merged": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sj_human_player.xml",
-        "source": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\src\\main\\res\\layout\\sj_human_player.xml"
-    },
-    {
-        "merged": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
-        "source": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\src\\main\\res\\layout\\game_no_gui.xml"
-    },
-    {
-        "merged": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
-        "source": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
-    },
-    {
-        "merged": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
-        "source": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
-    },
-    {
-        "merged": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
-        "source": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\layout\\game_config_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_local_tab.xml",
-        "source": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\layout\\game_local_tab.xml"
-    },
-    {
-        "merged": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
-        "source": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
-    },
-    {
-        "merged": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
-        "source": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
-    },
-    {
-        "merged": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sj_human_player.xml",
-        "source": "C:\\Users\\SirRunnerMan\\StudioProjects\\CribbageGame\\app\\src\\main\\res\\layout\\sj_human_player.xml"
-    },
-    {
-        "merged": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\counter_human_player.xml",
-        "source": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\layout\\counter_human_player.xml"
-    },
-    {
-        "merged": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
-        "source": "C:\\Users\\Robot Laptop\\Documents\\GitHub\\CribbageGame\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
-    },
-    {
-        "merged": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\counter_human_player.xml",
-        "source": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\src\\main\\res\\layout\\counter_human_player.xml"
+        "merged": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
+        "source": "C:\\Users\\SirRunnerMan\\Desktop\\CribbageGame\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
     }
 ]
