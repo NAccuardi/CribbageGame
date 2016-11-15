@@ -4,6 +4,8 @@ import edu.up.cs301.game.infoMsg.GameState;
 
 /**
  * Created by Robot Laptop on 11/14/2016.
+ * and some useless humans named
+ * Nick, Justin, and Logan
  */
 
 public class CribState extends GameState {

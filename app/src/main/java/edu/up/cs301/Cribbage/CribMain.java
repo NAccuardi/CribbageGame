@@ -70,7 +70,7 @@ public class CribMain extends GameMainActivity {
     @Override
     public LocalGame createLocalGame() {
 
-        return null;
+        return new CribLocalGame();
     }//End createLocalGame()
 
 }//End Cribage Main
