@@ -236,7 +236,7 @@ View.OnClickListener {
 		//cribButtons
 		cribButtonPos1 = (Button)findViewById(R.id.cribButtonPos1);
 		cribButtonPos1.setOnClickListener(this);
-
+//so i can push
 		cribButtonPos2 = (Button)findViewById(R.id.cribButtonPos2);
 		cribButtonPos2.setOnClickListener(this);
 
