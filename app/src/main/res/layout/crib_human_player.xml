@@ -34,28 +34,28 @@
                         android:src="@drawable/card_2h"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/imageView10"
+                        android:id="@+id/oppCardPos1"
                         android:layout_weight="1" />
 
                     <ImageView
                         android:src="@drawable/card_jb"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/imageView12"
+                        android:id="@+id/oppCardPos2"
                         android:layout_weight="1" />
 
                     <ImageView
                         android:src="@drawable/card_th"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/imageView13"
+                        android:id="@+id/oppCardPos3"
                         android:layout_weight="1" />
 
                     <ImageView
                         android:src="@drawable/card_7d"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/imageView16"
+                        android:id="@+id/oppCardPos4"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -70,15 +70,39 @@
                     android:layout_weight="2.09">
 
                     <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:text="GO"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/goButton"
+                            android:layout_weight="1" />
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                    </LinearLayout>
 
                     <ImageView
                         android:src="@drawable/card_4c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageView18"
+                        android:id="@+id/mainDeck"
                         android:layout_weight="1" />
 
                     <Space
@@ -101,28 +125,28 @@
                         android:src="@drawable/card_qc"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
-                        android:id="@+id/imageView17"
+                        android:id="@+id/cribHumanPos1"
                         android:layout_weight="1" />
 
                     <ImageView
                         android:src="@drawable/card_3h"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
-                        android:id="@+id/imageView11"
+                        android:id="@+id/cribHumanPos2"
                         android:layout_weight="1" />
 
                     <ImageView
                         android:src="@drawable/card_3h"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
-                        android:id="@+id/imageView14"
+                        android:id="@+id/cribHumanPos3"
                         android:layout_weight="1" />
 
                     <ImageView
                         android:src="@drawable/card_ac"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
-                        android:id="@+id/imageView15"
+                        android:id="@+id/cribHumanPos4"
                         android:layout_weight="1" />
                 </TableRow>
             </LinearLayout>
@@ -137,7 +161,7 @@
                     android:src="@drawable/card_3h"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageView2"
+                    android:id="@+id/cribBoardDiagram"
                     android:layout_weight="1" />
 
                 <TableRow
@@ -150,7 +174,7 @@
                         android:inputType="textPersonName"
                         android:text="Name"
                         android:ems="10"
-                        android:id="@+id/editText"
+                        android:id="@+id/humanScore"
                         android:layout_weight="1" />
 
                     <EditText
@@ -159,7 +183,7 @@
                         android:inputType="textPersonName"
                         android:text="Name"
                         android:ems="10"
-                        android:id="@+id/editText2"
+                        android:id="@+id/oppScore"
                         android:layout_weight="1" />
                 </TableRow>
             </LinearLayout>
@@ -186,42 +210,42 @@
                     android:src="@drawable/card_3c"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
-                    android:id="@+id/imageView4"
+                    android:id="@+id/handCardPos1"
                     android:layout_weight="1" />
 
                 <ImageView
                     android:src="@drawable/card_4d"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
-                    android:id="@+id/imageView5"
+                    android:id="@+id/handCardPos2"
                     android:layout_weight="1" />
 
                 <ImageView
                     android:src="@drawable/card_6c"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
-                    android:id="@+id/imageView6"
+                    android:id="@+id/handCardPos3"
                     android:layout_weight="1" />
 
                 <ImageView
                     android:src="@drawable/card_kd"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
-                    android:id="@+id/imageView7"
+                    android:id="@+id/handCardPos4"
                     android:layout_weight="1" />
 
                 <ImageView
                     android:src="@drawable/card_7s"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
-                    android:id="@+id/imageView8"
+                    android:id="@+id/handCardPos5"
                     android:layout_weight="1" />
 
                 <ImageView
                     android:src="@drawable/card_2h"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
-                    android:id="@+id/imageView9"
+                    android:id="@+id/handCardPos6"
                     android:layout_weight="1" />
             </TableRow>
 
@@ -239,16 +263,16 @@
                         android:layout_weight="1" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Crib"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button" />
+                        android:id="@+id/cribButtonPos1" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Play"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button2" />
+                        android:id="@+id/playButtonPos1" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -256,16 +280,16 @@
                         android:layout_weight="1" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Crib"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button3" />
+                        android:id="@+id/cribButtonPos2" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Play"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button4" />
+                        android:id="@+id/playButtonPos2" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -273,16 +297,16 @@
                         android:layout_weight="1" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Crib"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button5" />
+                        android:id="@+id/cribButtonPos3" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Play"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button6" />
+                        android:id="@+id/playButtonPos3" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -290,16 +314,16 @@
                         android:layout_weight="1" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Crib"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button7" />
+                        android:id="@+id/cribButtonPos4" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Play"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button8" />
+                        android:id="@+id/playButtonPos4" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -307,16 +331,16 @@
                         android:layout_weight="1" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Crib"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button9" />
+                        android:id="@+id/cribButtonPos5" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Play"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button10" />
+                        android:id="@+id/playButtonPos5" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -324,16 +348,16 @@
                         android:layout_weight="1" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Crib"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button11" />
+                        android:id="@+id/cribButtonPos6" />
 
                     <Button
-                        android:text="Button"
+                        android:text="Play"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button12" />
+                        android:id="@+id/playButtonPos6" />
 
                     <Space
                         android:layout_width="wrap_content"

@@ -7,8 +7,13 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
+<<<<<<< Updated upstream
         sha1="e3322faf7a8cb88db2438f2207b079343dd90992">
         <dex dex="C:\Users\plummer16\AndroidStudioProjects\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_7347e718a2f0ad55afca1890e386f3c2f7242134\classes.dex" />
+=======
+        sha1="df2e8817f0aa2e3944a1d3350e9a297fff3fe4fe">
+        <dex dex="C:\Users\SirRunnerMan\Desktop\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a194019c39d5bd48047d7c204239d0a4b8259620\classes.dex" />
+>>>>>>> Stashed changes
     </item>
     <item
         is-multidex="true"
@@ -16,8 +21,13 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
+<<<<<<< Updated upstream
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
         <dex dex="C:\Users\plummer16\AndroidStudioProjects\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_9dbd5083a214f729a19b739197611203326f5cd3\classes.dex" />
+=======
+        sha1="4423d202a0b6a57e53fb728ce70281954b6c2689">
+        <dex dex="C:\Users\SirRunnerMan\Desktop\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_492b3e682575a53007f9bb2aad2827df9129747d\classes.dex" />
+>>>>>>> Stashed changes
     </item>
     <item
         is-multidex="true"

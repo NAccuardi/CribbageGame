@@ -16,8 +16,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TableLayout;
@@ -34,10 +36,12 @@ import edu.up.cs301.game.util.MessageBox;
  * 
  * is the main activity for the game framework. To create a new game, create a
  * sub-class of this class that implements its abstract methods below.
+ *
+ * @author Logan J. Orndorf
  * 
  * @author Andrew M. Nuxoll
  * @author Steven R. Vegdahl
- * @date Version 2013
+ * @date Version 2016
  */
 public abstract class GameMainActivity extends Activity implements
 View.OnClickListener {
@@ -78,6 +82,61 @@ View.OnClickListener {
 	// Each of these is initialized to point to various GUI controls
 	TableLayout playerTable = null;
 	ArrayList<TableRow> tableRows = new ArrayList<TableRow>();
+
+
+
+	//NEW CRIBBAGE VARIABLES
+	//cardPosition1 variables
+	Button cribButtonPos1;
+	Button playButtonPos1;
+	ImageView handCardPos1;
+
+	//cardPosition2 variables
+	Button cribButtonPos2;
+	Button playButtonPos2;
+	ImageView handCardPos2;
+
+	//cardPosition3 variables
+	Button cribButtonPos3;
+	Button playButtonPos3;
+	ImageView handCardPos3;
+
+	//cardPosition4 variables
+	Button cribButtonPos4;
+	Button playButtonPos4;
+	ImageView handCardPos4;
+
+	//cardPosition5 variables
+	Button cribButtonPos5;
+	Button playButtonPos5;
+	ImageView handCardPos5;
+
+	//cardPosition6 variables
+	Button cribButtonPos6;
+	Button playButtonPos6;
+	ImageView handCardPos6;
+
+	//SCORE textViews
+	TextView humanScore;
+	TextView oppScore;
+
+	//human crib card positions
+	ImageView cribHumanPos1;
+	ImageView cribHumanPos2;
+	ImageView cribHumanPos3;
+	ImageView cirbHumanPos4;
+
+	//opponent crib card positions
+	ImageView oppCardPos1;
+	ImageView oppCardPos2;
+	ImageView oppCardPos3;
+	ImageView oppCardPos4;
+
+	//GO BUTTON
+	Button goButton;
+
+	//mainDeck
+	ImageView mainDeck;
 
 	/*
 	 * ====================================================================
@@ -171,6 +230,54 @@ View.OnClickListener {
 				MessageBox.popUpMessage(msg, this);
 			}
 		}
+
+
+		//creation of CRIBBAGE buttons and imageviews
+		//cribButtons
+		cribButtonPos1 = (Button)findViewById(R.id.cribButtonPos1);
+		cribButtonPos1.setOnClickListener(this);
+
+		cribButtonPos2 = (Button)findViewById(R.id.cribButtonPos2);
+		cribButtonPos2.setOnClickListener(this);
+
+		cribButtonPos3 = (Button)findViewById(R.id.cribButtonPos3);
+		cribButtonPos3.setOnClickListener(this);
+
+		cribButtonPos4 = (Button)findViewById(R.id.cribButtonPos4);
+		cribButtonPos4.setOnClickListener(this);
+
+		cribButtonPos5 = (Button)findViewById(R.id.cribButtonPos5);
+		cribButtonPos5.setOnClickListener(this);
+
+		cribButtonPos6 = (Button)findViewById(R.id.cribButtonPos6);
+		cribButtonPos6.setOnClickListener(this);
+
+		//playButtons
+		playButtonPos1 = (Button)findViewById(R.id.playButtonPos1);
+		playButtonPos1.setOnClickListener(this);
+
+		playButtonPos2 = (Button)findViewById(R.id.playButtonPos2);
+		playButtonPos2.setOnClickListener(this);
+
+		playButtonPos3 = (Button)findViewById(R.id.playButtonPos3);
+		playButtonPos3.setOnClickListener(this);
+
+		playButtonPos4 = (Button)findViewById(R.id.playButtonPos4);
+		playButtonPos4.setOnClickListener(this);
+
+		playButtonPos5 = (Button)findViewById(R.id.playButtonPos5);
+		playButtonPos5.setOnClickListener(this);
+
+		playButtonPos6 = (Button)findViewById(R.id.playButtonPos6);
+		playButtonPos6.setOnClickListener(this);
+
+		//goButton
+		goButton = (Button)findViewById(R.id.goButton);
+		goButton.setOnClickListener(this);
+
+
+
+
 
 	}// onCreate
 
@@ -481,49 +588,134 @@ View.OnClickListener {
 		if (justStarted) {
 			return;
 		}
-		
-		// Add Player Button
-		if (button.getId() == R.id.addPlayerButton) {
-			addPlayer();
-			this.playerTable.invalidate(); // show the user the change
+
+//		// Add Player Button
+//		if (button.getId() == R.id.addPlayerButton) {
+//			addPlayer();
+//			this.playerTable.invalidate(); // show the user the change
+//		}
+//
+//		// Delete Player Button
+//		else if (button.getId() == R.id.delPlayerButton) {
+//			// Search the existing players to find out which delete button got
+//			// clicked
+//			for (int i = 0; i < this.tableRows.size(); i++) {
+//				TableRow row = tableRows.get(i);
+//
+//				View v = row.findViewById(R.id.delPlayerButton);
+//				if (v == button) {
+//					// found it! remove from the layout and the list
+//					removePlayer(row);
+//				}
+//			}
+//
+//		}// else if (delete button)
+//
+//		//Save Config Button
+//		else if (button.getId() == R.id.saveConfigButton) {
+//			GameConfig configTemp = scrapeData();
+//			if (configTemp.saveConfig(saveFileName(), this)) {
+//				MessageBox.popUpMessage("Game configuration saved.", this);
+//			}
+//			else {
+//				MessageBox.popUpMessage("Unable to save game configuration.", this);
+//			}
+//		}
+//
+//		//Start Game Button
+//		else if (button.getId() == R.id.playGameButton) {
+//			String msg = startGame();
+//			if (msg != null) {
+//				// we have an error message
+//				MessageBox.popUpMessage(msg, this);
+//			}
+//
+//		}
+
+		//CRIBBAGE BUTTONS ACTIONS
+
+		if (button.getId() == R.id.cribButtonPos1) {
+			//to do something later
 		}
 
-		// Delete Player Button
-		else if (button.getId() == R.id.delPlayerButton) {
-			// Search the existing players to find out which delete button got
-			// clicked
-			for (int i = 0; i < this.tableRows.size(); i++) {
-				TableRow row = tableRows.get(i);
-
-				View v = row.findViewById(R.id.delPlayerButton);
-				if (v == button) {
-					// found it! remove from the layout and the list
-					removePlayer(row);
-				}
-			}
-
-		}// else if (delete button)
-
-		//Save Config Button
-		else if (button.getId() == R.id.saveConfigButton) {
-			GameConfig configTemp = scrapeData();
-			if (configTemp.saveConfig(saveFileName(), this)) {
-				MessageBox.popUpMessage("Game configuration saved.", this);
-			}
-			else {
-				MessageBox.popUpMessage("Unable to save game configuration.", this);
-			}
+		else if(button.getId() == R.id.cribButtonPos2)
+		{
+			//to do something later
 		}
 
-		//Start Game Button
-		else if (button.getId() == R.id.playGameButton) {
-			String msg = startGame();
-			if (msg != null) {
-				// we have an error message
-				MessageBox.popUpMessage(msg, this);
-			}
-
+		else if(button.getId() == R.id.cribButtonPos3)
+		{
+			//to do something later
 		}
+
+		else if(button.getId() == R.id.cribButtonPos4)
+		{
+			//to do something later
+		}
+
+		else if(button.getId() == R.id.cribButtonPos5)
+		{
+			//to do something later
+		}
+
+		else if(button.getId() == R.id.cribButtonPos6)
+		{
+			//to do something later
+		}
+
+		/*	end of cribButtons
+			============================================================================
+			start of playButtons
+		 */
+
+		else if(button.getId() == R.id.playButtonPos1)
+		{
+			//to do something later
+		}
+
+		else if(button.getId() == R.id.playButtonPos2)
+		{
+			//to do something later
+		}
+
+		else if(button.getId() == R.id.playButtonPos3)
+		{
+			//to do something later
+		}
+
+		else if(button.getId() == R.id.playButtonPos4)
+		{
+			//to do something later
+		}
+
+		else if(button.getId() == R.id.playButtonPos5)
+		{
+			//to do something later
+		}
+		else if(button.getId() == R.id.playButtonPos6)
+		{
+			//to do something later
+		}
+
+		/*	end of playButtons
+			============================================================================
+			goButton
+		 */
+
+		else if(button.getId() == R.id.goButton)
+		{
+			//to implement action later
+		}
+
+
+
+
+
+
+
+
+
+
 
 	}// onClick
 
