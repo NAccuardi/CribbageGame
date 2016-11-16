@@ -87,7 +87,7 @@ View.OnClickListener {
 
 	//NEW CRIBBAGE VARIABLES
 	//cardPosition1 variables
-	Button cribButtonPos1;
+	Button cribButtonPos1Name;
 	Button playButtonPos1;
 	ImageView handCardPos1;
 
@@ -234,8 +234,10 @@ View.OnClickListener {
 
 		//creation of CRIBBAGE buttons and imageviews
 		//cribButtons
-		cribButtonPos1 = (Button)findViewById(R.id.cribButtonPos1);
-		cribButtonPos1.setOnClickListener(this);
+
+
+		cribButtonPos1Name = (Button)findViewById(R.id.cribButtonPos1);
+		cribButtonPos1Name.setOnClickListener(this);
 //so i can push
 		cribButtonPos2 = (Button)findViewById(R.id.cribButtonPos2);
 		cribButtonPos2.setOnClickListener(this);
@@ -703,7 +705,7 @@ View.OnClickListener {
 		 */
 
 		else if(button.getId() == R.id.goButton)
-		{
+        {
 			//to implement action later
 		}
 

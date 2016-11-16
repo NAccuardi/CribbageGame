@@ -31,6 +31,8 @@ public class CribMain extends GameMainActivity {
         // Define the allowed player types
         ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 
+
+        //**************** We will need to differentiate between the computer players below. Nick
         playerTypes.add(new GamePlayerType("human player One") {
             public GamePlayer createPlayer(String name) {
                 return new CribHumanPlayer(name);
@@ -53,7 +55,7 @@ public class CribMain extends GameMainActivity {
 
         // Create a game configuration class for Cribbage
 
-        //***Need to go over this later***
+        //***Need to go over this later*** Nick
         GameConfig defaultConfig = new GameConfig(playerTypes, 2, 2, "Cribbage", PORT_NUMBER);
 
         // Add the default players

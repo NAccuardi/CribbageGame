@@ -20,7 +20,7 @@ public class CribState extends GameState {
     private int playerId;//determines who is playing
     private Deck mainDeck = new Deck();//holds 52 cards
     private Deck player0Hand = new Deck();//is player 0's hand
-    private Deck player0ToPlay = new Deck();//tracks the cards that player 0puts into play
+    private Deck player0ToPlay = new Deck();//tracks the cards that player 0 puts into play
     private Deck player1Hand = new Deck();//is player 1's hand
     private Deck player1ToPlay = new Deck();//tracks the cards that player 1 puts into play
     private Deck cribDeck = new Deck();//contains the cards that players have put in crib
@@ -237,6 +237,8 @@ public class CribState extends GameState {
     public int score(Deck playerdeck,Deck cutDeck)
     {
         int totalPointsEarned=0;
+
+
         return totalPointsEarned;
     }
 

@@ -20,6 +20,14 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 public class CribHumanPlayer extends GameHumanPlayer implements Animator {
 
 
+    /*
+        This is our humanState. This will only be modified in here. Nick
+     */
+    protected CribState humanState;
+
+
+
+
     /**
      * default constructor
      *
