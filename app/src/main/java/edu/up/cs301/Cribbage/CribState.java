@@ -195,7 +195,7 @@ public class CribState extends GameState {
 
 
     //returns true if a score is over 121
-    public boolean isScore121(int player)
+    public boolean isScore121()
     {
         return false;
     }

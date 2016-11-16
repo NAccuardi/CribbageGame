@@ -44,12 +44,13 @@ public class CribMain extends GameMainActivity {
         });
         playerTypes.add(new GamePlayerType("computer player (Dumb AI)") {
             public GamePlayer createPlayer(String name) {
-                return new CribComputerPlayer(name);
+                return null;
+                //return new CribComputerPlayer(name);
             }
         });
         playerTypes.add(new GamePlayerType("computer player (Smart AI)") {
             public GamePlayer createPlayer(String name) {
-                return new CribComputerPlayer(name);
+                return null;//new CribComputerPlayer(name);
             }
         });
 
