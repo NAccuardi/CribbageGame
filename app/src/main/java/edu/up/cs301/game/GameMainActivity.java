@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -137,6 +138,8 @@ View.OnClickListener {
 
 	//mainDeck
 	ImageView mainDeck;
+
+
 
 	/*
 	 * ====================================================================
@@ -591,49 +594,48 @@ View.OnClickListener {
 			return;
 		}
 
-//		// Add Player Button
-//		if (button.getId() == R.id.addPlayerButton) {
-//			addPlayer();
-//			this.playerTable.invalidate(); // show the user the change
-//		}
-//
-//		// Delete Player Button
-//		else if (button.getId() == R.id.delPlayerButton) {
-//			// Search the existing players to find out which delete button got
-//			// clicked
-//			for (int i = 0; i < this.tableRows.size(); i++) {
-//				TableRow row = tableRows.get(i);
-//
-//				View v = row.findViewById(R.id.delPlayerButton);
-//				if (v == button) {
-//					// found it! remove from the layout and the list
-//					removePlayer(row);
-//				}
-//			}
-//
-//		}// else if (delete button)
-//
-//		//Save Config Button
-//		else if (button.getId() == R.id.saveConfigButton) {
-//			GameConfig configTemp = scrapeData();
-//			if (configTemp.saveConfig(saveFileName(), this)) {
-//				MessageBox.popUpMessage("Game configuration saved.", this);
-//			}
-//			else {
-//				MessageBox.popUpMessage("Unable to save game configuration.", this);
-//			}
-//		}
-//
-//		//Start Game Button
-//		else if (button.getId() == R.id.playGameButton) {
-//			String msg = startGame();
-//			if (msg != null) {
-//				// we have an error message
-//				MessageBox.popUpMessage(msg, this);
-//			}
-//
-//		}
+		// Add Player Button
+		if (button.getId() == R.id.addPlayerButton) {
+			addPlayer();
+			this.playerTable.invalidate(); // show the user the change
+		}
 
+		// Delete Player Button
+		else if (button.getId() == R.id.delPlayerButton) {
+			// Search the existing players to find out which delete button got
+			// clicked
+			for (int i = 0; i < this.tableRows.size(); i++) {
+				TableRow row = tableRows.get(i);
+
+				View v = row.findViewById(R.id.delPlayerButton);
+				if (v == button) {
+					// found it! remove from the layout and the list
+					removePlayer(row);
+				}
+			}
+
+		}// else if (delete button)
+
+		//Save Config Button
+		else if (button.getId() == R.id.saveConfigButton) {
+			GameConfig configTemp = scrapeData();
+			if (configTemp.saveConfig(saveFileName(), this)) {
+				MessageBox.popUpMessage("Game configuration saved.", this);
+			}
+			else {
+				MessageBox.popUpMessage("Unable to save game configuration.", this);
+			}
+		}
+
+		//Start Game Button
+		else if (button.getId() == R.id.playGameButton) {
+			String msg = startGame();
+			if (msg != null) {
+				// we have an error message
+				MessageBox.popUpMessage(msg, this);
+			}
+
+		}
 		//CRIBBAGE BUTTONS ACTIONS
 
 		if (button.getId() == R.id.cribButtonPos1) {

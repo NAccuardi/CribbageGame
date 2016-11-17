@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -86,6 +87,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     //mainDeck
     ImageView mainDeck;
 
+    SurfaceView Fuuck;
+
 
 
 
@@ -153,9 +156,10 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 		// Load the layout resource for the new configuration
 		activity.setContentView(R.layout.crib_human_player);
 
+
 		// link the animator (this object) to the animation surface
 		surface = (AnimationSurface) myActivity
-				.findViewById(R.id.animation_surface);
+				.findViewById(R.id.view);
 		surface.setAnimator(this);
 
 		// read in the card images

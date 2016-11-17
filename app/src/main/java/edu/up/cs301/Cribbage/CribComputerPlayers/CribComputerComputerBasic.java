@@ -14,7 +14,7 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
     private CribState computerPlayerState;
 
     //
-    private int myPlayerId = computerPlayerState.getPlayerId();
+//    private int myPlayerId = computerPlayerState.getPlayerId();
 
     /**
      * constructor
