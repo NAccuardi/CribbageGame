@@ -3,40 +3,30 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\plummer16\AndroidStudioProjects\CribbageGame\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\Robot Laptop\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-<<<<<<< Updated upstream
-        sha1="e3322faf7a8cb88db2438f2207b079343dd90992">
-        <dex dex="C:\Users\plummer16\AndroidStudioProjects\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_7347e718a2f0ad55afca1890e386f3c2f7242134\classes.dex" />
-=======
-        sha1="df2e8817f0aa2e3944a1d3350e9a297fff3fe4fe">
-        <dex dex="C:\Users\SirRunnerMan\Desktop\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a194019c39d5bd48047d7c204239d0a4b8259620\classes.dex" />
->>>>>>> Stashed changes
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Public\Documents\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-<<<<<<< Updated upstream
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="C:\Users\plummer16\AndroidStudioProjects\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_9dbd5083a214f729a19b739197611203326f5cd3\classes.dex" />
-=======
-        sha1="4423d202a0b6a57e53fb728ce70281954b6c2689">
-        <dex dex="C:\Users\SirRunnerMan\Desktop\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_492b3e682575a53007f9bb2aad2827df9129747d\classes.dex" />
->>>>>>> Stashed changes
+        <dex dex="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_bbb22a2cbf1c4af5818e0c89c5b5cdec14fdc3d9\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\plummer16\AndroidStudioProjects\CribbageGame\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="215bc409470017c0dfe08ce2e719d129f1f3d9a3">
-        <dex dex="C:\Users\plummer16\AndroidStudioProjects\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_364f231704227895d965e8cb9d0e7e1b1a95d29b\classes.dex" />
+        sha1="9e9d63856aba2c2889189b3838dcb1b0d2248008">
+        <dex dex="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_946ba8960eb6b470b58341e171de1d6cdba9f9e4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="b94db64af73b47f2049297f87bd3c1e1a7e0644d">
+        <dex dex="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_9283681deb64b605457e2faa540fd82283e97217\classes.dex" />
     </item>
 
 </items>

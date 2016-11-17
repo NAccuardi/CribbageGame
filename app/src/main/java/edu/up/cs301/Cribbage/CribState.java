@@ -53,8 +53,39 @@ public class CribState extends GameState {
         player1ToPlay = null;
 
 
-    }
+    }//End of OG Constructor
 
+    /**
+     * This is what will accept the state when it is sent back to the local game
+     * @param origState
+     */
+
+    //*******************************need to update all of this down below.***********Nick 16Nov2016
+    public CribState(CribState origState){
+        score0 = 0;
+        score1 = 0;
+        dealer = getDealer();
+        whoseTurn = getWhoseTurn();
+        winner = false;
+        go = false;
+        playerId = getPlayerId();
+        mainDeck.add52();
+
+
+        for(int i =0; i<7;i++){//This will give us a truly random deck everytime we run the constuctor
+            mainDeck.shuffle();
+        }
+
+        player0Hand = null;
+        player1Hand = null;
+        cribDeck = null;
+        playDeck = null;
+        cutDeck = null;
+        player0ToPlay = null;
+        player1ToPlay = null;
+
+
+    }//End of overloaded contructor
 
     //********************SETTERS AND GETTERS************************************************
     //sets a players score

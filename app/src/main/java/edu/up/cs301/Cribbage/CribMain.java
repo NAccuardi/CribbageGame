@@ -4,6 +4,8 @@ import android.graphics.Color;
 
 import java.util.ArrayList;
 
+import edu.up.cs301.Cribbage.CribComputerPlayers.CribComputerComputerAdvanced;
+import edu.up.cs301.Cribbage.CribComputerPlayers.CribComputerComputerBasic;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
@@ -33,24 +35,24 @@ public class CribMain extends GameMainActivity {
 
 
         //**************** We will need to differentiate between the computer players below. Nick
-        playerTypes.add(new GamePlayerType("human player One") {
+        playerTypes.add(new GamePlayerType("Human Player One") {
             public GamePlayer createPlayer(String name) {
                 return new CribHumanPlayer(name);
             }});
-        playerTypes.add(new GamePlayerType("human player Two") {
+        playerTypes.add(new GamePlayerType("Human Player Two") {
             public GamePlayer createPlayer(String name) {
                 return new CribHumanPlayer(name);
             }
         });
-        playerTypes.add(new GamePlayerType("computer player (Dumb AI)") {
+        playerTypes.add(new GamePlayerType("Computer Player (Basic AI)") {
             public GamePlayer createPlayer(String name) {
-                return null;
-                //return new CribComputerPlayer(name);
+
+                return new CribComputerComputerBasic(name);
             }
         });
-        playerTypes.add(new GamePlayerType("computer player (Smart AI)") {
+        playerTypes.add(new GamePlayerType("Computer Player (Smart AI)") {
             public GamePlayer createPlayer(String name) {
-                return null;//new CribComputerPlayer(name);
+                return new CribComputerComputerAdvanced(name);
             }
         });
 

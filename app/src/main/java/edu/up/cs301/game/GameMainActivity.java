@@ -235,7 +235,7 @@ View.OnClickListener {
 		//creation of CRIBBAGE buttons and imageviews
 		//cribButtons
 
-
+/*
 		cribButtonPos1Name = (Button)findViewById(R.id.cribButtonPos1);
 		cribButtonPos1Name.setOnClickListener(this);
 //so i can push
@@ -277,7 +277,7 @@ View.OnClickListener {
 		goButton = (Button)findViewById(R.id.goButton);
 		goButton.setOnClickListener(this);
 
-
+*/
 
 
 
