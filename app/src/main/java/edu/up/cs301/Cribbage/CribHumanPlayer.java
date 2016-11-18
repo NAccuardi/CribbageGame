@@ -88,6 +88,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     //mainDeck
     ImageView mainDeck;
 
+    Button dealButton;
+
     SurfaceView Fuuck;
 
 
@@ -216,9 +218,10 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
 		//goButton
 		this.goButton = (Button)activity.findViewById(R.id.goButton);
+        goButton.setOnClickListener(this);
 
-		goButton.setOnClickListener(this);
-
+        this.dealButton = (Button)activity.findViewById(R.id.dealButton);
+        dealButton.setOnClickListener(this);
 
     }
 
@@ -339,6 +342,10 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         else if(view.getId() == R.id.goButton)
         {
             //to implement action later
+        }
+        else if(view.getId() == R.id.dealButton)
+        {
+            //
         }
 
 
