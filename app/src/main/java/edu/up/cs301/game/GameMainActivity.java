@@ -86,58 +86,6 @@ View.OnClickListener {
 
 
 
-	//NEW CRIBBAGE VARIABLES
-	//cardPosition1 variables
-	Button cribButtonPos1Name;
-	Button playButtonPos1;
-	ImageView handCardPos1;
-
-	//cardPosition2 variables
-	Button cribButtonPos2;
-	Button playButtonPos2;
-	ImageView handCardPos2;
-
-	//cardPosition3 variables
-	Button cribButtonPos3;
-	Button playButtonPos3;
-	ImageView handCardPos3;
-
-	//cardPosition4 variables
-	Button cribButtonPos4;
-	Button playButtonPos4;
-	ImageView handCardPos4;
-
-	//cardPosition5 variables
-	Button cribButtonPos5;
-	Button playButtonPos5;
-	ImageView handCardPos5;
-
-	//cardPosition6 variables
-	Button cribButtonPos6;
-	Button playButtonPos6;
-	ImageView handCardPos6;
-
-	//SCORE textViews
-	TextView humanScore;
-	TextView oppScore;
-
-	//human crib card positions
-	ImageView cribHumanPos1;
-	ImageView cribHumanPos2;
-	ImageView cribHumanPos3;
-	ImageView cirbHumanPos4;
-
-	//opponent crib card positions
-	ImageView oppCardPos1;
-	ImageView oppCardPos2;
-	ImageView oppCardPos3;
-	ImageView oppCardPos4;
-
-	//GO BUTTON
-	Button goButton;
-
-	//mainDeck
-	ImageView mainDeck;
 
 
 
@@ -235,52 +183,7 @@ View.OnClickListener {
 		}
 
 
-		//creation of CRIBBAGE buttons and imageviews
-		//cribButtons
 
-/*
-		cribButtonPos1Name = (Button)findViewById(R.id.cribButtonPos1);
-		cribButtonPos1Name.setOnClickListener(this);
-//so i can push
-		cribButtonPos2 = (Button)findViewById(R.id.cribButtonPos2);
-		cribButtonPos2.setOnClickListener(this);
-
-		cribButtonPos3 = (Button)findViewById(R.id.cribButtonPos3);
-		cribButtonPos3.setOnClickListener(this);
-
-		cribButtonPos4 = (Button)findViewById(R.id.cribButtonPos4);
-		cribButtonPos4.setOnClickListener(this);
-
-		cribButtonPos5 = (Button)findViewById(R.id.cribButtonPos5);
-		cribButtonPos5.setOnClickListener(this);
-
-		cribButtonPos6 = (Button)findViewById(R.id.cribButtonPos6);
-		cribButtonPos6.setOnClickListener(this);
-
-		//playButtons
-		playButtonPos1 = (Button)findViewById(R.id.playButtonPos1);
-		playButtonPos1.setOnClickListener(this);
-
-		playButtonPos2 = (Button)findViewById(R.id.playButtonPos2);
-		playButtonPos2.setOnClickListener(this);
-
-		playButtonPos3 = (Button)findViewById(R.id.playButtonPos3);
-		playButtonPos3.setOnClickListener(this);
-
-		playButtonPos4 = (Button)findViewById(R.id.playButtonPos4);
-		playButtonPos4.setOnClickListener(this);
-
-		playButtonPos5 = (Button)findViewById(R.id.playButtonPos5);
-		playButtonPos5.setOnClickListener(this);
-
-		playButtonPos6 = (Button)findViewById(R.id.playButtonPos6);
-		playButtonPos6.setOnClickListener(this);
-
-		//goButton
-		goButton = (Button)findViewById(R.id.goButton);
-		goButton.setOnClickListener(this);
-
-*/
 
 
 

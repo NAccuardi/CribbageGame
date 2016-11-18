@@ -3,6 +3,7 @@ package edu.up.cs301.Cribbage;
 import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
@@ -25,7 +26,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
  * Created by Nick Accuardi on 10/20/2016.
  */
 
-public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPlayer {
+public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPlayer,View.OnClickListener {
 
 
     /*
@@ -172,9 +173,60 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         }
 
+        //creation of CRIBBAGE buttons and imageviews
+        //cribButtons
+
+
+		cribButtonPos1Name = (Button)activity.findViewById(R.id.cribButtonPos1);
+		cribButtonPos1Name.setOnClickListener(this);
+//so i can push
+		cribButtonPos2 = (Button)activity.findViewById(R.id.cribButtonPos2);
+		cribButtonPos2.setOnClickListener(this);
+
+		cribButtonPos3 = (Button)activity.findViewById(R.id.cribButtonPos3);
+		cribButtonPos3.setOnClickListener(this);
+
+		cribButtonPos4 = (Button)activity.findViewById(R.id.cribButtonPos4);
+		cribButtonPos4.setOnClickListener(this);
+
+		cribButtonPos5 = (Button)activity.findViewById(R.id.cribButtonPos5);
+		cribButtonPos5.setOnClickListener(this);
+
+		cribButtonPos6 = (Button)activity.findViewById(R.id.cribButtonPos6);
+		cribButtonPos6.setOnClickListener(this);
+
+		//playButtons
+		playButtonPos1 = (Button)activity.findViewById(R.id.playButtonPos1);
+		playButtonPos1.setOnClickListener(this);
+
+		playButtonPos2 = (Button)activity.findViewById(R.id.playButtonPos2);
+		playButtonPos2.setOnClickListener(this);
+
+		playButtonPos3 = (Button)activity.findViewById(R.id.playButtonPos3);
+		playButtonPos3.setOnClickListener(this);
+
+		playButtonPos4 = (Button)activity.findViewById(R.id.playButtonPos4);
+		playButtonPos4.setOnClickListener(this);
+
+		playButtonPos5 = (Button)activity.findViewById(R.id.playButtonPos5);
+		playButtonPos5.setOnClickListener(this);
+
+		playButtonPos6 = (Button)activity.findViewById(R.id.playButtonPos6);
+		playButtonPos6.setOnClickListener(this);
+
+		//goButton
+		this.goButton = (Button)activity.findViewById(R.id.goButton);
+
+		goButton.setOnClickListener(this);
 
 
     }
+
+
+
+
+
+
 
 //    @Override
 //    public void receiveInfo(GameInfo info) {
@@ -189,6 +241,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     public int backgroundColor() {
         return 0;
     }
+
+
 
     public boolean doQuit() {
         return false;
@@ -208,5 +262,85 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
     public int interval() {
         return 0;
+    }
+
+    public void onClick(View view) {
+
+        //CRIBBAGE BUTTONS ACTIONS
+
+        if (view.getId() == R.id.cribButtonPos1) {
+            //to do something later
+        }
+
+        else if(view.getId() == R.id.cribButtonPos2)
+        {
+            //to do something later
+        }
+
+        else if(view.getId() == R.id.cribButtonPos3)
+        {
+            //to do something later
+        }
+
+        else if(view.getId() == R.id.cribButtonPos4)
+        {
+            //to do something later
+        }
+
+        else if(view.getId() == R.id.cribButtonPos5)
+        {
+            //to do something later
+        }
+
+        else if(view.getId() == R.id.cribButtonPos6)
+        {
+            //to do something later
+        }
+
+		/*	end of cribButtons
+			============================================================================
+			start of playButtons
+		 */
+
+        else if(view.getId() == R.id.playButtonPos1)
+        {
+            //to do something later
+        }
+
+        else if(view.getId() == R.id.playButtonPos2)
+        {
+            //to do something later
+        }
+
+        else if(view.getId() == R.id.playButtonPos3)
+        {
+            //to do something later
+        }
+
+        else if(view.getId() == R.id.playButtonPos4)
+        {
+            //to do something later
+        }
+
+        else if(view.getId() == R.id.playButtonPos5)
+        {
+            //to do something later
+        }
+        else if(view.getId() == R.id.playButtonPos6)
+        {
+            //to do something later
+        }
+
+		/*	end of playButtons
+			============================================================================
+			goButton
+		 */
+
+        else if(view.getId() == R.id.goButton)
+        {
+            //to implement action later
+        }
+
+
     }
 }
