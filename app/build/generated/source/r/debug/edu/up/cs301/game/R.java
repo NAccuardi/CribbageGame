@@ -89,7 +89,7 @@ public final class R {
     }
     public static final class id {
         public static final int addPlayerButton=0x7f090032;
-        public static final int animation_surface=0x7f09003c;
+        public static final int animation_surface=0x7f09003b;
         public static final int configTableLayout=0x7f09002c;
         public static final int counterLabelTextView=0x7f090002;
         public static final int counterValueTextView=0x7f090004;
@@ -116,7 +116,7 @@ public final class R {
         public static final int localGameTab=0x7f090028;
         public static final int localTabLayout=0x7f090029;
         public static final int mainDeck=0x7f09000a;
-        public static final int menu_settings=0x7f09003d;
+        public static final int menu_settings=0x7f09003c;
         public static final int minusButton=0x7f090003;
         public static final int oppCardPos1=0x7f090005;
         public static final int oppCardPos2=0x7f090006;
@@ -149,7 +149,6 @@ public final class R {
         public static final int textView1=0x7f09002d;
         public static final int top_gui_layout=0x7f090000;
         public static final int view=0x7f09000f;
-        public static final int view2=0x7f09003b;
     }
     public static final class layout {
         public static final int counter_human_player=0x7f030000;
@@ -159,8 +158,7 @@ public final class R {
         public static final int game_local_tab=0x7f030004;
         public static final int game_player_list_row=0x7f030005;
         public static final int game_remote_tab=0x7f030006;
-        public static final int nick_test_layout=0x7f030007;
-        public static final int sj_human_player=0x7f030008;
+        public static final int sj_human_player=0x7f030007;
     }
     public static final class menu {
         public static final int game_main=0x7f080000;
