@@ -11,6 +11,11 @@ public class CribDeal extends CribPlayAction {
 
     public CribDeal(GamePlayer player)
     {
-        //super(player);
+        super(player);
+    }
+
+    public boolean isDeal()
+    {
+        return true;
     }
 }

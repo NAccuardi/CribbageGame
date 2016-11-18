@@ -7,4 +7,13 @@ import edu.up.cs301.Cribbage.CribPlayAction;
  */
 
 public class CribGo extends CribPlayAction {
+
+    public CribGo (GamePlayer player)
+    {
+        super(player);
+    }
+
+    public boolean isGo() {
+        return true;
+    }
 }
