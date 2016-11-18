@@ -1,6 +1,7 @@
 package edu.up.cs301.Cribbage.CribComputerPlayers;
 
 import edu.up.cs301.Cribbage.CribComputerPlayer;
+import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
 import edu.up.cs301.Cribbage.CribState;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
@@ -36,9 +37,11 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
 
         // update our state variable
         computerPlayerState = (CribState) info;
-
-
-
+        if(computerPlayerState.getDealer() == computerPlayerState.getPlayerId())
+        {
+           // game.sendAction(new CribDeal);
+        }
+        computerPlayerState.getHand(computerPlayerState.getPlayerId());
 
     }
 
