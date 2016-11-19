@@ -134,7 +134,7 @@ public class CribState extends GameState {
     //gets the player id
     public int getPlayerId()
     {
-        return 0;
+        return playerId;
     }
 
 

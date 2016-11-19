@@ -37,7 +37,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
     //NEW CRIBBAGE VARIABLES
     //cardPosition1 variables
-    Button cribButtonPos1Name;
+    Button cribButtonPos1;
     Button playButtonPos1;
     ImageView handCardPos1;
 
@@ -179,9 +179,9 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         //cribButtons
 
 
-		cribButtonPos1Name = (Button)activity.findViewById(R.id.cribButtonPos1);
-		cribButtonPos1Name.setOnClickListener(this);
-//so i can push
+		cribButtonPos1 = (Button)activity.findViewById(R.id.cribButtonPos1);
+		cribButtonPos1.setOnClickListener(this);
+        //so i can push
 		cribButtonPos2 = (Button)activity.findViewById(R.id.cribButtonPos2);
 		cribButtonPos2.setOnClickListener(this);
 
@@ -267,87 +267,60 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         return 0;
     }
 
-    public void onClick(View view) {
+    public void onClick(View button) {
 
-        //CRIBBAGE BUTTONS ACTIONS
+        //****************** Crib Buttons go here******************************************************
+        if(button == cribButtonPos1){
 
-        if (view.getId() == R.id.cribButtonPos1) {
-            //to do something later
+
+        }else if(button == cribButtonPos2){
+
+
+        }else if(button == cribButtonPos3){
+
+
+        }else if(button == cribButtonPos4){
+
+
+        }else if(button == cribButtonPos5){
+
+
+        }else if(button == cribButtonPos6){
+
+
+        }else //***********************************End Crib Buttons***************************
+
+
+
+        //********************************Start PLay buttons**********************************
+
+         if(button == playButtonPos1){
+
+
+        }else if(button == playButtonPos2){
+
+
+        }else if(button == playButtonPos3){
+
+
+        }else if(button == playButtonPos4){
+
+
+        }else if(button == playButtonPos5){
+
+
+        }else if(button == playButtonPos6){
+
+
+        }else//****************************End Play Buttons
+
+        if(button == goButton){
+
+
+        }else if(button == dealButton){
+
+
         }
 
-        else if(view.getId() == R.id.cribButtonPos2)
-        {
-            //to do something later
-        }
-
-        else if(view.getId() == R.id.cribButtonPos3)
-        {
-            //to do something later
-        }
-
-        else if(view.getId() == R.id.cribButtonPos4)
-        {
-            //to do something later
-        }
-
-        else if(view.getId() == R.id.cribButtonPos5)
-        {
-            //to do something later
-        }
-
-        else if(view.getId() == R.id.cribButtonPos6)
-        {
-            //to do something later
-        }
-
-		/*	end of cribButtons
-			============================================================================
-			start of playButtons
-		 */
-
-        else if(view.getId() == R.id.playButtonPos1)
-        {
-            //to do something later
-        }
-
-        else if(view.getId() == R.id.playButtonPos2)
-        {
-            //to do something later
-        }
-
-        else if(view.getId() == R.id.playButtonPos3)
-        {
-            //to do something later
-        }
-
-        else if(view.getId() == R.id.playButtonPos4)
-        {
-            //to do something later
-        }
-
-        else if(view.getId() == R.id.playButtonPos5)
-        {
-            //to do something later
-        }
-        else if(view.getId() == R.id.playButtonPos6)
-        {
-            //to do something later
-        }
-
-		/*	end of playButtons
-			============================================================================
-			goButton
-		 */
-
-        else if(view.getId() == R.id.goButton)
-        {
-            //to implement action later
-        }
-        else if(view.getId() == R.id.dealButton)
-        {
-            //
-        }
-
-
-    }
+    }//end of onCLick method
 }

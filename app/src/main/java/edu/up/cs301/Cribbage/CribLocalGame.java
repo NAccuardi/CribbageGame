@@ -3,6 +3,9 @@ package edu.up.cs301.Cribbage;
 import android.util.Log;
 
 import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
+import edu.up.cs301.Cribbage.CribPlayActions.CribGo;
+import edu.up.cs301.Cribbage.CribPlayActions.CribPutInCrib;
+import edu.up.cs301.Cribbage.CribPlayActions.CribPutInPlay;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
@@ -65,9 +68,43 @@ public class CribLocalGame extends LocalGame {
         return null;
     }
 
+
+    //*************This is where we will handle the moves for each player
     protected boolean makeMove(GameAction action) {
+
+        if(action instanceof CribDeal){
+
+        }else if( action instanceof CribGo){
+
+        }else if(action instanceof CribPutInCrib){
+
+        }else if (action instanceof CribPutInPlay){
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         return false;
     }
 
 
-}
+}//endCriblocalGame

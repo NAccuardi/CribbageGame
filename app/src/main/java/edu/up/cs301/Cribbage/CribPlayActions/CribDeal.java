@@ -14,8 +14,5 @@ public class CribDeal extends CribMoveAction {
         super(player);
     }
 
-    public boolean isDeal()
-    {
-        return true;
-    }
+   // public boolean isDeal() {return true;}
 }

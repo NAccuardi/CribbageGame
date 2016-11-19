@@ -6,5 +6,9 @@
     {
         "merged": "C:\\Users\\plummer16\\AndroidStudioProjects\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\menu\\game_main.xml",
         "source": "C:\\Users\\plummer16\\AndroidStudioProjects\\CribbageGame\\app\\src\\main\\res\\menu\\game_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\menu\\game_main.xml",
+        "source": "C:\\Users\\Nick\\Desktop\\Git Things\\CribbageGame\\app\\src\\main\\res\\menu\\game_main.xml"
     }
 ]
