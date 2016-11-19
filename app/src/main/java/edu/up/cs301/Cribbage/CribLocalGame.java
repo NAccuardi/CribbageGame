@@ -2,6 +2,7 @@ package edu.up.cs301.Cribbage;
 
 import android.util.Log;
 
+import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
@@ -15,6 +16,7 @@ public class CribLocalGame extends LocalGame {
     //"Master"
     CribState state;
 
+
     /**
      * This is where the "master" class wil be. This will keep the most up to date copy of the game.
      * Nick.
@@ -22,6 +24,7 @@ public class CribLocalGame extends LocalGame {
     public CribLocalGame(){
         Log.i("CribLocalGame", "creating game");//This will let us know that this has run correctly.
         state = new CribState();
+
     }
 
 

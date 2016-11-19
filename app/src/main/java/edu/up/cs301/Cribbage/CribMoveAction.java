@@ -1,17 +1,20 @@
 package edu.up.cs301.Cribbage;
 
+import edu.up.cs301.game.GamePlayer;
+import edu.up.cs301.game.actionMsg.GameAction;
+
 /**
  * Created by Robot Laptop on 11/16/2016.
  */
 
-public abstract class CribMoveAction extends GameAction{
+public abstract class CribMoveAction extends GameAction {
 
     /**
      * Constructor for CribMoveAction
      *
      * @param player the player making the move
      */
-    public CribPlayAction(GamePlayer player)
+    public CribMoveAction(GamePlayer player)
     {
         // invoke superclass constructor to set source
         super(player);
