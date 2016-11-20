@@ -13,7 +13,7 @@ public class CribPutInCrib extends CribMoveAction{
         super(player);
     }
 
-   // public boolean isPutInCrib() {
-       // return true;
-   // }
+    public boolean isPutInCrib() {
+        return true;
+    }
 }
