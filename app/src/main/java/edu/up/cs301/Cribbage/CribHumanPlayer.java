@@ -3,6 +3,7 @@ package edu.up.cs301.Cribbage;
 import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -109,7 +110,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     ImageView cribHumanPos1;
     ImageView cribHumanPos2;
     ImageView cribHumanPos3;
-    ImageView cirbHumanPos4;
+    ImageView cribHumanPos4;
 
     //opponent crib card positions
     ImageView oppCardPos1;
@@ -126,6 +127,31 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     Button dealButton;
 
     SurfaceView Fuuck;
+
+
+    //resource variables
+    //drawable handPositions resources
+    Drawable resourceHandPos1 = handCardPos1.getDrawable();
+    Drawable resourceHandPos2 = handCardPos2.getDrawable();
+    Drawable resourceHandPos3 = handCardPos3.getDrawable();
+    Drawable resourceHandPos4 = handCardPos4.getDrawable();
+    Drawable resourceHandPos5 = handCardPos5.getDrawable();
+    Drawable resourceHandPos6 = handCardPos6.getDrawable();
+
+    //drawable human crib positions resources
+    Drawable resourceCribHum1 = cribHumanPos1.getDrawable();
+    Drawable resourceCribHum2 = cribHumanPos2.getDrawable();
+    Drawable resourceCribHum3 = cribHumanPos3.getDrawable();
+    Drawable resourceCribHum4 = cribHumanPos4.getDrawable();
+
+    //drawable opponents Cards
+    Drawable resourceOppCard1 = oppCardPos1.getDrawable();
+    Drawable resourceOppCard2 = oppCardPos2.getDrawable();
+    Drawable resourceOppCard3 = oppCardPos3.getDrawable();
+    Drawable resourceOppCard4 = oppCardPos4.getDrawable();
+
+    //drawable for mainDeck resource
+    Drawable resourceMainDeck = mainDeck.getDrawable();
 
 
 
@@ -255,6 +281,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 		this.goButton = (Button)activity.findViewById(R.id.goButton);
         goButton.setOnClickListener(this);
 
+        //dealButton
         this.dealButton = (Button)activity.findViewById(R.id.dealButton);
         dealButton.setOnClickListener(this);
 
@@ -309,6 +336,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             CribState1 = new CribAction1(this);
             Log.i("Button Pressed", "cribButtonPos1");
             game.sendAction(CribState1);
+
 
         }else if(button == cribButtonPos2){
             CribState2 = new CribAction2(this);
