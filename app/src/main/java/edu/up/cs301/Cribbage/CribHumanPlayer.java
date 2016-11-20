@@ -280,22 +280,27 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         //****************** Crib Buttons go here******************************************************
         if(button == cribButtonPos1){
             putInCribAction = new CribPutInCrib(this);
-            Log.i("the button works", "cribButtonPos1");
+            Log.i("Button Pressed: ", "cribButtonPos1");
 
         }else if(button == cribButtonPos2){
-
+            putInCribAction = new CribPutInCrib(this);
+            Log.i("Button Pressed: ", "cribButtonPos2");
 
         }else if(button == cribButtonPos3){
-
+            putInCribAction = new CribPutInCrib(this);
+            Log.i("Button Pressed: ", "cribButtonPos3");
 
         }else if(button == cribButtonPos4){
-
+            putInCribAction = new CribPutInCrib(this);
+            Log.i("Button Pressed: ", "cribButtonPos4");
 
         }else if(button == cribButtonPos5){
-
+            putInCribAction = new CribPutInCrib(this);
+            Log.i("Button Pressed: ", "cribButtonPos5");
 
         }else if(button == cribButtonPos6){
-
+            putInCribAction = new CribPutInCrib(this);
+            Log.i("Button Pressed: ", "cribButtonPos6");
 
         }else //***********************************End Crib Buttons***************************
 
@@ -304,30 +309,38 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         //********************************Start PLay buttons**********************************
 
          if(button == playButtonPos1){
-
+             putInPlayAction = new CribPutInPlay(this);
+             Log.i("Button Pressed: ", "playButtonPos1 ");
 
         }else if(button == playButtonPos2){
-
+             putInPlayAction = new CribPutInPlay(this);
+             Log.i("Button Pressed: ", "playButtonPos2 ");
 
         }else if(button == playButtonPos3){
-
+             putInPlayAction = new CribPutInPlay(this);
+             Log.i("Button Pressed: ", "playButtonPos3 ");
 
         }else if(button == playButtonPos4){
-
+             putInPlayAction = new CribPutInPlay(this);
+             Log.i("Button Pressed: ", "playButtonPos4 ");
 
         }else if(button == playButtonPos5){
-
+             putInPlayAction = new CribPutInPlay(this);
+             Log.i("Button Pressed: ", "playButtonPos5 ");
 
         }else if(button == playButtonPos6){
-
+             putInPlayAction = new CribPutInPlay(this);
+             Log.i("Button Pressed: ", "playButtonPos6 ");
 
         }else//****************************End Play Buttons
 
         if(button == goButton){
-
+            goAction = new CribGo(this);
+            Log.i("Button Pressed: ", "goButton");
 
         }else if(button == dealButton){
-
+            dealAction = new CribDeal(this);
+            Log.i("Button Pressed", "dealButton");
 
         }
 
