@@ -14,7 +14,7 @@ public class CribGo extends CribMoveAction {
         super(player);
     }
 
-    //public boolean isGo() {
-       // return true;
-   // }
+    public boolean isGo() {
+       return true;
+    }
 }

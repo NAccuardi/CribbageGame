@@ -12,10 +12,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction1;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction2;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction3;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction4;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction5;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction6;
 import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
 import edu.up.cs301.Cribbage.CribPlayActions.CribGo;
 import edu.up.cs301.Cribbage.CribPlayActions.CribPutInCrib;
 import edu.up.cs301.Cribbage.CribPlayActions.CribPutInPlay;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction1;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction2;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction3;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction4;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction5;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction6;
 import edu.up.cs301.animation.AnimationSurface;
 import edu.up.cs301.animation.Animator;
 import edu.up.cs301.card.Card;
@@ -41,6 +53,21 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     CribGo goAction;
     CribPutInCrib putInCribAction;
     CribPutInPlay putInPlayAction;
+
+    CribAction1 CribState1;
+    CribAction2 CribState2;
+    CribAction3 CribState3;
+    CribAction4 CribState4;
+    CribAction5 CribState5;
+    CribAction6 CribState6;
+
+    CribPlayAction1 CribPlay1;
+    CribPlayAction2 CribPlay2;
+    CribPlayAction3 CribPlay3;
+    CribPlayAction4 CribPlay4;
+    CribPlayAction5 CribPlay5;
+    CribPlayAction6 CribPlay6;
+
 
 
     //NEW CRIBBAGE VARIABLES
@@ -139,10 +166,10 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
      */
     public void receiveInfo(GameInfo info) {
 
-        Log.i("CribHumanPlayer", "receiving updated state ("+info.getClass()+")");
+        Log.i("The CribHumanPlayer", "receiving updated state ("+info.getClass()+")");
 	if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo) {
 		        // if we had an out-of-turn or illegal move, flash the screen
-		surface.flash(Color.GREEN, 50);
+		surface.flash(Color.GRAY, 50);
 	}
 		else if (!(info instanceof CribState)) {
 			// otherwise, if it's not a game-state message, ignore
@@ -279,29 +306,38 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         //****************** Crib Buttons go here******************************************************
         if(button == cribButtonPos1){
-            putInCribAction = new CribPutInCrib(this);
-            Log.i("Button Pressed: ", "cribButtonPos1");
+            CribState1 = new CribAction1(this);
+            Log.i("Button Pressed", "cribButtonPos1");
+            game.sendAction(CribState1);
 
         }else if(button == cribButtonPos2){
-            putInCribAction = new CribPutInCrib(this);
-            Log.i("Button Pressed: ", "cribButtonPos2");
+            CribState2 = new CribAction2(this);
+            Log.i("Button Pressed", "cribButtonPos2");
+            game.sendAction(CribState2);
+
 
         }else if(button == cribButtonPos3){
-            putInCribAction = new CribPutInCrib(this);
-            Log.i("Button Pressed: ", "cribButtonPos3");
+            CribState3 = new CribAction3(this);
+            Log.i("Button Pressed", "cribButtonPos3");
+            game.sendAction(CribState3);
+
 
         }else if(button == cribButtonPos4){
-            putInCribAction = new CribPutInCrib(this);
-            Log.i("Button Pressed: ", "cribButtonPos4");
+            CribState4 = new CribAction4(this);
+            Log.i("Button Pressed", "cribButtonPos4");
+            game.sendAction(CribState4);
+
 
         }else if(button == cribButtonPos5){
-            putInCribAction = new CribPutInCrib(this);
-            Log.i("Button Pressed: ", "cribButtonPos5");
+            CribState5 = new CribAction5(this);
+            Log.i("Button Pressed", "cribButtonPos5");
+            game.sendAction(CribState5);
+
 
         }else if(button == cribButtonPos6){
-            putInCribAction = new CribPutInCrib(this);
-            Log.i("Button Pressed: ", "cribButtonPos6");
-
+            CribState6 = new CribAction6(this);
+            Log.i("Button Pressed", "cribButtonPos6");
+            game.sendAction(CribState6);
         }else //***********************************End Crib Buttons***************************
 
 
@@ -309,39 +345,55 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         //********************************Start PLay buttons**********************************
 
          if(button == playButtonPos1){
-             putInPlayAction = new CribPutInPlay(this);
-             Log.i("Button Pressed: ", "playButtonPos1 ");
+             CribPlay1 = new CribPlayAction1(this);
+             Log.i("Button Pressed", "playButtonPos1 ");
+             game.sendAction(CribPlay1);
+
 
         }else if(button == playButtonPos2){
-             putInPlayAction = new CribPutInPlay(this);
-             Log.i("Button Pressed: ", "playButtonPos2 ");
+             CribPlay2 = new CribPlayAction2(this);
+             Log.i("Button Pressed", "playButtonPos2 ");
+             game.sendAction(CribPlay2);
+
 
         }else if(button == playButtonPos3){
-             putInPlayAction = new CribPutInPlay(this);
-             Log.i("Button Pressed: ", "playButtonPos3 ");
+             CribPlay3 = new CribPlayAction3(this);
+             Log.i("Button Pressed", "playButtonPos3 ");
+             game.sendAction(CribPlay3);
+
+
 
         }else if(button == playButtonPos4){
-             putInPlayAction = new CribPutInPlay(this);
-             Log.i("Button Pressed: ", "playButtonPos4 ");
+             CribPlay4 = new CribPlayAction4(this);
+             Log.i("Button Pressed", "playButtonPos4 ");
+             game.sendAction(CribPlay4);
+
+
 
         }else if(button == playButtonPos5){
-             putInPlayAction = new CribPutInPlay(this);
-             Log.i("Button Pressed: ", "playButtonPos5 ");
+             CribPlay5 = new CribPlayAction5(this);
+             Log.i("Button Pressed", "playButtonPos5 ");
+             game.sendAction(CribPlay5);
+
 
         }else if(button == playButtonPos6){
-             putInPlayAction = new CribPutInPlay(this);
-             Log.i("Button Pressed: ", "playButtonPos6 ");
+             CribPlay6 = new CribPlayAction6(this);
+             Log.i("Button Pressed", "playButtonPos6 ");
+             game.sendAction(CribPlay6);
+
+
 
         }else//****************************End Play Buttons
 
         if(button == goButton){
             goAction = new CribGo(this);
-            Log.i("Button Pressed: ", "goButton");
+            Log.i("Button Pressed", "goButton");
+            game.sendAction(goAction);
 
         }else if(button == dealButton){
             dealAction = new CribDeal(this);
             Log.i("Button Pressed", "dealButton");
-
+            game.sendAction(dealAction);
         }
 
     }//end of onCLick method

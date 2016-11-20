@@ -2,10 +2,22 @@ package edu.up.cs301.Cribbage;
 
 import android.util.Log;
 
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction1;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction2;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction3;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction4;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction5;
+import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction6;
 import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
 import edu.up.cs301.Cribbage.CribPlayActions.CribGo;
 import edu.up.cs301.Cribbage.CribPlayActions.CribPutInCrib;
 import edu.up.cs301.Cribbage.CribPlayActions.CribPutInPlay;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction1;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction2;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction3;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction4;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction5;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction6;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
@@ -76,15 +88,53 @@ public class CribLocalGame extends LocalGame {
     protected boolean makeMove(GameAction action) {
 
         if(action instanceof CribDeal){
+            Log.i("Make Move Action: ", "CribDeal");
            state.deal();
 
         }else if( action instanceof CribGo){
+            Log.i("Make Move Action: ", "CribGo");
 
-        }else if(action instanceof CribPutInCrib){
+        }else if(action instanceof CribAction1){
+            Log.i("Make Move Action: ", "CribAction1");
 
-        }else if (action instanceof CribPutInPlay){
+
+        }else if(action instanceof CribAction2){
+            Log.i("Make Move Action: ", "CribAction2");
+
+        }else if(action instanceof CribAction3){
+            Log.i("Make Move Action: ", "CribAction3");
+
+        }else if(action instanceof CribAction4){
+            Log.i("Make Move Action: ", "CribAction4");
+
+        }else if(action instanceof CribAction5){
+            Log.i("Make Move Action: ", "CribACtion5");
+
+        }else if(action instanceof CribAction6){
+            Log.i("Make Move Action: ", "CribAction6");
+
+        }else if(action instanceof CribPlayAction1){
+            Log.i("Make Move Action: ", "CribPLayAction1");
+
+        }else if(action instanceof CribPlayAction2){
+            Log.i("Make Move Action: ", "CribPLayAction2");
+
+
+        }else if(action instanceof CribPlayAction3){
+            Log.i("Make Move Action: ", "CribPLayAction3");
+
+        }else if(action instanceof CribPlayAction4){
+            Log.i("Make Move Action: ", "CribPLayAction4");
+
+        }else if(action instanceof CribPlayAction5){
+            Log.i("Make Move Action: ", "CribPLayAction5");
+
+        }else if(action instanceof CribPlayAction6){
+            Log.i("Make Move Action: ", "CribPLayAction6");
 
         }
+
+
         return false;
     }
 

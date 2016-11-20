@@ -12,4 +12,6 @@ public class CribAction1 extends CribMoveAction {
     {
         super(player);
     }
+
+    public boolean isCribAction1(){return true;}
 }

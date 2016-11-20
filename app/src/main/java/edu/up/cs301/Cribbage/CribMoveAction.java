@@ -51,4 +51,21 @@ public abstract class CribMoveAction extends GameAction {
     public boolean isGo() {
         return false;
     }
+
+    public boolean isCribAction1(){return false;}
+    public boolean isCribAction2(){return false;}
+    public boolean isCribAction3(){return false;}
+    public boolean isCribAction4(){return false;}
+    public boolean isCribAction5(){return false;}
+    public boolean isCribAction6(){return false;}
+
+
+    public boolean isPlayAction1(){return false;}
+    public boolean isPlayAction2(){return false;}
+    public boolean isPlayAction3(){return false;}
+    public boolean isPlayAction4(){return false;}
+    public boolean isPlayAction5(){return false;}
+    public boolean isPlayAction6(){return false;}
+
+
 }
