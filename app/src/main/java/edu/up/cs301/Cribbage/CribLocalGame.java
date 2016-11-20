@@ -62,6 +62,9 @@ public class CribLocalGame extends LocalGame {
     protected String checkIfGameOver() {
 
         if (state.isScore121()) {//This will check to see if the game is over.
+            // we want to display who the winner is in a pop up box.
+
+
 
         }//end of if
 
@@ -73,6 +76,7 @@ public class CribLocalGame extends LocalGame {
     protected boolean makeMove(GameAction action) {
 
         if(action instanceof CribDeal){
+           state.deal();
 
         }else if( action instanceof CribGo){
 
@@ -81,28 +85,6 @@ public class CribLocalGame extends LocalGame {
         }else if (action instanceof CribPutInPlay){
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return false;
     }
 

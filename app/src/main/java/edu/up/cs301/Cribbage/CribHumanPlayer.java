@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
+import edu.up.cs301.Cribbage.CribPlayActions.CribGo;
+import edu.up.cs301.Cribbage.CribPlayActions.CribPutInCrib;
+import edu.up.cs301.Cribbage.CribPlayActions.CribPutInPlay;
 import edu.up.cs301.animation.AnimationSurface;
 import edu.up.cs301.animation.Animator;
 import edu.up.cs301.card.Card;
@@ -32,7 +36,11 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     /*
         This is our humanState. This will only be modified in here. Nick
      */
-    protected CribState humanState;
+    CribState humanState;
+    CribDeal dealAction;
+    CribGo goAction;
+    CribPutInCrib putInCribAction;
+    CribPutInPlay putInPlayAction;
 
 
     //NEW CRIBBAGE VARIABLES
@@ -271,7 +279,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         //****************** Crib Buttons go here******************************************************
         if(button == cribButtonPos1){
-
+            putInCribAction = new CribPutInCrib(this);
+            Log.i("the button works", "cribButtonPos1");
 
         }else if(button == cribButtonPos2){
 

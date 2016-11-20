@@ -138,7 +138,9 @@ public class CribState extends GameState {
     }
 
 
+public void thisIsInTheCribState(){
 
+}
 
     //sets the hand for a player
     public void setHand(int player)
