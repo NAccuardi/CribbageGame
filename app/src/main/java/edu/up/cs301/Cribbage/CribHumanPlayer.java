@@ -126,7 +126,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
     Button dealButton;
 
-    SurfaceView Fuuck;
+
 
 
     //resource variables
@@ -177,6 +177,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
 
     public CribHumanPlayer(String name) {
+
         super(name);
     }
 
@@ -284,6 +285,19 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         //dealButton
         this.dealButton = (Button)activity.findViewById(R.id.dealButton);
         dealButton.setOnClickListener(this);
+
+
+        if(humanState.getStage()==0){
+
+
+
+        }else if(humanState.getStage()==1){
+
+
+        }
+
+
+
 
     }
 
