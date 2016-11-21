@@ -214,18 +214,18 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:src="@drawable/card_3c"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
                     android:id="@+id/handCardPos1"
-                    android:layout_weight="0" />
+                    android:layout_weight="1"
+                    android:src="@drawable/card_4c" />
 
                 <ImageView
-                    android:src="@drawable/card_4d"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
                     android:id="@+id/handCardPos2"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:src="@drawable/card_3d" />
 
                 <ImageView
                     android:src="@drawable/card_6c"

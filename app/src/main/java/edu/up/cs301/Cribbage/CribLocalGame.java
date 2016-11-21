@@ -10,8 +10,6 @@ import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction5;
 import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction6;
 import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
 import edu.up.cs301.Cribbage.CribPlayActions.CribGo;
-import edu.up.cs301.Cribbage.CribPlayActions.CribPutInCrib;
-import edu.up.cs301.Cribbage.CribPlayActions.CribPutInPlay;
 import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction1;
 import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction2;
 import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction3;
@@ -68,7 +66,15 @@ public class CribLocalGame extends LocalGame {
     }
 
     protected boolean canMove(int playerIdx) {
-        return false;
+        //return false;
+         return true;
+       //for(int i =0; i<players.length;i++){
+       //    if(getPlayerIdx(players[i])==playerIdx){
+       //        state.setTurn(playerIdx);
+       //        return true;
+       //    }
+       //}
+       //return false;
     }
 
     protected String checkIfGameOver() {
@@ -86,7 +92,7 @@ public class CribLocalGame extends LocalGame {
 
     //*************This is where we will handle the moves for each player
     protected boolean makeMove(GameAction action) {
-
+        Log.i("Make Move", "entered make move");
         if(action instanceof CribDeal){
             Log.i("Make Move Action: ", "CribDeal");
            state.deal();

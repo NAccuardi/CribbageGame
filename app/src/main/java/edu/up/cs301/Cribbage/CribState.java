@@ -1,5 +1,7 @@
 package edu.up.cs301.Cribbage;
 
+import android.util.Log;
+
 import java.lang.reflect.Array;
 
 import edu.up.cs301.card.Card;
@@ -21,12 +23,16 @@ public class CribState extends GameState {
     private int stage;//int value of the stage of gameplay
     private boolean winner;//becomes true when a player wins
     private boolean go;//becomes true when a player must press the go button
-    private int playerId;//determines who is playing
+
+
+    //*****************This are all of our stupid decks*********************************
     private Deck mainDeck = new Deck();//holds 52 cards
+
     private Deck player0Hand = new Deck();//is player 0's hand
     private Deck player0ToPlay = new Deck();//tracks the cards that player 0 puts into play
     private Deck player1Hand = new Deck();//is player 1's hand
     private Deck player1ToPlay = new Deck();//tracks the cards that player 1 puts into play
+
     private Deck cribDeck = new Deck();//contains the cards that players have put in crib
     private Deck playDeck = new Deck();//contains the cards that players have player
     private Deck cutDeck = new Deck();//contains the card that was cut from deck
@@ -36,26 +42,36 @@ public class CribState extends GameState {
     public CribState(){
         score0 = 0;
         score1 = 0;
-        dealer = getDealer();
-        whoseTurn = getWhoseTurn();
-        stage = -1;
+        dealer = 0;
+        whoseTurn = 0;
+        stage = 0;
         winner = false;
         go = false;
-        playerId = getPlayerId();
+
         mainDeck.add52();
+        Log.i("what is in the maindeck",mainDeck.toString());
 
 
         for(int i =0; i<7;i++){//This will give us a truly random deck everytime we run the constuctor
             mainDeck.shuffle();
         }
+        Log.i("what the maindeck Order",mainDeck.toString());
 
-        player0Hand = null;
-        player1Hand = null;
+
+        deal();
+        Log.i("What is in player0Hand", player0Hand.toString());
+        Log.i("What is in player1Hand", player1Hand.toString());
+       //player0Hand = null;
+       //player1Hand = null;
         cribDeck = null;
         playDeck = null;
         cutDeck = null;
         player0ToPlay = null;
         player1ToPlay = null;
+
+
+
+        setStage();
 
 
     }//End of OG Constructor
@@ -67,29 +83,21 @@ public class CribState extends GameState {
 
     //*******************************need to update all of this down below.***********Nick 16Nov2016
     public CribState(CribState origState){
-        score0 = 0;
-        score1 = 0;
-        dealer = getDealer();
-        whoseTurn = getWhoseTurn();
-        stage = getStage();
-        winner = false;
-        go = false;
-        playerId = getPlayerId();
-        mainDeck.add52();
-
-
-        for(int i =0; i<7;i++){//This will give us a truly random deck everytime we run the constuctor
-            mainDeck.shuffle();
-        }
-
-        player0Hand = null;
-        player1Hand = null;
-        cribDeck = null;
-        playDeck = null;
-        cutDeck = null;
-        player0ToPlay = null;
-        player1ToPlay = null;
-
+        this.score0 = origState.getScore(0);
+        this.score1 = origState.getScore(1);
+        this.dealer = origState.getDealer();
+        this.whoseTurn = origState.getWhoseTurn();
+        this.stage = origState.getStage();
+        this.winner = origState.isScore121();
+        this.go = origState.isGo(origState.getWhoseTurn());
+        this.mainDeck = origState.mainDeck;
+        this.player0Hand = origState.getHand(0);
+        this.player1Hand = origState.getHand(1);
+        this.cribDeck = origState.cribDeck;
+        this.playDeck = origState.playDeck;
+        this.cutDeck = origState.cutDeck;
+        this.player0ToPlay = origState.player0ToPlay;
+        this.player1ToPlay = origState.player1ToPlay;
 
     }//End of overloaded contructor
 
@@ -111,36 +119,24 @@ public class CribState extends GameState {
         }
     }
     //returns a players score
-    public int getScore(int player)
-    {
-        if(player == 0)
-        {
+    public int getScore(int player) {
+        if (player == 0) {
             return score0;
-        }
-        else if(player == 1)
-        {
+        } else if (player == 1) {
             return score1;
-        }
-        else
-        {
+        } else {
             return 0;
         }
-    }
-    //sets the players id
-    public void setPlayerId()
-    {
-
-    }
-    //gets the player id
-    public int getPlayerId()
-    {
-        return playerId;
     }
 
 
     public void thisIsInTheCribState(){}
 
-    //sets the hand for a player
+    /**
+     * This is so we can manually set a players hand for testing purposes.
+     * @param player
+     */
+
     public void setHand(int player)
     {
 
@@ -172,15 +168,17 @@ public class CribState extends GameState {
 
 
     //set which players turn it is
-    public void setWhoseTurn()
+    public void setTurn(int initTurn)
     {
+        whoseTurn = initTurn;
+
 
     }
     //returns the int of whose turn it is
     public int getWhoseTurn()
     {
 
-        return 0;
+        return whoseTurn;
     }
 
     //sets the dealer
@@ -320,7 +318,7 @@ public class CribState extends GameState {
 
     public void deal()
     {
-        mainDeck.shuffle();
+        //mainDeck.shuffle();
         int handSize = 6;
         for(int i = 0; i<handSize; i++)
         {
@@ -362,6 +360,7 @@ public class CribState extends GameState {
         //+runs(cards)+sum15(cards)+flush(cards);
         //other methods that still need to be implemented before they can contribute to the score
         return total;
+        
     }
     //looks for pairs
     //should be complete as of 17NOV

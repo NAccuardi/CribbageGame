@@ -37,11 +37,11 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
 
         // update our state variable
         computerPlayerState = (CribState) info;
-        if(computerPlayerState.getDealer() == computerPlayerState.getPlayerId())
-        {
-           game.sendAction(new CribDeal(this));
-        }
-        computerPlayerState.getHand(computerPlayerState.getPlayerId());
+       //if(computerPlayerState.getDealer() == computerPlayerState.getPlayerId())
+       //{
+       //   game.sendAction(new CribDeal(this));
+       //}
+       //computerPlayerState.getHand(computerPlayerState.getPlayerId());
 
     }
 

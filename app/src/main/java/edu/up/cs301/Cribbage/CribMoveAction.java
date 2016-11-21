@@ -24,9 +24,9 @@ public abstract class CribMoveAction extends GameAction {
      * @return
      * 		whether the move was a deal
      */
-    public boolean isDeal() {
-    	return false;
-    }
+   // public boolean isDeal() {
+   // 	return false;
+   // }
 
     /**
      * @return

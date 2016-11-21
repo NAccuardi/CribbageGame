@@ -3,11 +3,8 @@ package edu.up.cs301.Cribbage;
 import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,8 +18,6 @@ import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction5;
 import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction6;
 import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
 import edu.up.cs301.Cribbage.CribPlayActions.CribGo;
-import edu.up.cs301.Cribbage.CribPlayActions.CribPutInCrib;
-import edu.up.cs301.Cribbage.CribPlayActions.CribPutInPlay;
 import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction1;
 import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction2;
 import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction3;
@@ -52,8 +47,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     CribState humanState;
     CribDeal dealAction;
     CribGo goAction;
-    CribPutInCrib putInCribAction;
-    CribPutInPlay putInPlayAction;
+
 
     CribAction1 CribState1;
     CribAction2 CribState2;
@@ -126,32 +120,31 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
     Button dealButton;
 
-    SurfaceView Fuuck;
 
 
     //resource variables
     //drawable handPositions resources
-    Drawable resourceHandPos1 = handCardPos1.getDrawable();
-    Drawable resourceHandPos2 = handCardPos2.getDrawable();
-    Drawable resourceHandPos3 = handCardPos3.getDrawable();
-    Drawable resourceHandPos4 = handCardPos4.getDrawable();
-    Drawable resourceHandPos5 = handCardPos5.getDrawable();
-    Drawable resourceHandPos6 = handCardPos6.getDrawable();
+  // Drawable resourceHandPos1 = handCardPos1.getDrawable();
+  // Drawable resourceHandPos2 = handCardPos2.getDrawable();
+  // Drawable resourceHandPos3 = handCardPos3.getDrawable();
+  // Drawable resourceHandPos4 = handCardPos4.getDrawable();
+  // Drawable resourceHandPos5 = handCardPos5.getDrawable();
+  // Drawable resourceHandPos6 = handCardPos6.getDrawable();
 
-    //drawable human crib positions resources
-    Drawable resourceCribHum1 = cribHumanPos1.getDrawable();
-    Drawable resourceCribHum2 = cribHumanPos2.getDrawable();
-    Drawable resourceCribHum3 = cribHumanPos3.getDrawable();
-    Drawable resourceCribHum4 = cribHumanPos4.getDrawable();
+  // //drawable human crib positions resources
+  // Drawable resourceCribHum1 = cribHumanPos1.getDrawable();
+  // Drawable resourceCribHum2 = cribHumanPos2.getDrawable();
+  // Drawable resourceCribHum3 = cribHumanPos3.getDrawable();
+  // Drawable resourceCribHum4 = cribHumanPos4.getDrawable();
 
-    //drawable opponents Cards
-    Drawable resourceOppCard1 = oppCardPos1.getDrawable();
-    Drawable resourceOppCard2 = oppCardPos2.getDrawable();
-    Drawable resourceOppCard3 = oppCardPos3.getDrawable();
-    Drawable resourceOppCard4 = oppCardPos4.getDrawable();
+  // //drawable opponents Cards
+  // Drawable resourceOppCard1 = oppCardPos1.getDrawable();
+  // Drawable resourceOppCard2 = oppCardPos2.getDrawable();
+  // Drawable resourceOppCard3 = oppCardPos3.getDrawable();
+  // Drawable resourceOppCard4 = oppCardPos4.getDrawable();
 
-    //drawable for mainDeck resource
-    Drawable resourceMainDeck = mainDeck.getDrawable();
+  // //drawable for mainDeck resource
+  // Drawable resourceMainDeck = mainDeck.getDrawable();
 
 
 
@@ -198,7 +191,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 	if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo) {
 		        // if we had an out-of-turn or illegal move, flash the screen
 		surface.flash(Color.GRAY, 50);
-	}
+        Log.i("this shit is all fucked", "We should not be here");
+    }
 		else if (!(info instanceof CribState)) {
 			// otherwise, if it's not a game-state message, ignore
 			return;
@@ -210,6 +204,69 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 			this.humanState = (CribState) info;
 			Log.i("human player", "receiving");
 		}
+
+        //enabling and dissabling
+        if(humanState.getStage()==-1){
+            Log.i("we are in stage -1", "brand new game");
+        }else if(humanState.getStage()==0){
+            Log.i("we are in stage 0", "cut");
+
+        }else if(humanState.getStage()==1){
+            Log.i("we are in stage 1", "deal");
+        }else if(humanState.getStage()== 2){
+            Log.i("we are in stage 2", "crib");
+         cribButtonPos1.setEnabled(true);
+         cribButtonPos2.setEnabled(true);
+         cribButtonPos3.setEnabled(true);
+         cribButtonPos4.setEnabled(true);
+         cribButtonPos5.setEnabled(true);
+         cribButtonPos6.setEnabled(true);
+
+         playButtonPos1.setEnabled(false);
+         playButtonPos2.setEnabled(false);
+         playButtonPos3.setEnabled(false);
+         playButtonPos4.setEnabled(false);
+         playButtonPos5.setEnabled(false);
+         playButtonPos6.setEnabled(false);
+          }
+          else if(humanState.getStage() == 3)
+          {
+              Log.i("we are in stage 3", "play");
+        cribButtonPos1.setEnabled(false);
+        cribButtonPos2.setEnabled(false);
+        cribButtonPos3.setEnabled(false);
+        cribButtonPos4.setEnabled(false);
+        cribButtonPos5.setEnabled(false);
+        cribButtonPos6.setEnabled(false);
+
+        playButtonPos1.setEnabled(true);
+        playButtonPos2.setEnabled(true);
+        playButtonPos3.setEnabled(true);
+        playButtonPos4.setEnabled(true);
+        playButtonPos5.setEnabled(true);
+        playButtonPos6.setEnabled(true);
+         }
+         else if(humanState.getStage()==4)
+        {
+            Log.i("we are in stage 4", "score");
+        }
+        else{
+            Log.i("we are in a bad stage", "The lost stage");
+        cribButtonPos1.setEnabled(false);
+        cribButtonPos2.setEnabled(false);
+        cribButtonPos3.setEnabled(false);
+        cribButtonPos4.setEnabled(false);
+        cribButtonPos5.setEnabled(false);
+        cribButtonPos6.setEnabled(false);
+
+        playButtonPos1.setEnabled(false);
+        playButtonPos2.setEnabled(false);
+        playButtonPos3.setEnabled(false);
+        playButtonPos4.setEnabled(false);
+        playButtonPos5.setEnabled(false);
+        playButtonPos6.setEnabled(false);
+         }
+
 
 
 
@@ -235,6 +292,9 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 		// any state-related processing is done
         if (humanState != null) {
             receiveInfo(humanState);
+
+
+
 
         }
 
@@ -288,53 +348,6 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         dealButton.setOnClickListener(this);
 
 
-        //enabling and dissabling
-        if(humanState.getStage()== 2){
-            cribButtonPos1.setEnabled(true);
-            cribButtonPos2.setEnabled(true);
-            cribButtonPos3.setEnabled(true);
-            cribButtonPos4.setEnabled(true);
-            cribButtonPos5.setEnabled(true);
-            cribButtonPos6.setEnabled(true);
-
-            playButtonPos1.setEnabled(false);
-            playButtonPos2.setEnabled(false);
-            playButtonPos3.setEnabled(false);
-            playButtonPos4.setEnabled(false);
-            playButtonPos5.setEnabled(false);
-            playButtonPos6.setEnabled(false);
-        }
-        else if(humanState.getStage() == 3)
-        {
-            cribButtonPos1.setEnabled(false);
-            cribButtonPos2.setEnabled(false);
-            cribButtonPos3.setEnabled(false);
-            cribButtonPos4.setEnabled(false);
-            cribButtonPos5.setEnabled(false);
-            cribButtonPos6.setEnabled(false);
-
-            playButtonPos1.setEnabled(true);
-            playButtonPos2.setEnabled(true);
-            playButtonPos3.setEnabled(true);
-            playButtonPos4.setEnabled(true);
-            playButtonPos5.setEnabled(true);
-            playButtonPos6.setEnabled(true);
-        }
-        else{
-            cribButtonPos1.setEnabled(false);
-            cribButtonPos2.setEnabled(false);
-            cribButtonPos3.setEnabled(false);
-            cribButtonPos4.setEnabled(false);
-            cribButtonPos5.setEnabled(false);
-            cribButtonPos6.setEnabled(false);
-
-            playButtonPos1.setEnabled(false);
-            playButtonPos2.setEnabled(false);
-            playButtonPos3.setEnabled(false);
-            playButtonPos4.setEnabled(false);
-            playButtonPos5.setEnabled(false);
-            playButtonPos6.setEnabled(false);
-        }
 
 
 
