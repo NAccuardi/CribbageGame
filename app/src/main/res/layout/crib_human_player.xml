@@ -31,28 +31,28 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:src="@drawable/card_2h"
+                        android:src="@drawable/card_blank"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:id="@+id/oppCardPos1"
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:src="@drawable/card_jb"
+                        android:src="@drawable/card_blank"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:id="@+id/oppCardPos2"
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:src="@drawable/card_th"
+                        android:src="@drawable/card_blank"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:id="@+id/oppCardPos3"
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:src="@drawable/card_7d"
+                        android:src="@drawable/card_blank"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:id="@+id/oppCardPos4"
@@ -106,7 +106,7 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:src="@drawable/card_4c"
+                        android:src="@drawable/card_blank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/mainDeck"
@@ -129,28 +129,28 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:src="@drawable/card_qc"
+                        android:src="@drawable/card_blank"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
                         android:id="@+id/cribHumanPos1"
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:src="@drawable/card_3h"
+                        android:src="@drawable/card_blank"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
                         android:id="@+id/cribHumanPos2"
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:src="@drawable/card_3h"
+                        android:src="@drawable/card_blank"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
                         android:id="@+id/cribHumanPos3"
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:src="@drawable/card_ac"
+                        android:src="@drawable/card_blank"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
                         android:id="@+id/cribHumanPos4"
@@ -218,38 +218,38 @@
                     android:layout_height="210dp"
                     android:id="@+id/handCardPos1"
                     android:layout_weight="1"
-                    android:src="@drawable/card_4c" />
+                    android:src="@drawable/card_blank" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
                     android:id="@+id/handCardPos2"
                     android:layout_weight="1"
-                    android:src="@drawable/card_3d" />
+                    android:src="@drawable/card_blank" />
 
                 <ImageView
-                    android:src="@drawable/card_6c"
+                    android:src="@drawable/card_blank"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
                     android:id="@+id/handCardPos3"
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:src="@drawable/card_kd"
+                    android:src="@drawable/card_blank"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
                     android:id="@+id/handCardPos4"
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:src="@drawable/card_7s"
+                    android:src="@drawable/card_blank"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
                     android:id="@+id/handCardPos5"
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:src="@drawable/card_2h"
+                    android:src="@drawable/card_blank"
                     android:layout_width="wrap_content"
                     android:layout_height="210dp"
                     android:id="@+id/handCardPos6"

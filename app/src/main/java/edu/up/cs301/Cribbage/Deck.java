@@ -186,6 +186,22 @@ public class Deck implements Serializable {
 			return cards.remove(cards.size()-1);
 		}
 	}
+
+	public void deleteDeck()
+	{
+		synchronized (this.cards) {
+			if (cards.isEmpty()) return;
+			for(int i = 0; i<cards.size();i++)
+			{
+				cards.remove(i);
+			}
+		}
+	}
+
+	public boolean isEmpty()
+	{
+		return cards.isEmpty();
+	}
 	
 	/**
 	 * @return

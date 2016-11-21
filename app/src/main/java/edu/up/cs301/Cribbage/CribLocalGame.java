@@ -88,7 +88,11 @@ public class CribLocalGame extends LocalGame {
         Log.i("Make Move", "entered make move");
         if(action instanceof CribDeal){
             Log.i("Make Move Action: ", "CribDeal");
-           state.deal();
+            if(!state.delt) {
+                state.deal();
+                state.setStage();
+
+            }Log.i("Player 0 hand is",state.getHand(0).toString());
             return true;
 
 

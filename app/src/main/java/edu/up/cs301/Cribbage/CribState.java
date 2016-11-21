@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
 
 import edu.up.cs301.card.Card;
 import edu.up.cs301.card.Rank;
+import edu.up.cs301.card.Suit;
 import edu.up.cs301.game.infoMsg.GameState;
 
 /**
@@ -23,6 +24,7 @@ public class CribState extends GameState {
     private int stage;//int value of the stage of gameplay
     private boolean winner;//becomes true when a player wins
     private boolean go;//becomes true when a player must press the go button
+    public boolean delt;//false if round has not been delt, is turned true in deal(), reset to false in setStage()
 
 
     //*****************These are all of our stupid decks*********************************
@@ -43,7 +45,10 @@ public class CribState extends GameState {
         score0 = 0;
         score1 = 0;
         dealer = 0;
-        whoseTurn = 0;
+        delt = false;
+        //setFirstDealer();
+        Log.i("The dealer is player",""+dealer);
+        whoseTurn = getWhoseTurn();
         stage = 0;
         winner = false;
         go = false;
@@ -58,11 +63,11 @@ public class CribState extends GameState {
         Log.i("what the maindeck Order",mainDeck.toString());
 
 
-        deal();//This is only here for debugging purposes.
+        //deal();//This is only here for debugging purposes.
         Log.i("What is in player0Hand", player0Hand.toString());
         Log.i("What is in player1Hand", player1Hand.toString());
-       //player0Hand = null;
-       //player1Hand = null;
+        //player0Hand;
+        //player1Hand = null;
         cribDeck = null;
         playDeck = null;
         cutDeck = null;
@@ -71,7 +76,7 @@ public class CribState extends GameState {
 
 
 
-        setStage();
+        //setStage();
 
 
     }//End of OG Constructor
@@ -226,6 +231,27 @@ public class CribState extends GameState {
         return 0;
     }
 
+    public void setFirstDealer() {
+        Deck temp = new Deck();
+        temp.add52().shuffle();
+        temp.moveTopCardTo(player0Hand);
+        //mainDeck.shuffle();//Nick- No need to shuffle here. The deck is already shuffled.
+        temp.moveTopCardTo(player1Hand);
+        int play0 = player0Hand.peekAtTopCard().getRank().value(1);
+        int play1 = player1Hand.peekAtTopCard().getRank().value(1);
+        Log.i("The human players cutis",player0Hand.toString());
+        player0Hand.removeTopCard();
+        player1Hand.removeTopCard();
+        if (play0 > play1) {
+            dealer = 0;
+        } else if (play1 > play0) {
+            dealer = 1;
+        } else {
+            setFirstDealer();//recursion for the tie
+
+        }
+    }
+
     //sets the dealer to the other player
     public void setDealer() {
         if(getStage()==0)
@@ -243,38 +269,8 @@ public class CribState extends GameState {
                 return;
             }
         }
-        else {
-            /**snag two cards from the deck
-            *assign one to each player
-            *compare values
-            *player with lower card is assign dealer
-             */
-            mainDeck.moveTopCardTo(player0Hand);
-            //mainDeck.shuffle();//Nick- No need to shuffle here. The deck is already shuffled.
-            mainDeck.moveTopCardTo(player1Hand);
-            int play0 = player0Hand.peekAtTopCard().getRank().value(1);
-            int play1 = player1Hand.peekAtTopCard().getRank().value(1);
-            if (play0 > play1) {
-                dealer = 0;
-                player0Hand.moveTopCardTo(mainDeck);
-                player1Hand.moveTopCardTo(mainDeck);
-                mainDeck.shuffle();
-                return;
-            } else if (play1 > play0) {
-                dealer = 1;
-                player0Hand.moveTopCardTo(mainDeck);
-                player1Hand.moveTopCardTo(mainDeck);
-                mainDeck.shuffle();
-                return;
-            } else {
-                player0Hand.moveTopCardTo(mainDeck);
-                player1Hand.moveTopCardTo(mainDeck);
-                mainDeck.shuffle();
-                setDealer();//recursion for the tie
-            }
-            return;
-        }
     }
+
 
     //gets who the dealer is
     public int getDealer()
@@ -291,45 +287,41 @@ public class CribState extends GameState {
         //stage is initialized to -1 to indicate that a new game has been started
         //and a dealer needs to be set based on a cut of the deck
         //once that has succusefuully been completed stage is never reset to -1
-        if(player0Hand == null && player1Hand ==null && cutDeck == null)
+        if(player0Hand.size() == 0 && player1Hand.size() == 0 && cutDeck.size() == 0)
         {
             //we are in the cut phase of the round
             stage = 0;
-            return;
         }
         else if(player0Hand.size() < 6 && player1Hand.size() < 6 && cutDeck != null)
         {
             //there is a card in the cut deck
             //there may be some cards in the players hands but they do not have a full hand yet
             stage = 1;
-            return;
         }
         else if(player0Hand.size() == 6 && player1Hand.size() == 6)
         {
             //each player has a full hand and has not played any cards to the crib
             //we are at the start of the crib phase
             stage = 2;
-            return;
         }
         else if(player0Hand.size() == 4 && player1Hand.size() == 4 && cribDeck.size() == 4)
         {
             //each player has played two cards to the crib
             //we are at the start of the play phase
             stage = 3;
-            return;
         }
         else if(playDeck.size() == 8)
         {
             //each player has played all four cards
             //we are now in the scoring phase
             stage = 4;
-            return;
         }
         else
         {
             //all rounds have been gone through
             //it is now time to start back at the cut for the round
             stage = 0;
+            delt = false;//delt is reset becuase we can deal again
         }
     }
 
@@ -365,12 +357,18 @@ public class CribState extends GameState {
     public void deal()//The deal method works as of 20Nov2016 - Nick. Tested by putting it in the constructor.
     {
         //mainDeck.shuffle();//Disabled for debugging ease
+        mainDeck.deleteDeck();//nullify the current state of the main deck
+        //make sure there is a new deck for the next round and really shuffle it good
+        mainDeck.add52().shuffle().shuffle().shuffle();
+        player0Hand.deleteDeck();//remove all the cards from the players hands
+        player1Hand.deleteDeck();//remove all the cards from the players hands
         int handSize = 6;
         for(int i = 0; i<handSize; i++)
         {
             mainDeck.moveTopCardTo(player0Hand);
             mainDeck.moveTopCardTo(player1Hand);
         }
+        delt = true;
     }
 
 

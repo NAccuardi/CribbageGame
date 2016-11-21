@@ -27,6 +27,8 @@ import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction6;
 import edu.up.cs301.animation.AnimationSurface;
 import edu.up.cs301.animation.Animator;
 import edu.up.cs301.card.Card;
+import edu.up.cs301.card.Rank;
+import edu.up.cs301.card.Suit;
 import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
@@ -191,7 +193,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 	if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo) {
 		        // if we had an out-of-turn or illegal move, flash the screen
 		surface.flash(Color.GRAY, 50);
-        Log.i("We had bad move", "We should not be here");
+        Log.i("We had illegal move or", "It was not your turn to move.");
         return;
     }
 		else if (!(info instanceof CribState)) {
@@ -203,8 +205,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 			// going, there is no need to explicitly display anything. That will happen
 			// at the next animation-tick, which should occur within 1/20 of a second
 			this.humanState = (CribState) info;
-			Log.i("human player", "receiving");
-            handCardPos1.setImageBitmap(humanState.getHand(playerNum).peekAtTopCard().getBitmap());
+
+            //handCardPos1.setImageBitmap(humanState.getHand(playerNum).peekAtTopCard().getBitmap());
 
 
         //enabling and dissabling
@@ -349,7 +351,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         this.dealButton = (Button)activity.findViewById(R.id.dealButton);
         dealButton.setOnClickListener(this);
 
-        this.handCardPos1 = (ImageView)activity.findViewById(R.id.handCardPos1);
+        //this.handCardPos1 = (ImageView)activity.findViewById(R.id.handCardPos1);
 
 
 
