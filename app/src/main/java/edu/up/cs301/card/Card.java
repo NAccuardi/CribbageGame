@@ -123,6 +123,10 @@ public class Card implements Serializable {
     	g.drawBitmap(bitmap, r, where, p);
     }
 
+	public Bitmap getBitmap(){
+		return cardImages[this.getSuit().ordinal()][this.getRank().ordinal()];
+
+	}
     
     /**
      * Gives a two-character version of the card (e.g., "TS" for ten of

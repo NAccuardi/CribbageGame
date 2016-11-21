@@ -25,7 +25,7 @@ public class CribState extends GameState {
     private boolean go;//becomes true when a player must press the go button
 
 
-    //*****************This are all of our stupid decks*********************************
+    //*****************These are all of our stupid decks*********************************
     private Deck mainDeck = new Deck();//holds 52 cards
 
     private Deck player0Hand = new Deck();//is player 0's hand
@@ -58,7 +58,7 @@ public class CribState extends GameState {
         Log.i("what the maindeck Order",mainDeck.toString());
 
 
-        deal();
+        deal();//This is only here for debugging purposes.
         Log.i("What is in player0Hand", player0Hand.toString());
         Log.i("What is in player1Hand", player1Hand.toString());
        //player0Hand = null;
@@ -129,14 +129,15 @@ public class CribState extends GameState {
         }
     }
 
-
+    //This is a method Nick made so he can see if he is looking into the cribstate.
     public void thisIsInTheCribState(){}
+
+
 
     /**
      * This is so we can manually set a players hand for testing purposes.
      * @param player
      */
-
     public void setHand(int player)
     {
 
@@ -157,10 +158,7 @@ public class CribState extends GameState {
         {
             return player1Hand;
         }
-        else
-        {
-            return null;
-        }
+        else {return null;}
     }
 
 
@@ -171,19 +169,65 @@ public class CribState extends GameState {
     public void setTurn(int initTurn)
     {
         whoseTurn = initTurn;
-
-
     }
+
+
+
     //returns the int of whose turn it is
     public int getWhoseTurn()
     {
+        if(stage == 1)
+        {
+            //deal stage
+            return dealer;
 
-        return whoseTurn;
+        }
+        else if(stage == 2)
+        {
+            //crib stage
+            return -1;
+        }
+        else if(stage == 3)
+        {
+            //play action
+            if(dealer == 0)
+            {
+                if(player0Hand.size() > player1Hand.size())
+                {
+                    //dealer gets to move
+                    return 1;
+                }
+                else
+                {
+                    //non dealer gets to move
+                    return 0;
+                }
+            }
+            if(dealer == 1)
+            {
+                if(player0Hand.size() > player1Hand.size())
+                {
+                    //dealer gets to move
+                    return 0;
+                }
+                else
+                {
+                    //non dealer gets to move
+                    return 1;
+                }
+            }
+            return -1;
+        }
+        else if(stage == 4)
+        {
+            //score phase neither player needs to play
+            return 2;
+        }
+        return 0;
     }
 
-    //sets the dealer
-    public void setDealer()
-    {
+    //sets the dealer to the other player
+    public void setDealer() {
         if(getStage()==0)
         {
             //the game has already been going and it is on to another round
@@ -200,12 +244,13 @@ public class CribState extends GameState {
             }
         }
         else {
-            //snag two cards from the deck
-            //assign one to each player
-            //compare values
-            //player with lower card is assign dealer
+            /**snag two cards from the deck
+            *assign one to each player
+            *compare values
+            *player with lower card is assign dealer
+             */
             mainDeck.moveTopCardTo(player0Hand);
-            mainDeck.shuffle();
+            //mainDeck.shuffle();//Nick- No need to shuffle here. The deck is already shuffled.
             mainDeck.moveTopCardTo(player1Hand);
             int play0 = player0Hand.peekAtTopCard().getRank().value(1);
             int play1 = player1Hand.peekAtTopCard().getRank().value(1);
@@ -290,11 +335,7 @@ public class CribState extends GameState {
 
     //returns the int value of the stage of the game
     //0=cut,1=deal,2=crib,3=play,4=score
-    public int getStage()
-    {
-
-        return stage;
-    }
+    public int getStage() {return stage;}
 
 
     //******************************8END SETTERS AND GETTERS****************************************
@@ -303,6 +344,10 @@ public class CribState extends GameState {
     //returns true if a score is over 121
     public boolean isScore121()
     {
+        if(score0 >= 121 || score1>= 121){
+
+            return true;
+        }
         return false;
     }
 
@@ -311,14 +356,15 @@ public class CribState extends GameState {
     //returns true if a Go action is allowed
     public boolean isGo(int player)
     {
+        //Nick has psuedo code mocked up for this in the slack.
         return false;
     }
     //places six cards in each players hands
 
 
-    public void deal()
+    public void deal()//The deal method works as of 20Nov2016 - Nick. Tested by putting it in the constructor.
     {
-        //mainDeck.shuffle();
+        //mainDeck.shuffle();//Disabled for debugging ease
         int handSize = 6;
         for(int i = 0; i<handSize; i++)
         {
@@ -329,7 +375,7 @@ public class CribState extends GameState {
 
 
     //cuts the deck and moves the card to the cutDeck
-    public void cut()
+    public void cutForTopCardDuringPlay()
     {
         mainDeck.shuffle();
         mainDeck.moveTopCardTo(cutDeck);

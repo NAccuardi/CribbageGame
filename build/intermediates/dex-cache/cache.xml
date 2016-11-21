@@ -3,30 +3,30 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Nick\Desktop\Git Things\CribbageGame\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="80a5ad9ac3ff8473c0658bb8a9985ad5eda6dc1e">
-        <dex dex="C:\Users\Nick\Desktop\Git Things\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_f6d021d565ad447b7312e58d44357a56f389b6b7\classes.dex" />
+        sha1="d37dc7f79bb61b1daa571627bfdeba808047e87b">
+        <dex dex="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_946ba8960eb6b470b58341e171de1d6cdba9f9e4\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Nick\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jar="C:\Users\Robot Laptop\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="C:\Users\Nick\Desktop\Git Things\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_ff6c43c97ffe234092249361684792bc141ee333\classes.dex" />
+        <dex dex="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_bbb22a2cbf1c4af5818e0c89c5b5cdec14fdc3d9\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Nick\Desktop\Git Things\CribbageGame\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="aa20c9b7879c9591e565f3b2fcceef64692739ca">
-        <dex dex="C:\Users\Nick\Desktop\Git Things\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_021526426f0441164d43c8f38364489cacd4a601\classes.dex" />
+        sha1="cf03a0a4046d619c7976cd3eae73b3f01cc16d14">
+        <dex dex="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_9283681deb64b605457e2faa540fd82283e97217\classes.dex" />
     </item>
 
 </items>

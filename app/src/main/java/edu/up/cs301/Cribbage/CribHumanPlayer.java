@@ -42,7 +42,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
 
     /*
-        This is our humanState. This will only be modified in here. Nick
+        Our states and actions go here so we Can send things around.
      */
     CribState humanState;
     CribDeal dealAction;
@@ -71,7 +71,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     Button playButtonPos1;
     ImageView handCardPos1;
 
-    //cardPosition2 variables
+    //cardPosition2 variablesh
     Button cribButtonPos2;
     Button playButtonPos2;
     ImageView handCardPos2;
@@ -191,19 +191,21 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 	if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo) {
 		        // if we had an out-of-turn or illegal move, flash the screen
 		surface.flash(Color.GRAY, 50);
-        Log.i("this shit is all fucked", "We should not be here");
+        Log.i("We had bad move", "We should not be here");
+        return;
     }
 		else if (!(info instanceof CribState)) {
 			// otherwise, if it's not a game-state message, ignore
 			return;
 		}
-		else {
+
 			// it's a game-state object: update the state. Since we have an animation
 			// going, there is no need to explicitly display anything. That will happen
 			// at the next animation-tick, which should occur within 1/20 of a second
 			this.humanState = (CribState) info;
 			Log.i("human player", "receiving");
-		}
+            handCardPos1.setImageBitmap(humanState.getHand(playerNum).peekAtTopCard().getBitmap());
+
 
         //enabling and dissabling
         if(humanState.getStage()==-1){
@@ -347,6 +349,10 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         this.dealButton = (Button)activity.findViewById(R.id.dealButton);
         dealButton.setOnClickListener(this);
 
+        this.handCardPos1 = (ImageView)activity.findViewById(R.id.handCardPos1);
+
+
+
 
 
 
@@ -377,7 +383,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     //}
 
     public int backgroundColor() {
-        return 0;
+        return Color.BLACK;
     }
 
 
@@ -399,7 +405,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     }
 
     public int interval() {
-        return 0;
+        return 30;
     }
 
     public void onClick(View button) {

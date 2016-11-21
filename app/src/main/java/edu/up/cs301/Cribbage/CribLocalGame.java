@@ -22,6 +22,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
 
 /**
  * Created by Robot Laptop on 11/14/2016.
+ *
  */
 
 public class CribLocalGame extends LocalGame {
@@ -66,15 +67,7 @@ public class CribLocalGame extends LocalGame {
     }
 
     protected boolean canMove(int playerIdx) {
-        //return false;
-         return true;
-       //for(int i =0; i<players.length;i++){
-       //    if(getPlayerIdx(players[i])==playerIdx){
-       //        state.setTurn(playerIdx);
-       //        return true;
-       //    }
-       //}
-       //return false;
+        return playerIdx != 1- state.getWhoseTurn();
     }
 
     protected String checkIfGameOver() {
@@ -96,12 +89,15 @@ public class CribLocalGame extends LocalGame {
         if(action instanceof CribDeal){
             Log.i("Make Move Action: ", "CribDeal");
            state.deal();
+            return true;
+
 
         }else if( action instanceof CribGo){
             Log.i("Make Move Action: ", "CribGo");
 
         }else if(action instanceof CribAction1){
             Log.i("Make Move Action: ", "CribAction1");
+            return true;
 
 
         }else if(action instanceof CribAction2){

@@ -35,15 +35,10 @@ public class CribMain extends GameMainActivity {
 
 
         //**************** We will need to differentiate between the computer players below. Nick
-        playerTypes.add(new GamePlayerType("Human Player One") {
+        playerTypes.add(new GamePlayerType("Human Player") {
             public GamePlayer createPlayer(String name) {
                 return new CribHumanPlayer(name);
             }});
-        playerTypes.add(new GamePlayerType("Human Player Two") {
-            public GamePlayer createPlayer(String name) {
-                return new CribHumanPlayer(name);
-            }
-        });
         playerTypes.add(new GamePlayerType("Computer Player (Basic AI)") {
             public GamePlayer createPlayer(String name) {
 
