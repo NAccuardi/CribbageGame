@@ -296,34 +296,43 @@ public class CribState extends GameState {
         //stage is initialized to -1 to indicate that a new game has been started
         //and a dealer needs to be set based on a cut of the deck
         //once that has succusefuully been completed stage is never reset to -1
+
+
+        int stageCut = 0;
+        int stageDeal =1;
+        int stageCrib = 2;
+        int stagePlay = 3;
+        int stageScoreing =4;
+
+
         if(player0Hand.size() == 0 && player1Hand.size() == 0 && cutDeck.size() == 0)
         {
             //we are in the cut phase of the round
-            stage = 0;
+            stage = stageCut;
         }
-        else if(player0Hand.size() < 6 && player1Hand.size() < 6 && cutDeck != null)
+        else if(player0Hand.size() < 6 && player1Hand.size() < 6 && cutDeck.size()!=0)
         {
             //there is a card in the cut deck
             //there may be some cards in the players hands but they do not have a full hand yet
-            stage = 1;
+            stage = stageDeal;
         }
-        else if(player0Hand.size() == 6 && player1Hand.size() == 6)
-        {
-            //each player has a full hand and has not played any cards to the crib
-            //we are at the start of the crib phase
-            stage = 2;
+        else if(4<=player0Hand.size()&& player0Hand.size() <= 6 &&
+                    4<=player1Hand.size() && player1Hand.size() <= 6 &&
+                            cribDeck.size()<=4) {
+            //we are in the crib Phase
+            stage = stageCrib;
         }
-        else if(player0Hand.size() == 4 && player1Hand.size() == 4 && cribDeck.size() == 4)
+        else if(player0Hand.size() <=4 &&  cribDeck.size() == 4)//player1Hand.size() <= 4 &&
         {
             //each player has played two cards to the crib
             //we are at the start of the play phase
-            stage = 3;
+            stage = stagePlay;
         }
         else if(playDeck.size() == 8)
         {
             //each player has played all four cards
             //we are now in the scoring phase
-            stage = 4;
+            stage = stageScoreing;
         }
         else
         {

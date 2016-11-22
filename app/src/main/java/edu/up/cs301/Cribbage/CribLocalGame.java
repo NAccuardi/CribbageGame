@@ -117,7 +117,7 @@ public class CribLocalGame extends LocalGame {
             //state.player0Hand.moveTopCardTo(state.cribDeck);
 
 
-
+            state.setStage();
 
 
             return true;
@@ -127,19 +127,19 @@ public class CribLocalGame extends LocalGame {
             Log.i("Make Move Action: ", "CribAction2");
             state.player0Hand.moveSpecificCard(1,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
-            state.setStage();
+           state.setStage();
             return true;
         }else if(action instanceof CribAction3){
             Log.i("Make Move Action: ", "CribAction3");
             state.player0Hand.moveSpecificCard(2,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
-            state.setStage();
+           state.setStage();
             return true;
         }else if(action instanceof CribAction4){
             Log.i("Make Move Action: ", "CribAction4");
             state.player0Hand.moveSpecificCard(3,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
-            state.setStage();
+           state.setStage();
             return true;
         }else if(action instanceof CribAction5){
             Log.i("Make Move Action: ", "CribACtion5");
