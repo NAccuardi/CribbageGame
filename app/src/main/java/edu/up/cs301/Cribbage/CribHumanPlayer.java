@@ -175,7 +175,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                     humanHandImages[0].setImageResource(R.drawable.card_blank);
                     break;
                 default:
-                    break;
+                    break;//end switch
 
 
             }
