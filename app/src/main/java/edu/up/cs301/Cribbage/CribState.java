@@ -375,7 +375,7 @@ public class CribState extends GameState {
             Log.i("this is the first stage", "setStage: 0");
             stage = stageCut;
         }
-        else if(handsOfBothPlayers[0].size() < 6 && handsOfBothPlayers[1].size() < 6 && cutDeck.size()!=0)
+        else if(handsOfBothPlayers[0].size() < 6 && handsOfBothPlayers[1].size() < 6 && cutDeck.size()!=0 && playDeck.size()==0)
         {
             //there is a card in the cut deck
             //there may be some cards in the players hands but they do not have a full hand yet
@@ -386,7 +386,7 @@ public class CribState extends GameState {
             //we are in the crib Phase
             stage = stageCrib;
         }
-        else if(cribDeck.size() == 4)//player1Hand.size() <= 4 &&
+        else if(cribDeck.size() == 4 && playDeck.size()<8)//player1Hand.size() <= 4 &&
         {
             //each player has played two cards to the crib
             //we are at the start of the play phase

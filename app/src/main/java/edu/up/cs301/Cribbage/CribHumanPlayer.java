@@ -145,7 +145,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                     humanCribImages[i].setImageBitmap(humanState.getCribDeck().lookAtCard(i).getBitmap());
                 }
             }
-        }else if(humanState.getStage()==3){
+        }else if(humanState.getStage()==3) {
 
 
             //This turns off the cards in the crib so they are not displayed anymore.
@@ -158,24 +158,23 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             cutDeck.setImageBitmap(humanState.cutDeck.lookAtCard(0).getBitmap());
 
             if (humanState.eachPlayerCardsPlayed[0].size() < 5
-                        && humanState.eachPlayerCardsPlayed[1].size() < 5) {
+                    && humanState.eachPlayerCardsPlayed[1].size() < 5) {
 
-                    for(int j =0;j<humanState.eachPlayerCardsPlayed[0].size();j++){
+                for (int j = 0; j < humanState.eachPlayerCardsPlayed[0].size(); j++) {
                     humanCribImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[0].lookAtCard(j).getBitmap());
                 }
-                for(int j =0;j<humanState.eachPlayerCardsPlayed[1].size();j++){
-                   oppPlayImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[1].lookAtCard(j).getBitmap());
+                for (int j = 0; j < humanState.eachPlayerCardsPlayed[1].size(); j++) {
+                    oppPlayImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[1].lookAtCard(j).getBitmap());
                 }
 
-
-
-                //for (int i = 0; i < humanState.cribDeck.size(); i++) {
-                //    humanCribImages[i].setImageResource(R.drawable.card_blank);
-                //}
             }
-
-
-
+        }else if(humanState.getStage()==4){
+            for (int j = 0; j < humanState.eachPlayerCardsPlayed[0].size(); j++) {
+                humanCribImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[0].lookAtCard(j).getBitmap());
+            }
+            for (int j = 0; j < humanState.eachPlayerCardsPlayed[1].size(); j++) {
+                oppPlayImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[1].lookAtCard(j).getBitmap());
+            }
 
 
         }
@@ -298,6 +297,12 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         }
         else if(humanState.getStage()==4)
         {
+            for(int i = 0;i<6;i++){
+                cribButtons[i].setEnabled(false);
+                playButtons[i].setEnabled(false);
+            }
+            dealButton.setEnabled(false);
+            goButton.setEnabled(false);
             Log.i("we are in stage 4", "score");
         }
         else{

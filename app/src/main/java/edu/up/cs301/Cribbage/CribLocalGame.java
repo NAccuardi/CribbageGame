@@ -166,7 +166,7 @@ public class CribLocalGame extends LocalGame {
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
 
-
+            state.setStage();
             return true;
         }else if(action instanceof CribPlayAction2){
             Log.i("Make Move Action: ", "CribPLayAction2");
@@ -176,10 +176,7 @@ public class CribLocalGame extends LocalGame {
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
-
-
-
-
+            state.setStage();
             return true;
 
         }else if(action instanceof CribPlayAction3){
@@ -191,7 +188,7 @@ public class CribLocalGame extends LocalGame {
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
 
-
+            state.setStage();
             return true;
         }else if(action instanceof CribPlayAction4){
             Log.i("Make Move Action: ", "CribPLayAction4");
@@ -202,7 +199,7 @@ public class CribLocalGame extends LocalGame {
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
 
-
+            state.setStage();
             return true;
         }else if(action instanceof CribPlayAction5){
             Log.i("Make Move Action: ", "CribPLayAction5");
@@ -214,7 +211,7 @@ public class CribLocalGame extends LocalGame {
             Log.i("each player cards play",state.getWhoseTurn()+ state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
 
 
-
+            state.setStage();
             return true;
         }else if(action instanceof CribPlayAction6){
             Log.i("Make Move Action: ", "CribPLayAction6");
@@ -226,7 +223,7 @@ public class CribLocalGame extends LocalGame {
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
 
 
-
+            state.setStage();
             return true;
         }
 
