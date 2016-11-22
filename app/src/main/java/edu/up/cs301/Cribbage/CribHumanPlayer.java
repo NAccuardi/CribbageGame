@@ -261,10 +261,12 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         if(humanState.getDealer() ==  0)
         {
             humanScore.setTypeface(null, Typeface.BOLD);
+            humanScore.setText(" 'Dealer'- "+ allPlayerNames[0]+": "+humanState.getScore(0));
         }
         else if(humanState.getDealer() == 1)
         {
             oppScore.setTypeface(null, Typeface.BOLD);
+            oppScore.setText(" 'Dealer'- "+allPlayerNames[1]+": "+humanState.getScore(1));
         }
 
 
