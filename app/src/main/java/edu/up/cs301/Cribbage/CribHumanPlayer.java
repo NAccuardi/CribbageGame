@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -255,6 +256,15 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         humanScore.setText(allPlayerNames[0]+": "+humanState.getScore(0));
         oppScore.setText(allPlayerNames[1]+": "+humanState.getScore(1));
 
+        if(humanState.getDealer() ==  0)
+        {
+            humanScore.setTypeface(null, Typeface.BOLD);
+        }
+        else if(humanState.getDealer() == 1)
+        {
+            oppScore.setTypeface(null, Typeface.BOLD);
+        }
+
 
     }
 
@@ -279,9 +289,6 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         // any state-related processing is done
         if (humanState != null) {
             receiveInfo(humanState);
-
-
-
 
         }
 
@@ -405,10 +412,6 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             canvas.drawCircle(x+i+70,y+350,rad+5,paint);
 
 //
-        }
-
-        if(humanState.getScore(0)==10){
-
         }
 
 
