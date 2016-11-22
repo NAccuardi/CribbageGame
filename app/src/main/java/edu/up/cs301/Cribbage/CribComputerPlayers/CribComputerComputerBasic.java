@@ -70,6 +70,7 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
                 Log.i("COMP cards played to pd", computerPlayerState.eachPlayerCardsPlayed[playerNum].toString());
             }
         }
+        sleep(1000);
 
     }
 

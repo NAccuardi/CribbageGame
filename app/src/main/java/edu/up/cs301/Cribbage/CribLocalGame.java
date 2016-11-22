@@ -116,10 +116,11 @@ public class CribLocalGame extends LocalGame {
 
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(0,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
+            Log.i("we are in stage*******", ""+state.getStage());
 
 
             state.setStage();
-
+            Log.i("we are in stage*******", ""+state.getStage());
 
             return true;
 
@@ -128,30 +129,40 @@ public class CribLocalGame extends LocalGame {
             Log.i("Make Move Action: ", "CribAction2");
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(1,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
-           state.setStage();
+            Log.i("we are in stage", ""+state.getStage());
+
+            state.setStage();
             return true;
         }else if(action instanceof CribAction3){
             Log.i("Make Move Action: ", "CribAction3");
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(2,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
-           state.setStage();
+            Log.i("we are in stage", ""+state.getStage());
+
+            state.setStage();
             return true;
         }else if(action instanceof CribAction4){
             Log.i("Make Move Action: ", "CribAction4");
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(3,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
-           state.setStage();
+            Log.i("we are in stage", ""+state.getStage());
+
+            state.setStage();
             return true;
         }else if(action instanceof CribAction5){
             Log.i("Make Move Action: ", "CribACtion5");
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(4,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
+            Log.i("we are in stage", ""+state.getStage());
+
             state.setStage();
             return true;
         }else if(action instanceof CribAction6){
             Log.i("Make Move Action: ", "CribAction6");
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(5,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
+            Log.i("we are in stage", ""+state.getStage());
+
             state.setStage();
             return true;
         }else
@@ -159,13 +170,28 @@ public class CribLocalGame extends LocalGame {
 
 
         if(action instanceof CribPlayAction1){
+
+            if(state.isGo(state.getWhoseTurn()))
+            {
+                if(state.getWhoseTurn() == 0)
+                {
+                    state.setTurn(1);
+                    state.setScore(1,1);
+                }
+                if(state.getWhoseTurn() == 1)
+                {
+                    state.setTurn(0);
+                    state.setScore(0,1);
+                }
+                return true;
+            }
             Log.i("Make Move Action: ", "CribPLayAction1");
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(0));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(0,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
-
+            state.setCount();
             state.setStage();
             return true;
         }else if(action instanceof CribPlayAction2){
@@ -176,6 +202,7 @@ public class CribLocalGame extends LocalGame {
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
+            state.setCount();
             state.setStage();
             return true;
 
@@ -187,7 +214,7 @@ public class CribLocalGame extends LocalGame {
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
-
+            state.setCount();
             state.setStage();
             return true;
         }else if(action instanceof CribPlayAction4){
@@ -198,7 +225,7 @@ public class CribLocalGame extends LocalGame {
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
-
+            state.setCount();
             state.setStage();
             return true;
         }else if(action instanceof CribPlayAction5){
@@ -210,7 +237,7 @@ public class CribLocalGame extends LocalGame {
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+ state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
 
-
+            state.setCount();
             state.setStage();
             return true;
         }else if(action instanceof CribPlayAction6){
@@ -222,7 +249,7 @@ public class CribLocalGame extends LocalGame {
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
 
-
+            state.setCount();
             state.setStage();
             return true;
         }

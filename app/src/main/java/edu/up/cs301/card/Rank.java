@@ -121,6 +121,16 @@ public enum Rank {
 	public int value(int aceValue) {
 		return this == ACE ? aceValue : ordinal()+1;
 	}
+
+	public int cribValue(int aceValue){
+		int value = 0;
+		value = this == ACE ? aceValue : ordinal() +1;
+		if(value == 11||value ==12||value ==13)
+		{
+			value = 10;
+		}
+		return value;
+	}
 	
 	/**
 	 * the "long name" of the rank--fully spelled out

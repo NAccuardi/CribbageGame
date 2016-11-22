@@ -99,6 +99,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     private int backgroundColor;
 
     int count31 =0;
+    int tempCountHolder =0;
 
 
 
@@ -288,14 +289,23 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            for(int i = 0; i< humanState.playDeck.size(); i++){
-                count31 = count31 + humanState.getPlayDeck().lookAtCard(i).getRank().value(1);
-            }
+            //for(int i = 0; i< humanState.playDeck.size(); i++){
+            //
+            //    count31 =humanState.getPlayDeck().lookAtCard(i).getRank().value(1);
+            //}
+           // Log.i("Pre all ************ 31", " " + count31);
+           // if(humanState.playDeck.size()!=0) {
+           //     Log.i("Pre add count 31",""+count31);
+           //     tempCountHolder = humanState.getPlayDeck().lookAtCard(humanState.playDeck.size() - 1).getRank().cribValue(1);
+           //     Log.i("Value of card",""+ humanState.getPlayDeck().lookAtCard(humanState.playDeck.size()-1).shortName()+" "
+           //             +humanState.getPlayDeck().lookAtCard(humanState.playDeck.size() - 1).getRank().cribValue(1));
+//
+           // }
+           // count31 +=tempCountHolder;
+           // Log.i("Post add count 31", " " + count31);
 
 
-
-
-
+            count31 = humanState.getCount();
             dealButton.setEnabled(false);
             goButton.setEnabled(true);//This will be dependent on the cards in the players hands.
         }
@@ -336,7 +346,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        countTo31.setText("Count: "+count31);
+        countTo31.setText("Count: "+humanState.getCount());
 
     }
 
