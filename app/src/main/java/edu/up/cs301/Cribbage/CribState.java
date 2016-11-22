@@ -172,6 +172,10 @@ public class CribState extends GameState {
     }
 
 
+    public Deck getCribDeck()
+    {
+            return cribDeck;
+    }
 
 
 

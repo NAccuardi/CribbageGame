@@ -76,6 +76,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     ImageView humanHandImages[] = new ImageView[6];
     ImageView humanCribImages[] = new ImageView[4];
     ImageView oppPlayImages[] = new ImageView[4];
+    private int cribCounter =0;
 
 
 
@@ -124,6 +125,10 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     }
 
 
+
+
+
+
     /**
      * This is where the HumanPlayer will recieve the state that they will play with.
      *
@@ -148,10 +153,20 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 			// at the next animation-tick, which should occur within 1/20 of a second
 			this.humanState = (CribState) info;
 
+        if(humanState.cribDeck.size() < 5) {
+            for (int i = 0; i < humanState.cribDeck.size(); i++) {
+                humanCribImages[i].setImageBitmap(humanState.getCribDeck().lookAtCard(i).getBitmap());
+            }
+        }
+
 
         for(int i =0; i<humanState.player0Hand.size();i++){
             humanHandImages[i].setImageBitmap(humanState.getHand(playerNum).lookAtCard(i).getBitmap());
+
+
         }
+
+
 
 
         //enabling and dissabling
@@ -366,10 +381,12 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                 game.sendAction(CribState1);
 
 
+
             } else if (button == cribButtons[1]) {
                 CribState2 = new CribAction2(this);
                 Log.i("Button Pressed", "cribButtonPos2");
                 game.sendAction(CribState2);
+
 
 
             } else if (button == cribButtons[2]) {
@@ -378,10 +395,12 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                 game.sendAction(CribState3);
 
 
+
             } else if (button == cribButtons[3]) {
                 CribState4 = new CribAction4(this);
                 Log.i("Button Pressed", "cribButtonPos4");
                 game.sendAction(CribState4);
+
 
 
             } else if (button == cribButtons[4]) {
@@ -390,10 +409,14 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                 game.sendAction(CribState5);
 
 
+
             } else if (button == cribButtons[5]) {
                 CribState6 = new CribAction6(this);
                 Log.i("Button Pressed", "cribButtonPos6");
                 game.sendAction(CribState6);
+
+
+
             } else //***********************************End Crib Buttons***************************
 
 
