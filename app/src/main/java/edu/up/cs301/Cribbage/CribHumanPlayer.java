@@ -251,6 +251,11 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             dealButton.setEnabled(false);
             goButton.setEnabled(false);
         }
+
+        humanScore.setText(allPlayerNames[0]+": "+humanState.getScore(0));
+        oppScore.setText(allPlayerNames[1]+": "+humanState.getScore(1));
+
+
     }
 
     public void setAsGui(GameMainActivity activity) {
@@ -331,6 +336,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         this.dealButton = (Button)activity.findViewById(R.id.dealButton);
         dealButton.setOnClickListener(this);
 
+        //hand card Image view creations
         this.humanHandImages[0] = (ImageView)activity.findViewById(R.id.handCardPos1);
         this.humanHandImages[1] = (ImageView)activity.findViewById(R.id.handCardPos2);
         this.humanHandImages[2] = (ImageView)activity.findViewById(R.id.handCardPos3);
@@ -339,29 +345,23 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         this.humanHandImages[5] = (ImageView)activity.findViewById(R.id.handCardPos6);
 
 
-
+        //human crib Image view creations
         this.humanCribImages[0] = (ImageView)activity.findViewById(R.id.cribHumanPos1);
         this.humanCribImages[1] = (ImageView)activity.findViewById(R.id.cribHumanPos2);
         this.humanCribImages[2] = (ImageView)activity.findViewById(R.id.cribHumanPos3);
         this.humanCribImages[3] = (ImageView)activity.findViewById(R.id.cribHumanPos4);
 
+        //main deck Image view creations
         this.mainDeck = (ImageView)activity.findViewById(R.id.mainDeck);
 
+        //opponent crib Image view creations
         this.oppPlayImages[0] = (ImageView)activity.findViewById(R.id.oppCardPos1);
         this.oppPlayImages[1] = (ImageView)activity.findViewById(R.id.oppCardPos2);
         this.oppPlayImages[2] = (ImageView)activity.findViewById(R.id.oppCardPos3);
         this.oppPlayImages[3] = (ImageView)activity.findViewById(R.id.oppCardPos4);
 
-
-        Canvas canvas = new Canvas();
-        Paint paint = new Paint();
-
-        int x = 50;
-        int y = 15;
-
-        paint.setColor(Color.BLACK);
-        canvas.drawCircle(x,y,5,paint);
-
+        this.humanScore = (TextView)activity.findViewById(R.id.humanScore);
+        this.oppScore = (TextView)activity.findViewById(R.id.oppScore);
 
     }
 
@@ -381,6 +381,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
     }
 
+    //area of
     public void tick(Canvas canvas) {
 
         Paint paint = new Paint();
@@ -402,7 +403,14 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             paint.setColor(Color.WHITE);
             canvas.drawCircle(x+i+70,y,rad+5,paint);
             canvas.drawCircle(x+i+70,y+350,rad+5,paint);
+
+//
         }
+
+        if(humanState.getScore(0)==10){
+
+        }
+
 
 
         paint.setColor(Color.BLACK);
@@ -427,6 +435,126 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         paint.setColor(Color.WHITE);
         paint.setTextSize(70);
         canvas.drawText("W",x+885,y+185,paint);
+
+
+
+        paint.setColor(Color.rgb(162,228,232));
+
+        //humanstate circle fill
+        if (humanState.getScore(0) >= 10) {
+            canvas.drawCircle(x + 70, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 20) {
+            canvas.drawCircle(x + 140, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 30) {
+            canvas.drawCircle(x + 210, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 40) {
+            canvas.drawCircle(x + 280, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 50) {
+            canvas.drawCircle(x + 350, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 60) {
+            canvas.drawCircle(x + 420, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 70) {
+            canvas.drawCircle(x + 490, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 80) {
+            canvas.drawCircle(x + 560, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 90) {
+            canvas.drawCircle(x + 630, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 100) {
+            canvas.drawCircle(x + 700, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 110) {
+            canvas.drawCircle(x + 770, y, rad + 5, paint);
+
+        }
+        if (humanState.getScore(0) >= 120) {
+            canvas.drawCircle(x + 840, y, rad + 5, paint);
+
+        }
+        if(humanState.getScore(0) >= 121){
+            canvas.drawText("W",x+885,y+185,paint);
+        }
+
+
+        paint.setColor(Color.rgb(37,32,94));
+
+        //oppstate circle fill
+        if (humanState.getScore(1) >= 10) {
+
+            canvas.drawCircle(x + 70, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 20) {
+
+            canvas.drawCircle(x + 140, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 30) {
+
+            canvas.drawCircle(x + 210, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 40) {
+
+            canvas.drawCircle(x + 280, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 50) {
+
+            canvas.drawCircle(x + 350, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 60) {
+
+            canvas.drawCircle(x + 420, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 70) {
+
+            canvas.drawCircle(x + 490, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 80) {
+
+            canvas.drawCircle(x + 560, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 90) {
+
+            canvas.drawCircle(x + 630, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 100) {
+
+            canvas.drawCircle(x + 700, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 110) {
+
+            canvas.drawCircle(x + 770, y + 350, rad + 5, paint);
+        }
+        if (humanState.getScore(1) >= 120) {
+
+            canvas.drawCircle(x + 840, y + 350, rad + 5, paint);
+        }
+        if(humanState.getScore(1) >= 121){
+
+            canvas.drawText("W",x+885,y+185,paint);
+        }
+
+
+
+
+
+
 
     }
 
