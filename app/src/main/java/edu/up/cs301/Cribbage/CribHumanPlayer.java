@@ -502,7 +502,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         }
 
 
-        paint.setColor(Color.rgb(255,165,0));
+        paint.setColor(Color.rgb(37,32,94));
 
         //oppstate circle fill
         if (humanState.getScore(1) >= 10) {
