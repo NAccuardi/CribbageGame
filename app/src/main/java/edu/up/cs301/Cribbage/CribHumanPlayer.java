@@ -3,6 +3,7 @@ package edu.up.cs301.Cribbage;
 import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -363,11 +364,22 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         this.oppPlayImages[3] = (ImageView)activity.findViewById(R.id.oppCardPos4);
 
 
+        Canvas canvas = new Canvas();
+        Paint paint = new Paint();
+
+        int x = 50;
+        int y = 15;
+
+        paint.setColor(Color.BLACK);
+        canvas.drawCircle(x,y,5,paint);
+
 
     }
 
     public int backgroundColor() {
-        return Color.BLACK;
+
+        return (Color.LTGRAY);
+        //(162,228,232)
     }
 
 
@@ -381,6 +393,51 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     }
 
     public void tick(Canvas canvas) {
+
+        Paint paint = new Paint();
+        int x = 60;
+        int y = 175;
+        int rad = 15;
+
+        paint.setColor(Color.BLACK);
+        canvas.drawCircle(x,y,rad,paint);
+        canvas.drawCircle(x,y+350,rad,paint);
+
+        for(int i = 0; i <= 770; i= i+70)
+        {
+            canvas.drawCircle(x + i + 70, y, rad + 10, paint);
+            canvas.drawCircle(x + i + 70, y + 350, rad + 10, paint);
+        }
+        for(int i = 0; i <= 770; i= i+70)
+        {
+            paint.setColor(Color.WHITE);
+            canvas.drawCircle(x+i+70,y,rad+5,paint);
+            canvas.drawCircle(x+i+70,y+350,rad+5,paint);
+        }
+
+
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(30);
+        canvas.drawText("10",x+45,y+175,paint);
+        canvas.drawText("20",x+115,y+175,paint);
+        canvas.drawText("30",x+185,y+175,paint);
+        canvas.drawText("40",x+255,y+175,paint);
+        canvas.drawText("50",x+325,y+175,paint);
+        canvas.drawText("60",x+395,y+175,paint);
+        canvas.drawText("70",x+465,y+175,paint);
+        canvas.drawText("80",x+535,y+175,paint);
+        canvas.drawText("90",x+605,y+175,paint);
+        canvas.drawText("100",x+665,y+175,paint);
+        canvas.drawText("110",x+735,y+175,paint);
+        canvas.drawText("120",x+805,y+175,paint);
+
+
+        canvas.drawCircle(x+915,y,rad,paint);
+        canvas.drawCircle(x+915,y+350,rad,paint);
+
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(70);
+        canvas.drawText("W",x+885,y+185,paint);
 
     }
 
