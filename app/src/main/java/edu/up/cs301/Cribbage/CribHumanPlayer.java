@@ -256,6 +256,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         humanScore.setText(allPlayerNames[0]+": "+humanState.getScore(0));
         oppScore.setText(allPlayerNames[1]+": "+humanState.getScore(1));
 
+
+        //to bold if dealer
         if(humanState.getDealer() ==  0)
         {
             humanScore.setTypeface(null, Typeface.BOLD);
