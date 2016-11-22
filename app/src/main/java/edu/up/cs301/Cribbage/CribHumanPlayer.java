@@ -407,9 +407,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 //
         }
 
-        if(humanState.getScore(0)==10){
 
-        }
 
 
 

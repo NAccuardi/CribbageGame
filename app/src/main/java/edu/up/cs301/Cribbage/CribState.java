@@ -28,6 +28,8 @@ public class CribState extends GameState {
     private boolean winner;//becomes true when a player wins
     private boolean go;//becomes true when a player must press the go button
     public boolean delt;//false if round has not been delt, is turned true in deal(), reset to false in setStage()
+    public boolean can0Crib;
+    public boolean can1Crib;
 
 
     //*****************These are all of our decks*********************************
@@ -63,6 +65,8 @@ public class CribState extends GameState {
         score1 = 0;
         dealer = 0;
         delt = false;
+        can0Crib = true;
+        can1Crib = true;
         //setFirstDealer();
         Log.i("The dealer is player",""+dealer);
         whoseTurn = getWhoseTurn();
@@ -183,6 +187,27 @@ public class CribState extends GameState {
             return cribDeck;
     }
 
+    public boolean canCrib(int playeridx)
+    {
+        if(playeridx == 0)
+        {
+            if(handsOfBothPlayers[0].size() <=4)
+            {
+                can0Crib = false;
+                return false;
+            }
+        }
+        else if(playeridx ==1)
+        {
+            if(handsOfBothPlayers[1].size() <=4)
+            {
+                can1Crib = false;
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 
     //set which players turn it is
@@ -212,12 +237,12 @@ public class CribState extends GameState {
                 if(handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size())
                 {
                     //dealer gets to move
-                    return 1;
+                    return 0;
                 }
                 else
                 {
                     //non dealer gets to move
-                    return 0;
+                    return 1;
                 }
             }
             if(dealer == 1)
@@ -380,6 +405,8 @@ public class CribState extends GameState {
             //it is now time to start back at the cut for the round
             stage = 0;
             delt = false;//delt is reset becuase we can deal again
+            can0Crib = true;
+            can1Crib = true;
         }
     }
 
