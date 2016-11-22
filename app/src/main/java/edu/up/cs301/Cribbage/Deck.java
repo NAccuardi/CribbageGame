@@ -1,5 +1,7 @@
 package edu.up.cs301.Cribbage;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -114,6 +116,24 @@ public class Deck implements Serializable {
 			targetDeck.add(c);
 		}
 	}
+
+	public void moveSpecificCard(int cardToMove,Deck targetDeck){
+		Card c = null;//This will hold our card while we move it from one deck to another.
+		int sizeOfOgDeck = 0;
+
+		synchronized (this.cards){
+			sizeOfOgDeck = this.size();
+			if(sizeOfOgDeck>0){//Keeps you from trying to move a card from an empty deck.
+				c = cards.remove(cardToMove);
+			}
+			if (sizeOfOgDeck > 0) {
+				targetDeck.add(c);//This crashes
+			}
+		}
+
+
+
+	}
 	
 	/**
 	 * move all cards in the current deck to a another deck by repeated moving
@@ -191,17 +211,33 @@ public class Deck implements Serializable {
 	{
 		synchronized (this.cards) {
 			if (cards.isEmpty()) return;
-			for(int i = 0; i<cards.size();i++)
+			Log.i("this is in deleteDeck", "Pre delete cards.size: "+cards.size());
+			int cardSize = cards.size();
+			for(int i = 0; i<cardSize;i++)
+				/*
+				Error Log: Nick: I had to change this from 1<cards.size to i<52. As it removed cards the size got smaller.
+				the loop would also get smaller. When it got to i=26 it would quit. By setting it to run 52 times we ensure that all the cards
+				Are removed from the maindeck. This will crash if we run it on anything smaller then the main deck
+
+				ErrorLog 2.0 nick: This problem caused a crash if ran on anything smaller then the maind deck. To combat this I set an int to be
+				the size of the card.size and use that as the exit condition for the for loop. This keeps the arraysize changing
+				from messing with the total size. As of now I think this method is complete and will work for final product.
+				 */
 			{
-				cards.remove(i);
+				cards.remove(0);//Nick- Changed this from i to 0. Trying to hunt an error. The hunt was a success. Read above for more info.
+				Log.i("i = "+i, "cards.size = "+cards.size());
 			}
+			Log.i("this is in deleteDeck", " post delete cards.size: "+cards.size());
 		}
 	}
+	 public Card lookAtCard(int idx)
+	 {
+		 synchronized (this.cards) {
+			 if (cards.isEmpty()) return null;
+			 return cards.get(idx);
+		 }
+	 }
 
-	public boolean isEmpty()
-	{
-		return cards.isEmpty();
-	}
 	
 	/**
 	 * @return

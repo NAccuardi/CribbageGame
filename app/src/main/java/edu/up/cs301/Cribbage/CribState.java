@@ -9,6 +9,8 @@ import edu.up.cs301.card.Rank;
 import edu.up.cs301.card.Suit;
 import edu.up.cs301.game.infoMsg.GameState;
 
+import static edu.up.cs301.game.R.id.mainDeck;
+
 /**
  * Created by Robot Laptop on 11/14/2016.
  * and some useless humans named
@@ -27,21 +29,32 @@ public class CribState extends GameState {
     public boolean delt;//false if round has not been delt, is turned true in deal(), reset to false in setStage()
 
 
-    //*****************These are all of our stupid decks*********************************
-    private Deck mainDeck = new Deck();//holds 52 cards
+    //*****************These are all of our decks*********************************
+    //These are intialised her but set in the constructor
 
-    private Deck player0Hand = new Deck();//is player 0's hand
-    private Deck player0ToPlay = new Deck();//tracks the cards that player 0 puts into play
-    private Deck player1Hand = new Deck();//is player 1's hand
-    private Deck player1ToPlay = new Deck();//tracks the cards that player 1 puts into play
+    public Deck mainDeck;// = new Deck();//holds 52 cards
 
-    private Deck cribDeck = new Deck();//contains the cards that players have put in crib
-    private Deck playDeck = new Deck();//contains the cards that players have player
-    private Deck cutDeck = new Deck();//contains the card that was cut from deck
+    public Deck player0Hand;// = new Deck();//is player 0's hand
+    public Deck player0ToPlay;// = new Deck();//tracks the cards that player 0 puts into play
+    public Deck player1Hand;// = new Deck();//is player 1's hand
+    public Deck player1ToPlay;// = new Deck();//tracks the cards that player 1 puts into play
+
+    public Deck cribDeck;// = new Deck();//contains the cards that players have put in crib
+    public Deck playDeck;// = new Deck();//contains the cards that players have player
+    public Deck cutDeck;// = new Deck();//contains the card that was cut from deck
 
 
 
     public CribState(){
+        mainDeck =new Deck();
+        player0Hand = new Deck();
+        player0ToPlay = new Deck();
+        player1Hand = new Deck();
+        player1ToPlay = new Deck();
+        cribDeck = new Deck();
+        playDeck = new Deck();
+        cutDeck = new Deck();
+
         score0 = 0;
         score1 = 0;
         dealer = 0;
@@ -54,27 +67,19 @@ public class CribState extends GameState {
         go = false;
 
         mainDeck.add52();
-        Log.i("what is in the maindeck",mainDeck.toString());
+        Log.i("what is in the maindeck",mainDeck.toString()+mainDeck.size());
 
 
         for(int i =0; i<7;i++){//This will give us a truly random deck everytime we run the constuctor
             mainDeck.shuffle();
         }
-        Log.i("what the maindeck Order",mainDeck.toString());
+        Log.i("the maindeck Order",mainDeck.toString());
 
 
-        //deal();//This is only here for debugging purposes.
-        Log.i("What is in player0Hand", player0Hand.toString());
-        Log.i("What is in player1Hand", player1Hand.toString());
-        //player0Hand;
-        //player1Hand = null;
-        cribDeck = null;
-        playDeck = null;
-        cutDeck = null;
-        player0ToPlay = null;
-        player1ToPlay = null;
-
-
+        deal();//This is only here for debugging purposes.
+        Log.i("What is in player0Hand", player0Hand.toString()+player0Hand.size());
+        Log.i("What is in player1Hand", player1Hand.toString()+player1Hand.size());
+        Log.i("the maindeck Order",mainDeck.toString()+mainDeck.size());
 
         //setStage();
 
@@ -354,20 +359,45 @@ public class CribState extends GameState {
     //places six cards in each players hands
 
 
-    public void deal()//The deal method works as of 20Nov2016 - Nick. Tested by putting it in the constructor.
+    public void deal()
     {
         //mainDeck.shuffle();//Disabled for debugging ease
+        Log.i("this is in the deal", "size predelte: "+mainDeck.size());
+
         mainDeck.deleteDeck();//nullify the current state of the main deck
+
+        Log.i("this is in the deal", "size postdelte/preadd52: "+mainDeck.size());
+
+
         //make sure there is a new deck for the next round and really shuffle it good
         mainDeck.add52().shuffle().shuffle().shuffle();
+
+
+        Log.i("this is in the deal", "size postdd52: "+mainDeck.size());
+        Log.i("size play1hand: "+player0Hand.size(), "sizePlay2Hand PreDel: "+player1Hand.size());
+        Log.i("play1hand: "+player0Hand.toString(), "Play2Hand PreDel: "+player1Hand.toString());
+
+        /*This will make sure the remainder of the decks have been cleared. If we are doing a deal
+            we want to reseteverything back to an empty state.
+        */
         player0Hand.deleteDeck();//remove all the cards from the players hands
         player1Hand.deleteDeck();//remove all the cards from the players hands
+        cribDeck.deleteDeck();
+        player0ToPlay.deleteDeck();
+        player1ToPlay.deleteDeck();
+        cutDeck.deleteDeck();
+
+        Log.i("size play1hand: "+player0Hand.size(), "sizePlay2Hand postDel: "+player1Hand.size());
+        Log.i("play1hand: "+player0Hand.toString(), "Play2Hand postDel: "+player1Hand.toString());
         int handSize = 6;
         for(int i = 0; i<handSize; i++)
         {
             mainDeck.moveTopCardTo(player0Hand);
             mainDeck.moveTopCardTo(player1Hand);
-        }
+        }Log.i("size play1hand: "+player0Hand.size(), "sizePlay2Hand postDeal: "+player1Hand.size());
+        Log.i("play1hand: "+player0Hand.toString(), "Play2Hand postDeal: "+player1Hand.toString());
+        setStage();
+        Log.i("this is in the deal", "size post setstage: "+mainDeck.size());
         delt = true;
     }
 

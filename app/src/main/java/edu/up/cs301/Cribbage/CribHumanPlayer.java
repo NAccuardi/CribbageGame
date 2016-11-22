@@ -36,6 +36,8 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
+import static edu.up.cs301.game.R.id.cribButtonPos1;
+
 /**
  * Created by Nick Accuardi on 10/20/2016.
  */
@@ -68,51 +70,18 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
 
     //NEW CRIBBAGE VARIABLES
-    //cardPosition1 variables
-    Button cribButtonPos1;
-    Button playButtonPos1;
-    ImageView handCardPos1;
+    //crib button array
+    Button cribButtons[] = new Button[6];
+    Button playButtons[] = new Button[6];
+    ImageView humanHandImages[] = new ImageView[6];
+    ImageView humanCribImages[] = new ImageView[4];
+    ImageView oppPlayImages[] = new ImageView[4];
 
-    //cardPosition2 variablesh
-    Button cribButtonPos2;
-    Button playButtonPos2;
-    ImageView handCardPos2;
 
-    //cardPosition3 variables
-    Button cribButtonPos3;
-    Button playButtonPos3;
-    ImageView handCardPos3;
-
-    //cardPosition4 variables
-    Button cribButtonPos4;
-    Button playButtonPos4;
-    ImageView handCardPos4;
-
-    //cardPosition5 variables
-    Button cribButtonPos5;
-    Button playButtonPos5;
-    ImageView handCardPos5;
-
-    //cardPosition6 variables
-    Button cribButtonPos6;
-    Button playButtonPos6;
-    ImageView handCardPos6;
 
     //SCORE textViews
     TextView humanScore;
     TextView oppScore;
-
-    //human crib card positions
-    ImageView cribHumanPos1;
-    ImageView cribHumanPos2;
-    ImageView cribHumanPos3;
-    ImageView cribHumanPos4;
-
-    //opponent crib card positions
-    ImageView oppCardPos1;
-    ImageView oppCardPos2;
-    ImageView oppCardPos3;
-    ImageView oppCardPos4;
 
     //GO BUTTON
     Button goButton;
@@ -121,33 +90,6 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     ImageView mainDeck;
 
     Button dealButton;
-
-
-
-    //resource variables
-    //drawable handPositions resources
-  // Drawable resourceHandPos1 = handCardPos1.getDrawable();
-  // Drawable resourceHandPos2 = handCardPos2.getDrawable();
-  // Drawable resourceHandPos3 = handCardPos3.getDrawable();
-  // Drawable resourceHandPos4 = handCardPos4.getDrawable();
-  // Drawable resourceHandPos5 = handCardPos5.getDrawable();
-  // Drawable resourceHandPos6 = handCardPos6.getDrawable();
-
-  // //drawable human crib positions resources
-  // Drawable resourceCribHum1 = cribHumanPos1.getDrawable();
-  // Drawable resourceCribHum2 = cribHumanPos2.getDrawable();
-  // Drawable resourceCribHum3 = cribHumanPos3.getDrawable();
-  // Drawable resourceCribHum4 = cribHumanPos4.getDrawable();
-
-  // //drawable opponents Cards
-  // Drawable resourceOppCard1 = oppCardPos1.getDrawable();
-  // Drawable resourceOppCard2 = oppCardPos2.getDrawable();
-  // Drawable resourceOppCard3 = oppCardPos3.getDrawable();
-  // Drawable resourceOppCard4 = oppCardPos4.getDrawable();
-
-  // //drawable for mainDeck resource
-  // Drawable resourceMainDeck = mainDeck.getDrawable();
-
 
 
 
@@ -206,7 +148,10 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 			// at the next animation-tick, which should occur within 1/20 of a second
 			this.humanState = (CribState) info;
 
-            //handCardPos1.setImageBitmap(humanState.getHand(playerNum).peekAtTopCard().getBitmap());
+
+        for(int i =0; i<humanState.player0Hand.size();i++){
+            humanHandImages[i].setImageBitmap(humanState.getHand(playerNum).lookAtCard(i).getBitmap());
+        }
 
 
         //enabling and dissabling
@@ -217,38 +162,48 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         }else if(humanState.getStage()==1){
             Log.i("we are in stage 1", "deal");
+
+            for(int i =0;i<6;i++){
+                cribButtons[i].setEnabled(false);
+                playButtons[i].setEnabled(false);
+            }
+
+
+
+
+
+            dealButton.setEnabled(true);
+            goButton.setEnabled(false);
+
         }else if(humanState.getStage()== 2){
             Log.i("we are in stage 2", "crib");
-         cribButtonPos1.setEnabled(true);
-         cribButtonPos2.setEnabled(true);
-         cribButtonPos3.setEnabled(true);
-         cribButtonPos4.setEnabled(true);
-         cribButtonPos5.setEnabled(true);
-         cribButtonPos6.setEnabled(true);
 
-         playButtonPos1.setEnabled(false);
-         playButtonPos2.setEnabled(false);
-         playButtonPos3.setEnabled(false);
-         playButtonPos4.setEnabled(false);
-         playButtonPos5.setEnabled(false);
-         playButtonPos6.setEnabled(false);
+
+            for(int i =0;i<6;i++){
+                cribButtons[i].setEnabled(false);
+                playButtons[i].setEnabled(false);
+                for(int j = 0; j <humanState.player0Hand.size();j++){
+                    cribButtons[j].setEnabled(true);
+                    playButtons[j].setEnabled(false);
+                }
+            }
+
+
+
+            dealButton.setEnabled(false);
+            goButton.setEnabled(false);
           }
           else if(humanState.getStage() == 3)
           {
               Log.i("we are in stage 3", "play");
-        cribButtonPos1.setEnabled(false);
-        cribButtonPos2.setEnabled(false);
-        cribButtonPos3.setEnabled(false);
-        cribButtonPos4.setEnabled(false);
-        cribButtonPos5.setEnabled(false);
-        cribButtonPos6.setEnabled(false);
+              for(int i =0;i<6;i++){
+                  cribButtons[i].setEnabled(false);
+                  playButtons[i].setEnabled(true);
+              }
 
-        playButtonPos1.setEnabled(true);
-        playButtonPos2.setEnabled(true);
-        playButtonPos3.setEnabled(true);
-        playButtonPos4.setEnabled(true);
-        playButtonPos5.setEnabled(true);
-        playButtonPos6.setEnabled(true);
+
+              dealButton.setEnabled(false);
+              goButton.setEnabled(true);//This will be dependent on the cards in the players hands.
          }
          else if(humanState.getStage()==4)
         {
@@ -256,19 +211,15 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         }
         else{
             Log.i("we are in a bad stage", "The lost stage");
-        cribButtonPos1.setEnabled(false);
-        cribButtonPos2.setEnabled(false);
-        cribButtonPos3.setEnabled(false);
-        cribButtonPos4.setEnabled(false);
-        cribButtonPos5.setEnabled(false);
-        cribButtonPos6.setEnabled(false);
+            for(int i =0;i<6;i++){
+                cribButtons[i].setEnabled(false);
+                playButtons[i].setEnabled(false);
+            }
 
-        playButtonPos1.setEnabled(false);
-        playButtonPos2.setEnabled(false);
-        playButtonPos3.setEnabled(false);
-        playButtonPos4.setEnabled(false);
-        playButtonPos5.setEnabled(false);
-        playButtonPos6.setEnabled(false);
+
+
+            dealButton.setEnabled(false);
+            goButton.setEnabled(false);
          }
 
 
@@ -306,42 +257,44 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         //cribButtons
 
 
-		cribButtonPos1 = (Button)activity.findViewById(R.id.cribButtonPos1);
-		cribButtonPos1.setOnClickListener(this);
-        //so i can push
-		cribButtonPos2 = (Button)activity.findViewById(R.id.cribButtonPos2);
-		cribButtonPos2.setOnClickListener(this);
+		cribButtons[0] = (Button)activity.findViewById(cribButtonPos1);
+		cribButtons[0].setOnClickListener(this);
 
-		cribButtonPos3 = (Button)activity.findViewById(R.id.cribButtonPos3);
-		cribButtonPos3.setOnClickListener(this);
+		cribButtons[1] = (Button)activity.findViewById(R.id.cribButtonPos2);
+		cribButtons[1].setOnClickListener(this);
 
-		cribButtonPos4 = (Button)activity.findViewById(R.id.cribButtonPos4);
-		cribButtonPos4.setOnClickListener(this);
+		cribButtons[2] = (Button)activity.findViewById(R.id.cribButtonPos3);
+		cribButtons[2].setOnClickListener(this);
 
-		cribButtonPos5 = (Button)activity.findViewById(R.id.cribButtonPos5);
-		cribButtonPos5.setOnClickListener(this);
+		cribButtons[3] = (Button)activity.findViewById(R.id.cribButtonPos4);
+		cribButtons[3].setOnClickListener(this);
 
-		cribButtonPos6 = (Button)activity.findViewById(R.id.cribButtonPos6);
-		cribButtonPos6.setOnClickListener(this);
+		cribButtons[4] = (Button)activity.findViewById(R.id.cribButtonPos5);
+		cribButtons[4].setOnClickListener(this);
+
+		cribButtons[5] = (Button)activity.findViewById(R.id.cribButtonPos6);
+		cribButtons[5].setOnClickListener(this);
 
 		//playButtons
-		playButtonPos1 = (Button)activity.findViewById(R.id.playButtonPos1);
-		playButtonPos1.setOnClickListener(this);
+		playButtons[0] = (Button)activity.findViewById(R.id.playButtonPos1);
+		playButtons[0].setOnClickListener(this);
 
-		playButtonPos2 = (Button)activity.findViewById(R.id.playButtonPos2);
-		playButtonPos2.setOnClickListener(this);
 
-		playButtonPos3 = (Button)activity.findViewById(R.id.playButtonPos3);
-		playButtonPos3.setOnClickListener(this);
 
-		playButtonPos4 = (Button)activity.findViewById(R.id.playButtonPos4);
-		playButtonPos4.setOnClickListener(this);
+		playButtons[1] = (Button)activity.findViewById(R.id.playButtonPos2);
+		playButtons[1].setOnClickListener(this);
 
-		playButtonPos5 = (Button)activity.findViewById(R.id.playButtonPos5);
-		playButtonPos5.setOnClickListener(this);
+		playButtons[2] = (Button)activity.findViewById(R.id.playButtonPos3);
+		playButtons[2].setOnClickListener(this);
 
-		playButtonPos6 = (Button)activity.findViewById(R.id.playButtonPos6);
-		playButtonPos6.setOnClickListener(this);
+		playButtons[3] = (Button)activity.findViewById(R.id.playButtonPos4);
+		playButtons[3].setOnClickListener(this);
+
+		playButtons[4] = (Button)activity.findViewById(R.id.playButtonPos5);
+		playButtons[4].setOnClickListener(this);
+
+		playButtons[5] = (Button)activity.findViewById(R.id.playButtonPos6);
+		playButtons[5].setOnClickListener(this);
 
 		//goButton
 		this.goButton = (Button)activity.findViewById(R.id.goButton);
@@ -351,38 +304,30 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         this.dealButton = (Button)activity.findViewById(R.id.dealButton);
         dealButton.setOnClickListener(this);
 
-        //this.handCardPos1 = (ImageView)activity.findViewById(R.id.handCardPos1);
+        this.humanHandImages[0] = (ImageView)activity.findViewById(R.id.handCardPos1);
+        this.humanHandImages[1] = (ImageView)activity.findViewById(R.id.handCardPos2);
+        this.humanHandImages[2] = (ImageView)activity.findViewById(R.id.handCardPos3);
+        this.humanHandImages[3] = (ImageView)activity.findViewById(R.id.handCardPos4);
+        this.humanHandImages[4] = (ImageView)activity.findViewById(R.id.handCardPos5);
+        this.humanHandImages[5] = (ImageView)activity.findViewById(R.id.handCardPos6);
 
 
 
+        this.humanCribImages[0] = (ImageView)activity.findViewById(R.id.cribHumanPos1);
+        this.humanCribImages[1] = (ImageView)activity.findViewById(R.id.cribHumanPos2);
+        this.humanCribImages[2] = (ImageView)activity.findViewById(R.id.cribHumanPos3);
+        this.humanCribImages[3] = (ImageView)activity.findViewById(R.id.cribHumanPos4);
 
+        this.mainDeck = (ImageView)activity.findViewById(R.id.mainDeck);
 
-
-
-
-
-
-
+        this.oppPlayImages[0] = (ImageView)activity.findViewById(R.id.oppCardPos1);
+        this.oppPlayImages[1] = (ImageView)activity.findViewById(R.id.oppCardPos2);
+        this.oppPlayImages[2] = (ImageView)activity.findViewById(R.id.oppCardPos3);
+        this.oppPlayImages[3] = (ImageView)activity.findViewById(R.id.oppCardPos4);
 
 
 
     }
-
-
-
-
-
-
-
-//    @Override
-//    public void receiveInfo(GameInfo info) {
-//
-//    }
-
-    //@Override
-   // public View getTopView() {
-      //  return null;
-    //}
 
     public int backgroundColor() {
         return Color.BLACK;
@@ -414,79 +359,80 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         //****************** Crib Buttons go here******************************************************
 
-            if (button == cribButtonPos1) {
+            if (button == cribButtons[0]) {
+
                 CribState1 = new CribAction1(this);
                 Log.i("Button Pressed", "cribButtonPos1");
                 game.sendAction(CribState1);
 
 
-            } else if (button == cribButtonPos2) {
+            } else if (button == cribButtons[1]) {
                 CribState2 = new CribAction2(this);
                 Log.i("Button Pressed", "cribButtonPos2");
                 game.sendAction(CribState2);
 
 
-            } else if (button == cribButtonPos3) {
+            } else if (button == cribButtons[2]) {
                 CribState3 = new CribAction3(this);
                 Log.i("Button Pressed", "cribButtonPos3");
                 game.sendAction(CribState3);
 
 
-            } else if (button == cribButtonPos4) {
+            } else if (button == cribButtons[3]) {
                 CribState4 = new CribAction4(this);
                 Log.i("Button Pressed", "cribButtonPos4");
                 game.sendAction(CribState4);
 
 
-            } else if (button == cribButtonPos5) {
+            } else if (button == cribButtons[4]) {
                 CribState5 = new CribAction5(this);
                 Log.i("Button Pressed", "cribButtonPos5");
                 game.sendAction(CribState5);
 
 
-            } else if (button == cribButtonPos6) {
+            } else if (button == cribButtons[5]) {
                 CribState6 = new CribAction6(this);
                 Log.i("Button Pressed", "cribButtonPos6");
                 game.sendAction(CribState6);
-            } else{} //***********************************End Crib Buttons***************************
+            } else //***********************************End Crib Buttons***************************
 
 
 
         //********************************Start PLay buttons**********************************
 
-        if(button == playButtonPos1){
+        if(button == playButtons[0]){
              CribPlay1 = new CribPlayAction1(this);
              Log.i("Button Pressed", "playButtonPos1 ");
              game.sendAction(CribPlay1);
 
 
-        }else if(button == playButtonPos2){
+        }else if(button == playButtons[1]){
              CribPlay2 = new CribPlayAction2(this);
              Log.i("Button Pressed", "playButtonPos2 ");
              game.sendAction(CribPlay2);
 
 
-        }else if(button == playButtonPos3){
+        }else if(button == playButtons[2]){
              CribPlay3 = new CribPlayAction3(this);
              Log.i("Button Pressed", "playButtonPos3 ");
              game.sendAction(CribPlay3);
 
 
 
-        }else if(button == playButtonPos4){
+        }else if(button == playButtons[3]){
              CribPlay4 = new CribPlayAction4(this);
              Log.i("Button Pressed", "playButtonPos4 ");
              game.sendAction(CribPlay4);
 
 
 
-        }else if(button == playButtonPos5){
+        }else if(button == playButtons[4]){
              CribPlay5 = new CribPlayAction5(this);
              Log.i("Button Pressed", "playButtonPos5 ");
              game.sendAction(CribPlay5);
 
 
-        }else if(button == playButtonPos6){
+        }else if(button == playButtons[5]){
              CribPlay6 = new CribPlayAction6(this);
              Log.i("Button Pressed", "playButtonPos6 ");
              game.sendAction(CribPlay6);

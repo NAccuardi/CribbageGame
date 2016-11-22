@@ -20,6 +20,8 @@ import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
 
+import static edu.up.cs301.game.R.id.handCardPos1;
+
 /**
  * Created by Robot Laptop on 11/14/2016.
  *
@@ -92,52 +94,91 @@ public class CribLocalGame extends LocalGame {
                 state.deal();
                 state.setStage();
 
-            }Log.i("Player 0 hand is",state.getHand(0).toString());
+            }
+            //state.deal();
+        Log.i("Player 0 hand is",state.getHand(0).toString());
             return true;
 
 
         }else if( action instanceof CribGo){
             Log.i("Make Move Action: ", "CribGo");
+            return true;
+
 
         }else if(action instanceof CribAction1){
             Log.i("Make Move Action: ", "CribAction1");
+
+
+            //Log.i("cribDeck Premove: ", state.cribDeck.toString());
+            state.player0Hand.moveSpecificCard(0,state.cribDeck);
+            Log.i("cribDeck Postmove: ", state.cribDeck.toString());
+            //handCardPos1.setImageBitmap(humanState.getHand(playerNum).lookAtCard(0).getBitmap());
+            //state.cribDeck.setImageBitmap
+            //state.player0Hand.moveTopCardTo(state.cribDeck);
+
+
+
+
+
             return true;
 
 
         }else if(action instanceof CribAction2){
             Log.i("Make Move Action: ", "CribAction2");
-
+            state.player0Hand.moveSpecificCard(1,state.cribDeck);
+            Log.i("cribDeck Postmove: ", state.cribDeck.toString());
+            state.setStage();
+            return true;
         }else if(action instanceof CribAction3){
             Log.i("Make Move Action: ", "CribAction3");
-
+            state.player0Hand.moveSpecificCard(2,state.cribDeck);
+            Log.i("cribDeck Postmove: ", state.cribDeck.toString());
+            state.setStage();
+            return true;
         }else if(action instanceof CribAction4){
             Log.i("Make Move Action: ", "CribAction4");
-
+            state.player0Hand.moveSpecificCard(3,state.cribDeck);
+            Log.i("cribDeck Postmove: ", state.cribDeck.toString());
+            state.setStage();
+            return true;
         }else if(action instanceof CribAction5){
             Log.i("Make Move Action: ", "CribACtion5");
-
+            state.player0Hand.moveSpecificCard(4,state.cribDeck);
+            Log.i("cribDeck Postmove: ", state.cribDeck.toString());
+            state.setStage();
+            return true;
         }else if(action instanceof CribAction6){
             Log.i("Make Move Action: ", "CribAction6");
+            state.player0Hand.moveSpecificCard(5,state.cribDeck);
+            Log.i("cribDeck Postmove: ", state.cribDeck.toString());
+            state.setStage();
+            return true;
+        }else
 
-        }else if(action instanceof CribPlayAction1){
+
+
+
+
+        if(action instanceof CribPlayAction1){
             Log.i("Make Move Action: ", "CribPLayAction1");
 
+            return true;
         }else if(action instanceof CribPlayAction2){
             Log.i("Make Move Action: ", "CribPLayAction2");
-
+            return true;
 
         }else if(action instanceof CribPlayAction3){
             Log.i("Make Move Action: ", "CribPLayAction3");
-
+            return true;
         }else if(action instanceof CribPlayAction4){
             Log.i("Make Move Action: ", "CribPLayAction4");
-
+            return true;
         }else if(action instanceof CribPlayAction5){
             Log.i("Make Move Action: ", "CribPLayAction5");
-
+            return true;
         }else if(action instanceof CribPlayAction6){
             Log.i("Make Move Action: ", "CribPLayAction6");
-
+            return true;
         }
 
 
