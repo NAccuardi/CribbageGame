@@ -113,12 +113,9 @@ public class CribLocalGame extends LocalGame {
             Log.i("playerhand0: ", state.handsOfBothPlayers[0].toString());
             Log.i("handsofbothplayers[0]", state.handsOfBothPlayers[0].toString());
             Log.i("handsofbothplayers[get]", state.handsOfBothPlayers[state.getWhoseTurn()].toString());
-            //state.player0Hand.moveSpecificCard(0,state.cribDeck);
+
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(0,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
-            //handCardPos1.setImageBitmap(humanState.getHand(playerNum).lookAtCard(0).getBitmap());
-            //state.cribDeck.setImageBitmap
-            //state.player0Hand.moveTopCardTo(state.cribDeck);
 
 
             state.setStage();

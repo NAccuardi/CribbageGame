@@ -381,13 +381,12 @@ public class CribState extends GameState {
             //there may be some cards in the players hands but they do not have a full hand yet
             stage = stageDeal;
         }
-        else if(4<=handsOfBothPlayers[0].size()&& handsOfBothPlayers[0].size() <= 6 &&
-                    4<=handsOfBothPlayers[1].size() && handsOfBothPlayers[1].size() <= 6 &&
-                            cribDeck.size()<=4) {
+        else if(4<handsOfBothPlayers[0].size()&& handsOfBothPlayers[0].size() <= 6 &&
+                    4<handsOfBothPlayers[1].size() && handsOfBothPlayers[1].size() <= 6) {
             //we are in the crib Phase
             stage = stageCrib;
         }
-        else if(handsOfBothPlayers[0].size() <=4 &&  cribDeck.size() == 4)//player1Hand.size() <= 4 &&
+        else if(cribDeck.size() == 4)//player1Hand.size() <= 4 &&
         {
             //each player has played two cards to the crib
             //we are at the start of the play phase
