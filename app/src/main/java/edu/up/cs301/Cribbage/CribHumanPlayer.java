@@ -145,14 +145,14 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         }
 
 
-        for(int i =0; i<humanState.player0Hand.size();i++){
+        for(int i =0; i<humanState.handsOfBothPlayers[0].size();i++){
             humanHandImages[i].setImageBitmap(humanState.getHand(playerNum).lookAtCard(i).getBitmap());
 
 
         }
 
-        if(humanState.player0Hand.size()!=6){
-            int remainder = 6-humanState.player0Hand.size();
+        if(humanState.handsOfBothPlayers[0].size()!=6){
+            int remainder = 6-humanState.handsOfBothPlayers[0].size();
 
             switch (remainder){
 
@@ -198,22 +198,18 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                 cribButtons[i].setEnabled(false);
                 playButtons[i].setEnabled(false);
             }
-
-
-
-
-
             dealButton.setEnabled(true);
             goButton.setEnabled(false);
 
         }else if(humanState.getStage()== 2){
             Log.i("we are in stage 2", "crib");
 
-            if(humanState.player0Hand.size()>4) {
+            if(humanState.handsOfBothPlayers[0].size()>4) {
+                Log.i("hand0size", ""+humanState.handsOfBothPlayers[0].size());
                 for (int i = 0; i < 6; i++) {
                     cribButtons[i].setEnabled(false);
                     playButtons[i].setEnabled(false);
-                    for (int j = 0; j < humanState.player0Hand.size(); j++) {
+                    for (int j = 0; j < humanState.handsOfBothPlayers[0].size(); j++) {
                         cribButtons[j].setEnabled(true);
                         playButtons[j].setEnabled(false);
                     }
@@ -252,16 +248,9 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                 cribButtons[i].setEnabled(false);
                 playButtons[i].setEnabled(false);
             }
-
-
-
             dealButton.setEnabled(false);
             goButton.setEnabled(false);
         }
-
-
-
-
     }
 
     public void setAsGui(GameMainActivity activity) {

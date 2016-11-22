@@ -1,6 +1,7 @@
 package edu.up.cs301.Cribbage;
 
 import android.util.Log;
+import android.widget.ImageView;
 
 import java.lang.reflect.Array;
 
@@ -34,26 +35,29 @@ public class CribState extends GameState {
 
     public Deck mainDeck;// = new Deck();//holds 52 cards
 
-    public Deck player0Hand;// = new Deck();//is player 0's hand
+    //public Deck player0Hand;// = new Deck();//is player 0's hand
     public Deck player0ToPlay;// = new Deck();//tracks the cards that player 0 puts into play
-    public Deck player1Hand;// = new Deck();//is player 1's hand
+    //public Deck player1Hand;// = new Deck();//is player 1's hand
     public Deck player1ToPlay;// = new Deck();//tracks the cards that player 1 puts into play
 
     public Deck cribDeck;// = new Deck();//contains the cards that players have put in crib
     public Deck playDeck;// = new Deck();//contains the cards that players have player
     public Deck cutDeck;// = new Deck();//contains the card that was cut from deck
-
+    public Deck handsOfBothPlayers[] = new Deck[2];
 
 
     public CribState(){
         mainDeck =new Deck();
-        player0Hand = new Deck();
+        //player0Hand = new Deck();
         player0ToPlay = new Deck();
-        player1Hand = new Deck();
+        //player1Hand = new Deck();
         player1ToPlay = new Deck();
         cribDeck = new Deck();
         playDeck = new Deck();
         cutDeck = new Deck();
+        handsOfBothPlayers = new Deck[2];
+        handsOfBothPlayers[0]=new Deck();
+        handsOfBothPlayers[1]=new Deck();
 
         score0 = 0;
         score1 = 0;
@@ -77,8 +81,8 @@ public class CribState extends GameState {
 
 
         deal();//This is only here for debugging purposes.
-        Log.i("What is in player0Hand", player0Hand.toString()+player0Hand.size());
-        Log.i("What is in player1Hand", player1Hand.toString()+player1Hand.size());
+        Log.i("What is in player0Hand", handsOfBothPlayers[0].toString()+handsOfBothPlayers[0].size());
+        Log.i("What is in player1Hand", handsOfBothPlayers[1].toString()+handsOfBothPlayers[1].size());
         Log.i("the maindeck Order",mainDeck.toString()+mainDeck.size());
 
         //setStage();
@@ -101,13 +105,15 @@ public class CribState extends GameState {
         this.winner = origState.isScore121();
         this.go = origState.isGo(origState.getWhoseTurn());
         this.mainDeck = origState.mainDeck;
-        this.player0Hand = origState.getHand(0);
-        this.player1Hand = origState.getHand(1);
+        //this.player0Hand = origState.getHand(0);
+        //this.player1Hand = origState.getHand(1);
         this.cribDeck = origState.cribDeck;
         this.playDeck = origState.playDeck;
         this.cutDeck = origState.cutDeck;
         this.player0ToPlay = origState.player0ToPlay;
         this.player1ToPlay = origState.player1ToPlay;
+        this.handsOfBothPlayers[0]= origState.handsOfBothPlayers[0];
+        this.handsOfBothPlayers[1]= origState.handsOfBothPlayers[1];
 
     }//End of overloaded contructor
 
@@ -162,11 +168,11 @@ public class CribState extends GameState {
     {
         if(player == 0)
         {
-            return player0Hand;
+            return handsOfBothPlayers[0];
         }
         else if(player == 1)
         {
-            return player1Hand;
+            return handsOfBothPlayers[1];
         }
         else {return null;}
     }
@@ -199,14 +205,11 @@ public class CribState extends GameState {
         else if(stage == 2)
         {
             //crib stage
-            return -1;
-        }
-        else if(stage == 3)
-        {
-            //play action
+            //Nick is trying somethin*************************
+
             if(dealer == 0)
             {
-                if(player0Hand.size() > player1Hand.size())
+                if(handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size())
                 {
                     //dealer gets to move
                     return 1;
@@ -219,7 +222,44 @@ public class CribState extends GameState {
             }
             if(dealer == 1)
             {
-                if(player0Hand.size() > player1Hand.size())
+                if(handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size())
+                {
+                    //dealer gets to move
+                    return 0;
+                }
+                else
+                {
+                    //non dealer gets to move
+                    return 1;
+                }
+            }
+
+
+
+
+
+            //Nick is trying something************************
+            return -1;
+        }
+        else if(stage == 3)
+        {
+            //play action
+            if(dealer == 0)
+            {
+                if(handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size())
+                {
+                    //dealer gets to move
+                    return 1;
+                }
+                else
+                {
+                    //non dealer gets to move
+                    return 0;
+                }
+            }
+            if(dealer == 1)
+            {
+                if(handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size())
                 {
                     //dealer gets to move
                     return 0;
@@ -243,14 +283,14 @@ public class CribState extends GameState {
     public void setFirstDealer() {
         Deck temp = new Deck();
         temp.add52().shuffle();
-        temp.moveTopCardTo(player0Hand);
+        temp.moveTopCardTo(handsOfBothPlayers[0]);
         //mainDeck.shuffle();//Nick- No need to shuffle here. The deck is already shuffled.
-        temp.moveTopCardTo(player1Hand);
-        int play0 = player0Hand.peekAtTopCard().getRank().value(1);
-        int play1 = player1Hand.peekAtTopCard().getRank().value(1);
-        Log.i("The human players cutis",player0Hand.toString());
-        player0Hand.removeTopCard();
-        player1Hand.removeTopCard();
+        temp.moveTopCardTo(handsOfBothPlayers[1]);
+        int play0 = handsOfBothPlayers[0].peekAtTopCard().getRank().value(1);
+        int play1 = handsOfBothPlayers[1].peekAtTopCard().getRank().value(1);
+        Log.i("The human players cutis",handsOfBothPlayers[0].toString());
+        handsOfBothPlayers[0].removeTopCard();
+        handsOfBothPlayers[1].removeTopCard();
         if (play0 > play1) {
             dealer = 0;
         } else if (play1 > play0) {
@@ -305,24 +345,24 @@ public class CribState extends GameState {
         int stageScoreing =4;
 
 
-        if(player0Hand.size() == 0 && player1Hand.size() == 0 && cutDeck.size() == 0)
+        if(handsOfBothPlayers[0].size() == 0 && handsOfBothPlayers[1].size() == 0 && cutDeck.size() == 0)
         {
             //we are in the cut phase of the round
             stage = stageCut;
         }
-        else if(player0Hand.size() < 6 && player1Hand.size() < 6 && cutDeck.size()!=0)
+        else if(handsOfBothPlayers[0].size() < 6 && handsOfBothPlayers[1].size() < 6 && cutDeck.size()!=0)
         {
             //there is a card in the cut deck
             //there may be some cards in the players hands but they do not have a full hand yet
             stage = stageDeal;
         }
-        else if(4<=player0Hand.size()&& player0Hand.size() <= 6 &&
-                    4<=player1Hand.size() && player1Hand.size() <= 6 &&
+        else if(4<=handsOfBothPlayers[0].size()&& handsOfBothPlayers[0].size() <= 6 &&
+                    4<=handsOfBothPlayers[1].size() && handsOfBothPlayers[1].size() <= 6 &&
                             cribDeck.size()<=4) {
             //we are in the crib Phase
             stage = stageCrib;
         }
-        else if(player0Hand.size() <=4 &&  cribDeck.size() == 4)//player1Hand.size() <= 4 &&
+        else if(handsOfBothPlayers[0].size() <=4 &&  cribDeck.size() == 4)//player1Hand.size() <= 4 &&
         {
             //each player has played two cards to the crib
             //we are at the start of the play phase
@@ -387,31 +427,32 @@ public class CribState extends GameState {
 
 
         Log.i("this is in the deal", "size postdd52: "+mainDeck.size());
-        Log.i("size play1hand: "+player0Hand.size(), "sizePlay2Hand PreDel: "+player1Hand.size());
-        Log.i("play1hand: "+player0Hand.toString(), "Play2Hand PreDel: "+player1Hand.toString());
+        Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand PreDel: "+handsOfBothPlayers[1].size());
+        Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand PreDel: "+handsOfBothPlayers[1].toString());
 
         /*This will make sure the remainder of the decks have been cleared. If we are doing a deal
             we want to reseteverything back to an empty state.
         */
-        player0Hand.deleteDeck();//remove all the cards from the players hands
-        player1Hand.deleteDeck();//remove all the cards from the players hands
+        handsOfBothPlayers[0].deleteDeck();//remove all the cards from the players hands
+        handsOfBothPlayers[1].deleteDeck();//remove all the cards from the players hands
         cribDeck.deleteDeck();
         player0ToPlay.deleteDeck();
         player1ToPlay.deleteDeck();
         cutDeck.deleteDeck();
 
-        Log.i("size play1hand: "+player0Hand.size(), "sizePlay2Hand postDel: "+player1Hand.size());
-        Log.i("play1hand: "+player0Hand.toString(), "Play2Hand postDel: "+player1Hand.toString());
+        Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand postDel: "+handsOfBothPlayers[1].size());
+        Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDel: "+handsOfBothPlayers[1].toString());
         int handSize = 6;
         for(int i = 0; i<handSize; i++)
         {
-            mainDeck.moveTopCardTo(player0Hand);
-            mainDeck.moveTopCardTo(player1Hand);
-        }Log.i("size play1hand: "+player0Hand.size(), "sizePlay2Hand postDeal: "+player1Hand.size());
-        Log.i("play1hand: "+player0Hand.toString(), "Play2Hand postDeal: "+player1Hand.toString());
+            mainDeck.moveTopCardTo(handsOfBothPlayers[0]);//Changed this from player0hand
+            mainDeck.moveTopCardTo(handsOfBothPlayers[1]);//changed from player1hand
+        }Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand postDeal: "+handsOfBothPlayers[1].size());
+        Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDeal: "+handsOfBothPlayers[1].toString());
         setStage();
         Log.i("this is in the deal", "size post setstage: "+mainDeck.size());
         delt = true;
+
     }
 
 
@@ -447,6 +488,7 @@ public class CribState extends GameState {
         //+runs(cards)+sum15(cards)+flush(cards);
         //other methods that still need to be implemented before they can contribute to the score
         return total;
+
         
     }
     //looks for pairs

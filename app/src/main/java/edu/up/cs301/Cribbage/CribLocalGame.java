@@ -110,7 +110,11 @@ public class CribLocalGame extends LocalGame {
 
 
             //Log.i("cribDeck Premove: ", state.cribDeck.toString());
-            state.player0Hand.moveSpecificCard(0,state.cribDeck);
+            Log.i("playerhand0: ", state.handsOfBothPlayers[0].toString());
+            Log.i("handsofbothplayers[0]", state.handsOfBothPlayers[0].toString());
+            Log.i("handsofbothplayers[get]", state.handsOfBothPlayers[state.getWhoseTurn()].toString());
+            //state.player0Hand.moveSpecificCard(0,state.cribDeck);
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(0,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
             //handCardPos1.setImageBitmap(humanState.getHand(playerNum).lookAtCard(0).getBitmap());
             //state.cribDeck.setImageBitmap
@@ -125,37 +129,35 @@ public class CribLocalGame extends LocalGame {
 
         }else if(action instanceof CribAction2){
             Log.i("Make Move Action: ", "CribAction2");
-            state.player0Hand.moveSpecificCard(1,state.cribDeck);
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(1,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
            state.setStage();
             return true;
         }else if(action instanceof CribAction3){
             Log.i("Make Move Action: ", "CribAction3");
-            state.player0Hand.moveSpecificCard(2,state.cribDeck);
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(2,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
            state.setStage();
             return true;
         }else if(action instanceof CribAction4){
             Log.i("Make Move Action: ", "CribAction4");
-            state.player0Hand.moveSpecificCard(3,state.cribDeck);
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(3,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
            state.setStage();
             return true;
         }else if(action instanceof CribAction5){
             Log.i("Make Move Action: ", "CribACtion5");
-            state.player0Hand.moveSpecificCard(4,state.cribDeck);
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(4,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
             state.setStage();
             return true;
         }else if(action instanceof CribAction6){
             Log.i("Make Move Action: ", "CribAction6");
-            state.player0Hand.moveSpecificCard(5,state.cribDeck);
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(5,state.cribDeck);
             Log.i("cribDeck Postmove: ", state.cribDeck.toString());
             state.setStage();
             return true;
         }else
-
-
 
 
 

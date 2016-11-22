@@ -43,6 +43,12 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
        //}
        //computerPlayerState.getHand(computerPlayerState.getPlayerId());
 
+        //if(computerPlayerState.getStage()==2 && computerPlayerState.handsOfBothPlayers[playerNum].size()>4){
+        //
+        //
+        //
+        //}
+
     }
 
 
