@@ -497,8 +497,12 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             canvas.drawCircle(x + 840, y, rad + 5, paint);
 
         }
+        if(humanState.getScore(0) >= 121){
+            canvas.drawText("W",x+885,y+185,paint);
+        }
 
 
+        paint.setColor(Color.rgb(255,165,0));
 
         //oppstate circle fill
         if (humanState.getScore(1) >= 10) {
@@ -548,6 +552,10 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         if (humanState.getScore(1) >= 120) {
 
             canvas.drawCircle(x + 840, y + 350, rad + 5, paint);
+        }
+        if(humanState.getScore(1) >= 121){
+
+            canvas.drawText("W",x+885,y+185,paint);
         }
 
 
