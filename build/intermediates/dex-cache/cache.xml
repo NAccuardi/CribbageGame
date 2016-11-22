@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="f070eec8be53fd4bfa70fc277cf7bf0b9f161c43">
+        sha1="00ff1a2ec86ba36e7fecdc86c6272daf20037b3d">
         <dex dex="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_946ba8960eb6b470b58341e171de1d6cdba9f9e4\classes.dex" />
     </item>
     <item
@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="c27689592bb928f39811e57747b42085403b6579">
+        sha1="4adfa416977c8ca88b31f223375659ebc1988035">
         <dex dex="C:\Users\Robot Laptop\Documents\GitHub\CribbageGame\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_9283681deb64b605457e2faa540fd82283e97217\classes.dex" />
     </item>
 

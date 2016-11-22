@@ -85,7 +85,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     //GO BUTTON
     Button goButton;
     //mainDeck
-    ImageView mainDeck;
+    ImageView cutDeck;
     Button dealButton;
     private int cribCounter =0;
     // our activity
@@ -155,6 +155,29 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                 }
             }
 
+            cutDeck.setImageBitmap(humanState.cutDeck.lookAtCard(0).getBitmap());
+
+            if (humanState.eachPlayerCardsPlayed[0].size() < 5
+                        && humanState.eachPlayerCardsPlayed[1].size() < 5) {
+
+                    for(int j =0;j<humanState.eachPlayerCardsPlayed[0].size();j++){
+                    humanCribImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[0].lookAtCard(j).getBitmap());
+                }
+                for(int j =0;j<humanState.eachPlayerCardsPlayed[1].size();j++){
+                   oppPlayImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[1].lookAtCard(j).getBitmap());
+                }
+
+
+
+                //for (int i = 0; i < humanState.cribDeck.size(); i++) {
+                //    humanCribImages[i].setImageResource(R.drawable.card_blank);
+                //}
+            }
+
+
+
+
+
         }
 
 
@@ -206,7 +229,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         if(humanState.getStage()==-1){
             Log.i("we are in stage -1", "brand new game");
         }else if(humanState.getStage()==0){
-            Log.i("we are in stage 0", "cut");
+            //Log.i("we are in stage 0", "cut");
 
         }else if(humanState.getStage()==1){
             Log.i("we are in stage 1", "deal");
@@ -397,7 +420,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         this.humanCribImages[3] = (ImageView)activity.findViewById(R.id.cribHumanPos4);
 
         //main deck Image view creations
-        this.mainDeck = (ImageView)activity.findViewById(R.id.mainDeck);
+        this.cutDeck = (ImageView)activity.findViewById(R.id.mainDeck);
 
         //opponent crib Image view creations
         this.oppPlayImages[0] = (ImageView)activity.findViewById(R.id.oppCardPos1);

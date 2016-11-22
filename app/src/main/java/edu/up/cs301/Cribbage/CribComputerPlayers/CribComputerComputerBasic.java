@@ -5,6 +5,7 @@ import android.util.Log;
 import edu.up.cs301.Cribbage.CribComputerPlayer;
 import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction1;
 import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction1;
 import edu.up.cs301.Cribbage.CribState;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
@@ -17,6 +18,7 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
     //most recent state of the game
     private CribState computerPlayerState;
     CribAction1 cribact1;
+    CribPlayAction1 playAct1;
 
     //
 //    private int myPlayerId = computerPlayerState.getPlayerId();
@@ -56,6 +58,14 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
                 cribact1 = new CribAction1(this);
                 game.sendAction(cribact1);
 
+        }
+
+        if(computerPlayerState.getStage() == 3 && computerPlayerState.getWhoseTurn() == playerNum){
+            playAct1 = new CribPlayAction1(this);
+                    game.sendAction(playAct1);
+            Log.i("COMP hand", computerPlayerState.handsOfBothPlayers[playerNum].toString());
+            Log.i("COMP playdeck", computerPlayerState.playDeck.toString());
+            Log.i("COMP cards played to pd", computerPlayerState.eachPlayerCardsPlayed[playerNum].toString());
         }
 
     }

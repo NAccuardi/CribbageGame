@@ -160,23 +160,73 @@ public class CribLocalGame extends LocalGame {
 
         if(action instanceof CribPlayAction1){
             Log.i("Make Move Action: ", "CribPLayAction1");
+            state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(0));
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(0,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
+
+            Log.i("playDeck", state.playDeck.toString());
+            Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
+
 
             return true;
         }else if(action instanceof CribPlayAction2){
             Log.i("Make Move Action: ", "CribPLayAction2");
+
+            state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(1));
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(1,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
+
+            Log.i("playDeck", state.playDeck.toString());
+            Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
+
+
+
+
             return true;
 
         }else if(action instanceof CribPlayAction3){
             Log.i("Make Move Action: ", "CribPLayAction3");
+
+            state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(2));
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(2,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
+
+            Log.i("playDeck", state.playDeck.toString());
+            Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
+
+
             return true;
         }else if(action instanceof CribPlayAction4){
             Log.i("Make Move Action: ", "CribPLayAction4");
+
+            state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(3));
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(3,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
+
+            Log.i("playDeck", state.playDeck.toString());
+            Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
+
+
             return true;
         }else if(action instanceof CribPlayAction5){
             Log.i("Make Move Action: ", "CribPLayAction5");
+
+            state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(4));
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(4,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
+
+            Log.i("playDeck", state.playDeck.toString());
+            Log.i("each player cards play",state.getWhoseTurn()+ state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
+
+
+
             return true;
         }else if(action instanceof CribPlayAction6){
             Log.i("Make Move Action: ", "CribPLayAction6");
+
+            state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(5));
+            state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(5,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
+
+            Log.i("playDeck", state.playDeck.toString());
+            Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
+
+
+
             return true;
         }
 

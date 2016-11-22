@@ -38,28 +38,28 @@ public class CribState extends GameState {
     public Deck mainDeck;// = new Deck();//holds 52 cards
 
     //public Deck player0Hand;// = new Deck();//is player 0's hand
-    public Deck player0ToPlay;// = new Deck();//tracks the cards that player 0 puts into play
+   // public Deck player0ToPlay;// = new Deck();//tracks the cards that player 0 puts into play
     //public Deck player1Hand;// = new Deck();//is player 1's hand
-    public Deck player1ToPlay;// = new Deck();//tracks the cards that player 1 puts into play
+    //public Deck player1ToPlay;// = new Deck();//tracks the cards that player 1 puts into play
 
     public Deck cribDeck;// = new Deck();//contains the cards that players have put in crib
     public Deck playDeck;// = new Deck();//contains the cards that players have player
     public Deck cutDeck;// = new Deck();//contains the card that was cut from deck
     public Deck handsOfBothPlayers[] = new Deck[2];
+    public Deck eachPlayerCardsPlayed[] = new Deck[2];
 
 
     public CribState(){
         mainDeck =new Deck();
-        //player0Hand = new Deck();
-        player0ToPlay = new Deck();
-        //player1Hand = new Deck();
-        player1ToPlay = new Deck();
+
         cribDeck = new Deck();
         playDeck = new Deck();
         cutDeck = new Deck();
         handsOfBothPlayers = new Deck[2];
         handsOfBothPlayers[0]=new Deck();
         handsOfBothPlayers[1]=new Deck();
+        eachPlayerCardsPlayed[0]= new Deck();
+        eachPlayerCardsPlayed[1]= new Deck();
 
         score0 = 0;
         score1 = 0;
@@ -109,15 +109,14 @@ public class CribState extends GameState {
         this.winner = origState.isScore121();
         this.go = origState.isGo(origState.getWhoseTurn());
         this.mainDeck = origState.mainDeck;
-        //this.player0Hand = origState.getHand(0);
-        //this.player1Hand = origState.getHand(1);
         this.cribDeck = origState.cribDeck;
         this.playDeck = origState.playDeck;
         this.cutDeck = origState.cutDeck;
-        this.player0ToPlay = origState.player0ToPlay;
-        this.player1ToPlay = origState.player1ToPlay;
         this.handsOfBothPlayers[0]= origState.handsOfBothPlayers[0];
         this.handsOfBothPlayers[1]= origState.handsOfBothPlayers[1];
+        this.eachPlayerCardsPlayed[0]=origState.eachPlayerCardsPlayed[0];
+        this.eachPlayerCardsPlayed[1]=origState.eachPlayerCardsPlayed[1];
+
 
     }//End of overloaded contructor
 
@@ -250,12 +249,12 @@ public class CribState extends GameState {
                 if(handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size())
                 {
                     //dealer gets to move
-                    return 0;
+                    return 1;
                 }
                 else
                 {
                     //non dealer gets to move
-                    return 1;
+                    return 0;
                 }
             }
 
@@ -274,12 +273,12 @@ public class CribState extends GameState {
                 if(handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size())
                 {
                     //dealer gets to move
-                    return 1;
+                    return 0;
                 }
                 else
                 {
                     //non dealer gets to move
-                    return 0;
+                    return 1;
                 }
             }
             if(dealer == 1)
@@ -287,12 +286,12 @@ public class CribState extends GameState {
                 if(handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size())
                 {
                     //dealer gets to move
-                    return 0;
+                    return 1;
                 }
                 else
                 {
                     //non dealer gets to move
-                    return 1;
+                    return 0;
                 }
             }
             return -1;
@@ -373,6 +372,7 @@ public class CribState extends GameState {
         if(handsOfBothPlayers[0].size() == 0 && handsOfBothPlayers[1].size() == 0 && cutDeck.size() == 0)
         {
             //we are in the cut phase of the round
+            Log.i("this is the first stage", "setStage: 0");
             stage = stageCut;
         }
         else if(handsOfBothPlayers[0].size() < 6 && handsOfBothPlayers[1].size() < 6 && cutDeck.size()!=0)
@@ -390,6 +390,8 @@ public class CribState extends GameState {
         {
             //each player has played two cards to the crib
             //we are at the start of the play phase
+            mainDeck.moveTopCardTo(cutDeck);
+            Log.i("cutDeck has a card now", cutDeck.toString());
             stage = stagePlay;
         }
         else if(playDeck.size() == 8)
@@ -403,6 +405,7 @@ public class CribState extends GameState {
             //all rounds have been gone through
             //it is now time to start back at the cut for the round
             stage = 0;
+            Log.i("this is the stage turn", "around point");
             delt = false;//delt is reset becuase we can deal again
             can0Crib = true;
             can1Crib = true;
@@ -462,8 +465,8 @@ public class CribState extends GameState {
         handsOfBothPlayers[0].deleteDeck();//remove all the cards from the players hands
         handsOfBothPlayers[1].deleteDeck();//remove all the cards from the players hands
         cribDeck.deleteDeck();
-        player0ToPlay.deleteDeck();
-        player1ToPlay.deleteDeck();
+        eachPlayerCardsPlayed[0].deleteDeck();
+        eachPlayerCardsPlayed[1].deleteDeck();
         cutDeck.deleteDeck();
 
         Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand postDel: "+handsOfBothPlayers[1].size());
@@ -478,6 +481,7 @@ public class CribState extends GameState {
         setStage();
         Log.i("this is in the deal", "size post setstage: "+mainDeck.size());
         delt = true;
+
 
     }
 
