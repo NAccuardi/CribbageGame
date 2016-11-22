@@ -82,6 +82,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     //SCORE textViews
     TextView humanScore;
     TextView oppScore;
+    TextView countTo31;
     //GO BUTTON
     Button goButton;
     //mainDeck
@@ -265,8 +266,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
 
 
-
-
+            //for countTo31 TEXTVIEW
 
 
 
@@ -407,6 +407,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         this.humanScore = (TextView)activity.findViewById(R.id.humanScore);
         this.oppScore = (TextView)activity.findViewById(R.id.oppScore);
+        this.countTo31 = (TextView)activity.findViewById(R.id.countTo31);
 
     }
 
