@@ -128,6 +128,7 @@ public class AnimationSurface extends SurfaceView implements OnTouchListener {
 		animationThread.flash(color, millis);
 	}
 
+
 	/**
 	 * Thread subclass to control the game loop
 	 * 
