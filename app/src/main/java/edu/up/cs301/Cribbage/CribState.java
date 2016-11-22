@@ -187,6 +187,11 @@ public class CribState extends GameState {
             return cribDeck;
     }
 
+    public Deck getPlayDeck()
+    {
+        return playDeck;
+    }
+
     public boolean canCrib(int playeridx)
     {
         if(playeridx == 0)
