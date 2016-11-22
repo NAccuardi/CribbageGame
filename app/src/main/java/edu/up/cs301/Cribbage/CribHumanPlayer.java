@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -256,6 +257,19 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         oppScore.setText(allPlayerNames[1]+": "+humanState.getScore(1));
 
 
+        //to bold if dealer
+        if(humanState.getDealer() ==  0)
+        {
+            humanScore.setTypeface(null, Typeface.BOLD);
+            humanScore.setText(" 'Dealer'- "+ allPlayerNames[0]+": "+humanState.getScore(0));
+        }
+        else if(humanState.getDealer() == 1)
+        {
+            oppScore.setTypeface(null, Typeface.BOLD);
+            oppScore.setText(" 'Dealer'- "+allPlayerNames[1]+": "+humanState.getScore(1));
+        }
+
+
     }
 
     public void setAsGui(GameMainActivity activity) {
@@ -279,9 +293,6 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         // any state-related processing is done
         if (humanState != null) {
             receiveInfo(humanState);
-
-
-
 
         }
 
