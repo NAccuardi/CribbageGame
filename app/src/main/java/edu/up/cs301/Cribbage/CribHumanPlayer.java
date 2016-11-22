@@ -82,6 +82,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     //SCORE textViews
     TextView humanScore;
     TextView oppScore;
+    TextView countTo31;
     //GO BUTTON
     Button goButton;
     //mainDeck
@@ -96,6 +97,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
     // the background color
     private int backgroundColor;
+
+    int count31 =0;
 
 
 
@@ -284,9 +287,10 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                 }
             }
 
-
-
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            for(int i = 0; i< humanState.playDeck.size(); i++){
+                count31 = count31 + humanState.getPlayDeck().lookAtCard(i).getRank().value(1);
+            }
 
 
 
@@ -331,6 +335,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             oppScore.setText(" 'Dealer'- "+allPlayerNames[1]+": "+humanState.getScore(1));
         }
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        countTo31.setText("Count: "+count31);
 
     }
 
@@ -435,6 +441,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         this.humanScore = (TextView)activity.findViewById(R.id.humanScore);
         this.oppScore = (TextView)activity.findViewById(R.id.oppScore);
+        this.countTo31 = (TextView)activity.findViewById(R.id.countTo31);
 
     }
 
