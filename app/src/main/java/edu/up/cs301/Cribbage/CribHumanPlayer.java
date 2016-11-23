@@ -194,10 +194,58 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         }
 
-        if(humanState.handsOfBothPlayers[0].size()!=6){
-            int remainder = 6-humanState.handsOfBothPlayers[0].size();
-
+        if (humanState.cribDeck.size()!=4){
+            int remainder = 4 - humanState.cribDeck.size();
             switch (remainder){
+                case 4:
+                    humanCribImages[0].setImageResource(R.drawable.card_blank);
+
+                case 3:
+                    humanCribImages[1].setImageResource(R.drawable.card_blank);
+                    //break;
+                case 2:
+                    humanCribImages[2].setImageResource(R.drawable.card_blank);
+                    //break;
+                case 1:
+                    humanCribImages[3].setImageResource(R.drawable.card_blank);
+                    //break;
+                default:
+                    break;
+
+
+            }
+
+            if (humanState.eachPlayerCardsPlayed[1].size()!=4) {
+                int remaindercomp = 4 - humanState.eachPlayerCardsPlayed[1].size();
+                switch (remaindercomp) {
+                    case 4:
+                        oppPlayImages[0].setImageResource(R.drawable.card_blank);
+
+                    case 3:
+                        oppPlayImages[1].setImageResource(R.drawable.card_blank);
+                        //break;
+                    case 2:
+                        oppPlayImages[2].setImageResource(R.drawable.card_blank);
+                        //break;
+                    case 1:
+                        oppPlayImages[3].setImageResource(R.drawable.card_blank);
+                        //break;
+                    default:
+                        break;
+
+
+                }
+            }
+        }
+
+        if(humanState.cutDeck.size()!=1){
+            cutDeck.setImageResource(R.drawable.card_blank);
+        }
+
+        if(humanState.handsOfBothPlayers[0].size()!=6){
+            int remainderHuman = 6-humanState.handsOfBothPlayers[0].size();
+
+            switch (remainderHuman){
 
                 case 1:
                     humanHandImages[5].setImageResource(R.drawable.card_blank);
@@ -473,6 +521,9 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
     //area of
     public void tick(Canvas canvas) {
+        if(humanState==null){
+            return;
+        }
 
         Paint paint = new Paint();
         int x = 60;

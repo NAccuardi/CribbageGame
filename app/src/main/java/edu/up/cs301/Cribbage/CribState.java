@@ -520,14 +520,15 @@ public class CribState extends GameState {
 
         int score = 0;
         int testValue;
-        for(int  i = 0; i < cards.length; i++)
-        {
-            testValue = cards[i].getRank().value(1);
-            for(int	j = i+1; j < cards.length; j++)
-            {
-                if(testValue == cards[j].getRank().value(1))
-                {
-                    score = score + 2;//adds two points for the pair
+        for(int  i = 0; i < cards.length; i++) {
+            if (cards[i] != null) {
+                testValue = cards[i].getRank().value(1);
+                for (int j = i + 1; j < cards.length; j++) {
+                    if(cards[j] != null) {
+                        if (testValue == cards[j].getRank().value(1)) {
+                            score = score + 2;//adds two points for the pair
+                        }
+                    }
                 }
             }
         }
