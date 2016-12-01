@@ -84,6 +84,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     TextView humanScore;
     TextView oppScore;
     TextView countTo31;
+    TextView pointMessage;
     //GO BUTTON
     Button goButton;
     //mainDeck
@@ -330,10 +331,16 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                     playButtons[i].setEnabled(false);
                 }
             }
+
             count31 = humanState.getCount();
             Log.i("****cutdeck info: ","" +humanState.cutDeck.toString()+humanState.cutDeck.size());
             dealButton.setEnabled(false);
-            goButton.setEnabled(true);//This will be dependent on the cards in the players hands.
+
+
+            if(humanState.isGo(playerNum)==true){
+                goButton.setEnabled(true);
+            }
+            goButton.setEnabled(false);//This will be dependent on the cards in the players hands.
         }
         else if(humanState.getStage()==4)
         {
@@ -484,6 +491,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         this.humanScore = (TextView)activity.findViewById(R.id.humanScore);
         this.oppScore = (TextView)activity.findViewById(R.id.oppScore);
         this.countTo31 = (TextView)activity.findViewById(R.id.countTo31);
+        this.pointMessage = (TextView)activity.findViewById(R.id.pointMessage);
 
     }
 

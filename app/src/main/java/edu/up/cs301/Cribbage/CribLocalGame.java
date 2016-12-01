@@ -93,6 +93,7 @@ public class CribLocalGame extends LocalGame {
             if(!state.delt) {
                 state.deal();
                 state.setStage();
+                //state.count31=0;
 
             }
             //state.deal();
@@ -100,7 +101,7 @@ public class CribLocalGame extends LocalGame {
             return true;
 
 
-        }else if( action instanceof CribGo){
+        }else if(action instanceof CribGo){
             Log.i("Make Move Action: ", "CribGo");
             return true;
 
