@@ -268,7 +268,7 @@ public class CribState extends GameState {
             return -1;
         } else if (stage == 4) {
             //score phase neither player needs to play
-            return 0;//NICK IS AMAZING AT BUG HUNTING!
+            return 0;
         }
         return 0;
     }
@@ -296,8 +296,6 @@ public class CribState extends GameState {
 
     //sets the dealer to the other player
     public void setDealer() {
-        if (getStage() == 0) {
-            //the game has already been going and it is on to another round
             //who ever is the current dealer needs to be changed to who ever is not the dealer
             if (dealer == 0) {
                 dealer = 1;
@@ -306,7 +304,6 @@ public class CribState extends GameState {
                 dealer = 0;
                 return;
             }
-        }
     }
 
 
@@ -342,7 +339,6 @@ public class CribState extends GameState {
         //stage is initialized to -1 to indicate that a new game has been started
         //and a dealer needs to be set based on a cut of the deck
         //once that has succusefuully been completed stage is never reset to -1
-        Log.i("*the cut deck has in it", cutDeck.toString());
 
         int stageCut = 0;
         int stageDeal = 1;
@@ -377,6 +373,9 @@ public class CribState extends GameState {
         } else if (playDeck.size() == 8) {
             //each player has played all four cards
             //we are now in the scoring phase
+
+            //The scoring shit is straight fucked yo
+
             //bothplayersScores[0] += score(eachPlayerCardsPlayed[0],cutDeck);
             //bothplayersScores[1] += score(eachPlayerCardsPlayed[1],cutDeck);
             //bothplayersScores[dealer] += score(cribDeck,cutDeck);
@@ -484,12 +483,6 @@ public class CribState extends GameState {
     }
 
 
-    //cuts the deck and moves the card to the cutDeck
-    public void cutForTopCardDuringPlay()
-    {
-        mainDeck.shuffle();
-        mainDeck.moveTopCardTo(cutDeck);
-    }
 
     //runs the scoring algorithm
     public int score(Deck playDeck, Deck cutDeck)
