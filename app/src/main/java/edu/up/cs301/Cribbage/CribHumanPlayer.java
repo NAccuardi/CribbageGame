@@ -149,67 +149,46 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
 
         if(humanState.getStage()==2) {// stage 2 = crib stage
-
-            //This draws the cribdeck cards that have been played
-            if (humanState.cribDeck.size() < 5) {
-                for (int i = 0; i < humanState.cribDeck.size(); i++) {
-                    humanCribImages[i].setImageBitmap(humanState.getCribDeck().lookAtCard(i).getBitmap());
-                }
-            }
-            //this resets the cut deck to
-              cutDeck.setImageResource(R.drawable.card_back);
-
+            cutDeck.setImageResource(R.drawable.card_back);
         }else if(humanState.getStage()==3) {//stage3 == playstage
-
-           ////This draws the cribdeck cards that have been played
-           //if (humanState.cribDeck.size() < 5) {
-           //    for (int i = 0; i < humanState.cribDeck.size(); i++) {
-           //        humanCribImages[i].setImageBitmap(humanState.getCribDeck().lookAtCard(i).getBitmap());
-           //    }
-           //}
+            cutDeck.setImageBitmap(humanState.cutDeck.lookAtCard(0).getBitmap());
+        }
 
 
-            //This turns off the cards in the crib so they are not displayed anymore.
+
+
+        if(humanState.getStage()==3){
             if (humanState.cribDeck.size() < 5) {
                 for (int i = 0; i < humanState.cribDeck.size(); i++) {
                     humanCribImages[i].setImageResource(R.drawable.card_blank);
                 }
             }
-
-            cutDeck.setImageBitmap(humanState.cutDeck.lookAtCard(0).getBitmap());
-
-            if (humanState.eachPlayerCardsPlayed[0].size() < 5
-                    && humanState.eachPlayerCardsPlayed[1].size() < 5) {
-
-                for (int j = 0; j < humanState.eachPlayerCardsPlayed[0].size(); j++) {
-                    humanCribImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[0].lookAtCard(j).getBitmap());
-                }
-                for (int j = 0; j < humanState.eachPlayerCardsPlayed[1].size(); j++) {
-                    oppPlayImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[1].lookAtCard(j).getBitmap());
-                }
-
-            }
-        }else if(humanState.getStage()==4){//stage4 == scoring stage
-            for (int j = 0; j < humanState.eachPlayerCardsPlayed[0].size(); j++) {
-                humanCribImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[0].lookAtCard(j).getBitmap());
-            }
-            for (int j = 0; j < humanState.eachPlayerCardsPlayed[1].size(); j++) {
-                oppPlayImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[1].lookAtCard(j).getBitmap());
-            }
-
-
         }
 
-
-
+        //This displays the back of the
+        if(humanState.eachPlayerCardsPlayed[0].size()==0 &&humanState.eachPlayerCardsPlayed[1].size()==0){
+            for (int i = 0; i < humanState.cribDeck.size(); i++) {
+                //humanCribImages[i].setImageBitmap(humanState.getCribDeck().lookAtCard(i).getBitmap());
+                humanCribImages[i].setImageResource(R.drawable.card_back);
+            }
+        }
 
 
         //This dispalys the playerhand
         for(int i =0; i<humanState.handsOfBothPlayers[0].size();i++){
             humanHandImages[i].setImageBitmap(humanState.getHand(playerNum).lookAtCard(i).getBitmap());
-
-
         }
+
+        for (int j = 0; j < humanState.eachPlayerCardsPlayed[0].size(); j++) {
+            humanCribImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[0].lookAtCard(j).getBitmap());
+        }
+        for (int j = 0; j < humanState.eachPlayerCardsPlayed[1].size(); j++) {
+            oppPlayImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[1].lookAtCard(j).getBitmap());
+        }
+
+
+        //*********************this portion deals with turn the slots blue if the cards are empty.
+
 
         if (humanState.cribDeck.size()!=4){
             int remainder = 4 - humanState.cribDeck.size();
@@ -256,8 +235,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         }
 
 
-
-        if(humanState.handsOfBothPlayers[0].size()!=6){
+        //This makes the card slots in the human player turn blue as the cards are played
+        if(humanState.handsOfBothPlayers[playerNum].size()!=6){
             int remainderHuman = 6-humanState.handsOfBothPlayers[0].size();
 
             switch (remainderHuman){

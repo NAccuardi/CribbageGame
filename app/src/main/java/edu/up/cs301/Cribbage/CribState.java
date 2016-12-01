@@ -477,6 +477,7 @@ public class CribState extends GameState {
         Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDeal: "+handsOfBothPlayers[1].toString());
         setStage();
         Log.i("this is in the deal", "size post setstage: "+mainDeck.size());
+        count31=0;
         delt = true;
 
 
