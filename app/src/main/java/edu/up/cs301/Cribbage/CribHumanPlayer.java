@@ -39,6 +39,7 @@ import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 import static edu.up.cs301.game.R.id.cribButtonPos1;
+import static edu.up.cs301.game.R.id.localGameTab;
 
 /**
  * Created by Nick Accuardi on 10/20/2016.
@@ -143,13 +144,29 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         // at the next animation-tick, which should occur within 1/20 of a second
         this.humanState = (CribState) info;
 
-        if(humanState.getStage()==2) {
+
+        //*************This is where we draw the cards and card backs. **************************
+
+
+        if(humanState.getStage()==2) {// stage 2 = crib stage
+
+            //This draws the cribdeck cards that have been played
             if (humanState.cribDeck.size() < 5) {
                 for (int i = 0; i < humanState.cribDeck.size(); i++) {
                     humanCribImages[i].setImageBitmap(humanState.getCribDeck().lookAtCard(i).getBitmap());
                 }
             }
-        }else if(humanState.getStage()==3) {
+            //this resets the cut deck to
+              cutDeck.setImageResource(R.drawable.card_back);
+
+        }else if(humanState.getStage()==3) {//stage3 == playstage
+
+           ////This draws the cribdeck cards that have been played
+           //if (humanState.cribDeck.size() < 5) {
+           //    for (int i = 0; i < humanState.cribDeck.size(); i++) {
+           //        humanCribImages[i].setImageBitmap(humanState.getCribDeck().lookAtCard(i).getBitmap());
+           //    }
+           //}
 
 
             //This turns off the cards in the crib so they are not displayed anymore.
@@ -172,7 +189,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                 }
 
             }
-        }else if(humanState.getStage()==4){
+        }else if(humanState.getStage()==4){//stage4 == scoring stage
             for (int j = 0; j < humanState.eachPlayerCardsPlayed[0].size(); j++) {
                 humanCribImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[0].lookAtCard(j).getBitmap());
             }
@@ -238,9 +255,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             }
         }
 
-        if(humanState.cutDeck.size()!=1){
-            cutDeck.setImageResource(R.drawable.card_blank);
-        }
+
 
         if(humanState.handsOfBothPlayers[0].size()!=6){
             int remainderHuman = 6-humanState.handsOfBothPlayers[0].size();
@@ -273,6 +288,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         }
 
+        //******************************end of images/ begining of buttons************************************************
 
 
 
@@ -335,25 +351,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                     playButtons[i].setEnabled(false);
                 }
             }
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            //for(int i = 0; i< humanState.playDeck.size(); i++){
-            //
-            //    count31 =humanState.getPlayDeck().lookAtCard(i).getRank().value(1);
-            //}
-           // Log.i("Pre all ************ 31", " " + count31);
-           // if(humanState.playDeck.size()!=0) {
-           //     Log.i("Pre add count 31",""+count31);
-           //     tempCountHolder = humanState.getPlayDeck().lookAtCard(humanState.playDeck.size() - 1).getRank().cribValue(1);
-           //     Log.i("Value of card",""+ humanState.getPlayDeck().lookAtCard(humanState.playDeck.size()-1).shortName()+" "
-           //             +humanState.getPlayDeck().lookAtCard(humanState.playDeck.size() - 1).getRank().cribValue(1));
-//
-           // }
-           // count31 +=tempCountHolder;
-           // Log.i("Post add count 31", " " + count31);
-
-
             count31 = humanState.getCount();
+            Log.i("****cutdeck info: ","" +humanState.cutDeck.toString()+humanState.cutDeck.size());
             dealButton.setEnabled(false);
             goButton.setEnabled(true);//This will be dependent on the cards in the players hands.
         }
@@ -366,6 +365,12 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             dealButton.setEnabled(false);
             goButton.setEnabled(false);
             Log.i("we are in stage 4", "score");
+
+            if(humanState.cutDeck.size()==1 && humanState.eachPlayerCardsPlayed[0].size()==4
+                    && humanState.eachPlayerCardsPlayed[1].size()==4){
+                dealButton.setEnabled(true);
+            }
+
         }
         else{
             Log.i("we are in a bad stage", "The lost stage");

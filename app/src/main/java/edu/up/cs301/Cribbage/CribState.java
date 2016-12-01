@@ -342,7 +342,7 @@ public class CribState extends GameState {
         //stage is initialized to -1 to indicate that a new game has been started
         //and a dealer needs to be set based on a cut of the deck
         //once that has succusefuully been completed stage is never reset to -1
-
+        Log.i("*the cut deck has in it", cutDeck.toString());
 
         int stageCut = 0;
         int stageDeal = 1;
@@ -365,22 +365,26 @@ public class CribState extends GameState {
             stage = stageCrib;
         } else if (cribDeck.size() == 4 && playDeck.size() < 8)//player1Hand.size() <= 4 &&
         {
+
+            if(cutDeck.size()==0){
+                mainDeck.moveTopCardTo(cutDeck);
+            }
             //each player has played two cards to the crib
             //we are at the start of the play phase
-            mainDeck.moveTopCardTo(cutDeck);
+
             Log.i("cutDeck has a card now", cutDeck.toString());
             stage = stagePlay;
         } else if (playDeck.size() == 8) {
             //each player has played all four cards
             //we are now in the scoring phase
-            bothplayersScores[0] += score(eachPlayerCardsPlayed[0],cutDeck);
-            bothplayersScores[1] += score(eachPlayerCardsPlayed[1],cutDeck);
-            bothplayersScores[dealer] += score(cribDeck,cutDeck);
+            //bothplayersScores[0] += score(eachPlayerCardsPlayed[0],cutDeck);
+            //bothplayersScores[1] += score(eachPlayerCardsPlayed[1],cutDeck);
+            //bothplayersScores[dealer] += score(cribDeck,cutDeck);
             stage = stageScoreing;
             //delt = false;//delt is reset becuase we can deal again
             //can0Crib = true;
             //can1Crib = true;
-            stage=1;
+            //stage=stageDeal;
         } else {
             //all rounds have been gone through
             //it is now time to start back at the cut for the round
@@ -460,6 +464,7 @@ public class CribState extends GameState {
         eachPlayerCardsPlayed[0].deleteDeck();
         eachPlayerCardsPlayed[1].deleteDeck();
         cutDeck.deleteDeck();
+        playDeck.deleteDeck();
 
         Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand postDel: "+handsOfBothPlayers[1].size());
         Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDel: "+handsOfBothPlayers[1].toString());
