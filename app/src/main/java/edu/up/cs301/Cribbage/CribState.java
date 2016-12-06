@@ -50,6 +50,9 @@ public class CribState extends GameState {
     public Deck handsOfBothPlayers[] = new Deck[2];
     public Deck eachPlayerCardsPlayed[] = new Deck[2];
     public int bothplayersScores[] = new int[2];
+   // public boolean canTheCardBePLayed[][] = new boolean[2][4];
+
+
 
 
     public CribState() {
@@ -67,6 +70,14 @@ public class CribState extends GameState {
         bothplayersScores[1]=0;
         count31 = 0;
         tempCount31 = 0;
+
+        //for(int i =0;i <2; i++){
+        //    for(int j =0; j <4;j++){
+        //        canTheCardBePLayed[i][j]=false;
+        //    }
+        //}
+
+
 
         //score0 = 0;
         //score1 = 0;
@@ -130,7 +141,13 @@ public class CribState extends GameState {
         this.bothplayersScores[0]= origState.bothplayersScores[0];
         this.bothplayersScores[1]=origState.bothplayersScores[1];
 
+        //for(int i =0;i <2; i++){
+        //    for(int j =0; j <4;j++){
+        //        this.canTheCardBePLayed[i][j]=origState.canTheCardBePLayed[i][j];
+        //    }
+        //}
 
+       // canCardbePlayed(whoseTurn);
     }//End of overloaded contructor
 
     //********************SETTERS AND GETTERS************************************************
@@ -374,12 +391,12 @@ public class CribState extends GameState {
             //each player has played all four cards
             //we are now in the scoring phase
 
-            //The scoring shit is straight fucked yo
 
-            //bothplayersScores[0] += score(eachPlayerCardsPlayed[0],cutDeck);
-            //bothplayersScores[1] += score(eachPlayerCardsPlayed[1],cutDeck);
-            //bothplayersScores[dealer] += score(cribDeck,cutDeck);
-            stage = stageScoreing;
+
+                stage = stageScoreing;
+
+
+
             //delt = false;//delt is reset becuase we can deal again
             //can0Crib = true;
             //can1Crib = true;
@@ -402,7 +419,7 @@ public class CribState extends GameState {
     }
 
 
-    //******************************8END SETTERS AND GETTERS****************************************
+    //******************************END SETTERS AND GETTERS****************************************
 
 
     //returns true if a score is over 121
@@ -430,8 +447,34 @@ public class CribState extends GameState {
             bothplayersScores[1-player]++;
             return true;
         }
+        return true;
+    }
+
+   // public void canCardbePlayed(int player){//This set the cards to either true or false depending on if they can be played.
+   //     for(int i =0; i < 4;i++){
+   //         if ((count31 + handsOfBothPlayers[player].lookAtCard(i).getRank().cribValue(1)) > 31) {
+//
+   //             canTheCardBePLayed[player][i]=false;
+   //         }
+   //         canTheCardBePLayed[player][i]=true;
+   //     }
+   // }
+
+//If this is true you will need to press the 'GO' Button
+    public boolean mustGo(int player){
+       // canCardbePlayed(player);
+        if(handsOfBothPlayers[player].size()==0){return true;}//If your hand is empty you must go.
+        for(int i =0; i < handsOfBothPlayers[player].size();i++){
+            if ((count31 + handsOfBothPlayers[player].lookAtCard(i).getRank().cribValue(1)) > 31) {
+
+                return true;
+            }
+
+        }
         return false;
     }
+
+
 
     //places six cards in each players hands
 
@@ -484,143 +527,151 @@ public class CribState extends GameState {
 
 
 
-    //runs the scoring algorithm
-    public int score(Deck playDeck, Deck cutDeck)
-    {
-        int total = 0;
-        //creates a copy that combines the player's deck and the cut Card
-        Deck tempDeck = new Deck(playDeck);
-        cutDeck.moveTopCardTo(tempDeck);
-        //since tempDeck is a copy remove card can be used and the player's hand
-        //and the cut deck hand are safe
-        Card c0 = tempDeck.removeTopCard();
-        Card c1 = tempDeck.removeTopCard();
-        Card c2 = tempDeck.removeTopCard();
-        Card c3 = tempDeck.removeTopCard();
-        Card c4 = tempDeck.removeTopCard();
-        Card[] cards = new Card[5];
-        cards[0] = c0;
-        cards[1] = c1;
-        cards[2] = c2;
-        cards[3] = c3;
-        cards[4] = c4;
 
-        total = pairs(cards);
-        //+runs(cards)+sum15(cards)+flush(cards);
-        //other methods that still need to be implemented before they can contribute to the score
-        return total;
 
-        
-    }
-    //looks for pairs
-    //should be complete as of 17NOV
-    private int pairs(Card[] cards)
-    {
 
-        int score = 0;
-        int testValue;
-        for(int  i = 0; i < cards.length; i++) {
-            if (cards[i] != null) {
-                testValue = cards[i].getRank().value(1);
-                for (int j = i + 1; j < cards.length; j++) {
-                    if(cards[j] != null) {
-                        if (testValue == cards[j].getRank().value(1)) {
-                            score = score + 2;//adds two points for the pair
-                        }
-                    }
-                }
-            }
-        }
-        return score;
-    }
 
-    //looks for runs
-    private int runs(Card[] cards)
-    {
-        int score = 0;
-        //makes an array of ints equal to the value of the cards
-        int[] cardVal = new int[cards.length];
-        //assigns the card values to the cardVal array
-        for(int i = 0; i < cards.length; i++)
-        {
-            cardVal[i] = cards[i].getRank().value(1);
-        }
-        //Sorting algo by Plummer someone should check this
-        //sorts cardVal in ascending order
-        for(int x = 0; x<cardVal.length -1;x++)
-        {
-            for(int y = x+1; y<cardVal.length;y++)
-            {
-                if (cardVal[x] > cardVal[y])
-                {
-                    int temp = cardVal[y];
-                    cardVal[y] = cardVal[x];
-                    cardVal[x] = temp;
-                }
-            }
-        }
-        /*
-        Everything above should be correct of 17NOV
-        Above is used to create a sorted array of
-        the int values of the cards
-        */
-        int prev;
-        int next;
-        int cur;
-        for(int j = 1; j< cardVal.length; j++)
-        {
-            prev = cardVal[j-1];
-            next = cardVal[j+1];
-            cur = cardVal[j];
-            int delPrev  = cur-prev;
-            int delNext = next - cur;
-            //solves basic runs like 2,3,4
-            if(delPrev == 1 && delNext == 1)
-            {
-                //a run exists!
-                score = score + 3;
-            }
-            //solves double run when prev is equal to the cur card
-            if(delPrev == 0 && delNext == 1)
-            {
-                if(j+2 <= cardVal.length)
-                {
-                    int nextNext = cardVal[j+2];
-                    int delNextNext = nextNext - next;
-                    if(delNextNext == 1)
-                    {
-                        score = score + 6;
-                    }
-                }
-            }
-            //solves double run when next is equal to the cur card
-            if(delPrev == 1 && delNext == 0)
-            {
-                if(j+2 <= cardVal.length)
-                {
-                    int nextNext = cardVal[j+2];
-                    int delNextNext = nextNext - next;
-                    if(delNextNext == 1)
-                    {
-                        score = score + 6;
-                    }
-                }
-            }
-        }
-        return score;
-    }
-    //looks for sums of 15
-    private int sum15(Card[] cards)
-    {
-        //five nested for loop of doom goes here
-        int score = 0;
-        return score;
-    }
-    //looks for flushes
-    private int flush(Card[] cards)
-    {
-        //will need an array of char using the shortName method from Card object
-        int score = 0;
-        return score;
-    }
+
+////The old scoring algo is in here.
+//    //runs the scoring algorithm
+//    public int score(Deck playDeck, Deck cutDeck)
+//    {
+//        int total = 0;
+//        //creates a copy that combines the player's deck and the cut Card
+//        Deck tempDeck = new Deck(playDeck);
+    //      Deck tempCut = new Deck(cutDeck);
+//        //since tempDeck is a copy remove card can be used and the player's hand
+//        //and the cut deck hand are safe
+//        Card c0 = tempCut.removeTopCard();
+//        Card c1 = tempDeck.removeTopCard();
+//        Card c2 = tempDeck.removeTopCard();
+//        Card c3 = tempDeck.removeTopCard();
+//        Card c4 = tempDeck.removeTopCard();
+//        Card[] cards = new Card[5];
+//        cards[0] = c0;
+//        cards[1] = c1;
+//        cards[2] = c2;
+//        cards[3] = c3;
+//        cards[4] = c4;
+//
+//        total = pairs(cards);
+//        //+runs(cards)+sum15(cards)+flush(cards);
+//        //other methods that still need to be implemented before they can contribute to the score
+//        return total;
+//
+//
+//    }
+//    //looks for pairs
+//    //should be complete as of 17NOV
+//    private int pairs(Card[] cards)
+//    {
+//
+//        int score = 0;
+//        int testValue;
+//        for(int  i = 0; i < cards.length; i++) {
+//            if (cards[i] != null) {
+//                testValue = cards[i].getRank().value(1);
+//                for (int j = i + 1; j < cards.length; j++) {
+//                    if(cards[j] != null) {
+//                        if (testValue == cards[j].getRank().value(1)) {
+//                            score = score + 2;//adds two points for the pair
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        return score;
+//    }
+//
+//    //looks for runs
+//    private int runs(Card[] cards)
+//    {
+//        int score = 0;
+//        //makes an array of ints equal to the value of the cards
+//        int[] cardVal = new int[cards.length];
+//        //assigns the card values to the cardVal array
+//        for(int i = 0; i < cards.length; i++)
+//        {
+//            cardVal[i] = cards[i].getRank().value(1);
+//        }
+//        //Sorting algo by Plummer someone should check this
+//        //sorts cardVal in ascending order
+//        for(int x = 0; x<cardVal.length -1;x++)
+//        {
+//            for(int y = x+1; y<cardVal.length;y++)
+//            {
+//                if (cardVal[x] > cardVal[y])
+//                {
+//                    int temp = cardVal[y];
+//                    cardVal[y] = cardVal[x];
+//                    cardVal[x] = temp;
+//                }
+//            }
+//        }
+//        /*
+//        Everything above should be correct of 17NOV
+//        Above is used to create a sorted array of
+//        the int values of the cards
+//        */
+//        int prev;
+//        int next;
+//        int cur;
+//        for(int j = 1; j< cardVal.length; j++)
+//        {
+//            prev = cardVal[j-1];
+//            next = cardVal[j+1];
+//            cur = cardVal[j];
+//            int delPrev  = cur-prev;
+//            int delNext = next - cur;
+//            //solves basic runs like 2,3,4
+//            if(delPrev == 1 && delNext == 1)
+//            {
+//                //a run exists!
+//                score = score + 3;
+//            }
+//            //solves double run when prev is equal to the cur card
+//            if(delPrev == 0 && delNext == 1)
+//            {
+//                if(j+2 <= cardVal.length)
+//                {
+//                    int nextNext = cardVal[j+2];
+//                    int delNextNext = nextNext - next;
+//                    if(delNextNext == 1)
+//                    {
+//                        score = score + 6;
+//                    }
+//                }
+//            }
+//            //solves double run when next is equal to the cur card
+//            if(delPrev == 1 && delNext == 0)
+//            {
+//                if(j+2 <= cardVal.length)
+//                {
+//                    int nextNext = cardVal[j+2];
+//                    int delNextNext = nextNext - next;
+//                    if(delNextNext == 1)
+//                    {
+//                        score = score + 6;
+//                    }
+//                }
+//            }
+//        }
+//        return score;
+//    }
+//    //looks for sums of 15
+//    private int sum15(Card[] cards)
+//    {
+//        //five nested for loop of doom goes here
+//        int score = 0;
+//        return score;
+//    }
+//    //looks for flushes
+//    private int flush(Card[] cards)
+//    {
+//        //will need an array of char using the shortName method from Card object
+//        int score = 0;
+//        return score;
+//    }
+//
+//
 }//End of CribState Class

@@ -192,6 +192,7 @@ public class CribLocalGame extends LocalGame {
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
+
             state.setCount();
             state.setStage();
             return true;
