@@ -556,9 +556,9 @@ public class CribState extends GameState {
             value[i] = cards[i].getRank().cribValue(1);
         }
         int sum = 0;
-        for(int i = size; i > 0; i--)
+        for(int j = size; j > 0; j--)
         {
-            sum = sum + value[i];
+            sum = sum + value[j];
             if(sum == 15)
             {
                 return 2;
