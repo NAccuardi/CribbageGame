@@ -10,6 +10,7 @@ import edu.up.cs301.card.Rank;
 import edu.up.cs301.card.Suit;
 import edu.up.cs301.game.infoMsg.GameState;
 
+import static edu.up.cs301.game.R.id.configTableLayout;
 import static edu.up.cs301.game.R.id.mainDeck;
 
 /**
@@ -536,9 +537,186 @@ public class CribState extends GameState {
         {
             cards[i] = tempPlayedCards.removeTopCard();
         }
-        int total = pairs(cards);
+        int total = playPairs(cards) + play15(cards)+ playRuns(cards);
         return total;
     }
+    //scoring 15 during play is dependent on the current card added to the previous cards
+    //and whether it makes a sum of 15 or not
+    public int play15(Card[] cards)
+    {
+        if(cards.length<2)
+        {
+            //Not enough cards have been played yet
+            return 0;
+        }
+        int size = cards.length;
+        int[] value = new int[size];
+        for(int i = 0; i < size; i++)
+        {
+            value[i] = cards[i].getRank().cribValue(1);
+        }
+        int sum = 0;
+        for(int i = size; i > 0; i--)
+        {
+            sum = sum + value[i];
+            if(sum == 15)
+            {
+                return 2;
+            }
+        }
+        return 0;
+    }
+    //looks for pairs during the play phase
+    public int playPairs(Card[] cards)
+    {
+        int score = 0;
+        int size = cards.length;
+        if(size<2)
+        {
+            //Not enough cards have been played yet
+            return 0;
+        }
+        if(cards[size-1].getRank().value(1) == cards[size-2].getRank().value(1))
+        {
+            //a pair has been played
+            score = 2;
+            if(size>2)//checking for triples
+            {
+                if(cards[size-1].getRank().value(1) == cards[size-3].getRank().value(1))
+                {
+                    score = 6;
+                    if(size>3)//checking for quadrouples
+                    {
+                        if(cards[size-1].getRank().value(1) == cards[size-4].getRank().value(1))
+                        {
+                            score = 12;
+                        }
+                    }
+                }
+
+            }
+
+        }
+        return score;
+    }
+    //looks for runs during the play
+    public int playRuns(Card[] cards)
+    {
+        int score = 0;
+        int size = cards.length;
+        if(size < 3)
+        {
+            //not enough cards have been played
+            return 0;
+        }
+        if(size >= 5)//the longest run possible is 5
+        {
+            int[] rank = new int[5];
+            for(int j = size; j> size - 5; j--)
+            {
+                //get the top 5 cards
+                rank[j] = cards[j].getRank().value(1);
+            }
+            //sort first
+            for(int x = 0; x<rank.length -1;x++)
+            {
+                for(int y = x+1; y<rank.length;y++)
+                {
+                    if (rank[x] > rank[y])
+                    {
+                        int temp = rank[y];
+                        rank[y] = rank[x];
+                        rank[x] = temp;
+                    }
+                }
+            }
+            for(int a = 1; a<rank.length; a++)
+            {
+                int mid = rank[a];
+                int prev = rank[a-1];
+                int next = rank[a+1];
+                int delPrev = mid-prev;
+                int delNext = next - mid;
+                if(delNext ==1 && delPrev ==1)
+                {
+                    score = score + 3;
+                    if(a+2 > rank.length)
+                    {
+                        continue;
+                    }
+                    int nextNext = rank[a+2];
+                    int delNN = nextNext - next;
+                    if(delNN == 1 )
+                    {
+                        //a four score!
+                        //3 points have already been awarded for so just need to add one more
+                        score = score + 1;
+                        if((a+3) > rank.length)
+                        {
+                            continue;
+                        }
+                        int nNN = rank[a+3];
+                        int delNNN = nNN - nextNext;
+                        if(delNNN == 1)
+                        {
+                            //a five score
+                            //4 points have already been awarded so add one more
+                            score = score +1;
+                        }
+                    }
+                }
+            }
+        }
+        else//there are less than 5 cards in the play but at least 3
+        {
+            int[] rank = new int[size];
+            for(int i = 0; i < size; i++)
+            {
+                rank[i] = cards[i].getRank().value(1);
+            }
+            //sort first
+            for(int x = 0; x<rank.length -1;x++)
+            {
+                for(int y = x+1; y<rank.length;y++)
+                {
+                    if (rank[x] > rank[y])
+                    {
+                        int temp = rank[y];
+                        rank[y] = rank[x];
+                        rank[x] = temp;
+                    }
+                }
+            }
+            for(int a = 1; a<rank.length; a++)
+            {
+                int mid = rank[a];
+                int prev = rank[a-1];
+                int next = rank[a+1];
+                int delPrev = mid-prev;
+                int delNext = next - mid;
+                if(delNext ==1 && delPrev ==1)
+                {
+                    score = score + 3;
+                    if(a+2 > rank.length)
+                    {
+                        continue;
+                    }
+                    int nextNext = rank[a+2];
+                    int delNN = nextNext - next;
+                    if(delNN == 1 )
+                    {
+                        //a four score!
+                        //3 points have already been awarded for so just need to add one more
+                        score = score + 1;
+                    }
+                }
+            }
+
+        }
+        return score;
+    }
+
+
     //runs the scoring for player hands algorithm
     public int score(Deck playDeck, Deck cutDeck)
     {
@@ -563,12 +741,9 @@ public class CribState extends GameState {
         //some scoring is only done using the players hand
         Card[] playersCards = new Card[4];
 
-        total = pairs(cards) + knobs(tempDeck,tempCut) + flush(playersCards);
-        //+runs(cards)+sum15(cards)+flush(cards);
-        //other methods that still need to be implemented before they can contribute to the score
+        total = pairs(cards) + knobs(tempDeck,tempCut)
+                + flush(playersCards) + sum15(cards) +runs(cards);
         return total;
-
-        
     }
     //looks for pairs
     //should be complete as of 17NOV
@@ -633,6 +808,14 @@ public class CribState extends GameState {
             int delPrev  = cur-prev;
             int delNext = next - cur;
             //solves basic runs like 2,3,4
+            if(delNext == -1)
+            {
+                delNext = 1;
+            }
+            if(delPrev == -1)
+            {
+                delPrev = 1;
+            }
             if(delPrev == 1 && delNext == 1)
             {
                 //a run exists!
