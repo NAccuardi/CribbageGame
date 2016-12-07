@@ -93,7 +93,7 @@ public class CribLocalGame extends LocalGame {
 
             state.setScore(0,state.nicksScoringEndofTurn(state.cutDeck,state.eachPlayerCardsPlayed[0]));
             state.setScore(1,state.nicksScoringEndofTurn(state.cutDeck,state.eachPlayerCardsPlayed[1]));
-            state.setScore(state.getWhoseTurn(),state.nicksScoringEndofTurn(state.cutDeck,state.eachPlayerCardsPlayed[state.getWhoseTurn()]));
+            state.setScore(state.getDealer(), state.nicksScoringEndofTurn(state.cutDeck,state.cribDeck));
 
             state.setDealer();
 

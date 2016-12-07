@@ -48,12 +48,12 @@
         "source": "C:\\Users\\plummer16\\Desktop\\CribbageGame\\app\\src\\main\\res\\drawable-hdpi\\card_ks.png"
     },
     {
-        "merged": "C:\\Users\\plummer16\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_3c.png",
-        "source": "C:\\Users\\plummer16\\Desktop\\CribbageGame\\app\\src\\main\\res\\drawable-hdpi\\card_3c.png"
-    },
-    {
         "merged": "C:\\Users\\plummer16\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_5s.png",
         "source": "C:\\Users\\plummer16\\Desktop\\CribbageGame\\app\\src\\main\\res\\drawable-hdpi\\card_5s.png"
+    },
+    {
+        "merged": "C:\\Users\\plummer16\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_3c.png",
+        "source": "C:\\Users\\plummer16\\Desktop\\CribbageGame\\app\\src\\main\\res\\drawable-hdpi\\card_3c.png"
     },
     {
         "merged": "C:\\Users\\plummer16\\Desktop\\CribbageGame\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_td.png",

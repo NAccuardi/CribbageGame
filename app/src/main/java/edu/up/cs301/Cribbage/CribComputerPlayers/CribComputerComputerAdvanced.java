@@ -47,6 +47,7 @@ public class CribComputerComputerAdvanced extends CribComputerPlayer {
     CribDeal cribDealAction;
     private int oppNum;
     private int[] cardsToCrib = new int[2];
+    private int[] cardsToNotCrib = new int[2];
 
     public CribComputerComputerAdvanced(String name) {
         super(name);
@@ -68,8 +69,6 @@ public class CribComputerComputerAdvanced extends CribComputerPlayer {
         {
             oppNum = 1;
         }
-        cardsToCrib[0]=0;
-        cardsToCrib[1]=1;
 
         // update our state variable
         computerPlayerState = (CribState) info;
@@ -83,24 +82,21 @@ public class CribComputerComputerAdvanced extends CribComputerPlayer {
             {
                 //I'm the dealer!
                 Deck temp  = new Deck(computerPlayerState.handsOfBothPlayers[playerNum]);
-                Card[] cards = new Card[temp.size()];
                 int testValue;
                 if(temp.size() == 6)//have not checked for pairs
                 {
                     for(int i = 0; i<temp.size(); i++)
                     {
-                        if (cards[i] != null) {
-                            testValue = cards[i].getRank().value(1);
-                            for (int j = i + 1; j < cards.length; j++) {
-                                if(cards[j] != null) {
-                                    if (testValue == cards[j].getRank().value(1)) {
+                            testValue = temp.lookAtCard(i).getRank().value(1);
+                            for (int j = i + 1; j < temp.size(); j++) {
+                                    if (testValue == temp.lookAtCard(j).getRank().value(1)) {
                                         //send crib actions coresponding to the i and j values
                                         cardsToCrib[0] = i;
                                         cardsToCrib[1] = j;
                                     }
-                                }
+
                             }
-                        }
+
                     }
                     Log.i("value of cards crib:", ""+ cardsToCrib[0]);
                     if(cardsToCrib[0] == 0)
@@ -141,25 +137,139 @@ public class CribComputerComputerAdvanced extends CribComputerPlayer {
                 }
                 if(temp.size() == 5)//have already played one card
                 {
-                    Log.i("COMP cribed random card","");
-                    cribact1 = new CribAction1(this);
-                    game.sendAction(cribact1);
+                    //Log.i("COMP cribed random card","");
+                    if(cardsToCrib[1] == 1)
+                    {
+                        cribact1 = new CribAction1(this);
+                        game.sendAction(cribact1);
+                    }
+                    else if(cardsToCrib[1] == 2)
+                    {
+                        cribact2 = new CribAction2(this);
+                        game.sendAction(cribact2);
+                    }
+                    else if(cardsToCrib[1] == 3)
+                    {
+                        cribact3 = new CribAction3(this);
+                        game.sendAction(cribact3);
+                    }
+                    else if(cardsToCrib[1] == 4)
+                    {
+                        cribact4 = new CribAction4(this);
+                        game.sendAction(cribact4);
+                    }
+                    else if(cardsToCrib[1] == 5)
+                    {
+                        cribact5 = new CribAction5(this);
+                        game.sendAction(cribact5);
+                    }
+                    else
+                    {
+                        cribact1 = new CribAction1(this);
+                        game.sendAction(cribact1);
+                    }
                 }
 
+            }
+            //end inteligent algorithm
+            /////////////////////////////////////////////////////////////////////////////////////////
+
+            /////////////////////////////////////////////////////////////////////////////////////////
+            //A algorithm that purposely does not play pairs if the dealer
+            if(computerPlayerState.getDealer() != playerNum)
+            {
+                //I'm the dealer!
+                Deck temp  = new Deck(computerPlayerState.handsOfBothPlayers[playerNum]);
+                int testValue;
+                if(temp.size() == 6)//have not checked for pairs
+                {
+                    for(int i = 0; i<temp.size(); i++)
+                    {
+                        testValue = temp.lookAtCard(i).getRank().value(1);
+                        for (int j = i + 1; j < temp.size(); j++) {
+                            if (testValue == temp.lookAtCard(j).getRank().value(1)) {
+                                //send crib actions coresponding to the i and j values
+                                cardsToNotCrib[0] = i;
+                                cardsToNotCrib[1] = j;
+                            }
+
+                        }
+
+                    }
+                    //Log.i("value of cards crib:", ""+ cardsToCrib[0]);
+                    if(cardsToNotCrib[0] != 0)
+                    {
+                        cribact1 = new CribAction1(this);
+                        game.sendAction(cribact1);
+                    }
+                    else if(cardsToNotCrib[0] != 1)
+                    {
+                        cribact2 = new CribAction2(this);
+                        game.sendAction(cribact2);
+                    }
+                    else if(cardsToNotCrib[0] != 2)
+                    {
+                        cribact3 = new CribAction3(this);
+                        game.sendAction(cribact3);
+                    }
+                    else if(cardsToNotCrib[0] != 3)
+                    {
+                        cribact4 = new CribAction4(this);
+                        game.sendAction(cribact4);
+                    }
+                    else if(cardsToNotCrib[0] != 4)
+                    {
+                        cribact5 = new CribAction5(this);
+                        game.sendAction(cribact5);
+                    }
+                    else if(cardsToNotCrib[0] != 5)
+                    {
+                        cribact6 = new CribAction6(this);
+                        game.sendAction(cribact6);
+                    }
+                    else
+                    {
+                        cribact1 = new CribAction1(this);
+                        game.sendAction(cribact1);
+                    }
+                }
+                if(temp.size() == 5)//have already played one card
+                {
+                    //Log.i("COMP cribed random card","");
+                    if(cardsToNotCrib[1] != 1 && cardsToNotCrib[0] != 1)
+                    {
+                        cribact1 = new CribAction1(this);
+                        game.sendAction(cribact1);
+                    }
+                    else if(cardsToNotCrib[1] != 2 && cardsToNotCrib[0] != 2)
+                    {
+                        cribact2 = new CribAction2(this);
+                        game.sendAction(cribact2);
+                    }
+                    else if(cardsToNotCrib[1] != 3 && cardsToNotCrib[0] != 3)
+                    {
+                        cribact3 = new CribAction3(this);
+                        game.sendAction(cribact3);
+                    }
+                    else if(cardsToNotCrib[1] != 4 && cardsToNotCrib[0] != 4)
+                    {
+                        cribact4 = new CribAction4(this);
+                        game.sendAction(cribact4);
+                    }
+                    else if(cardsToNotCrib[1] != 5 && cardsToNotCrib[0] != 1)
+                    {
+                        cribact5 = new CribAction5(this);
+                        game.sendAction(cribact5);
+                    }
+                }
             }
             else
             {
                 cribact1 = new CribAction1(this);
                 game.sendAction(cribact1);
             }
-            //end inteligent algorithm
-            /////////////////////////////////////////////////////////////////////////////////////////
-            //if (computerPlayerState.canCrib(playerNum))
-            //{
-            //    cribact1 = new CribAction1(this);
-            //    sleep(1000);
-            //    game.sendAction(cribact1);
-            //}
+            //end of not dealer algorithm
+            ////////////////////////////////////////////////////////////////////////////////////////
         }
 
         if(computerPlayerState.getStage() == 3 && computerPlayerState.getWhoseTurn() == playerNum){
