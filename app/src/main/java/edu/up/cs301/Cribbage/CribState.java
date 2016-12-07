@@ -277,7 +277,7 @@ public class CribState extends GameState {
                 }
             }
             if (dealer == 1) {
-                if (handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size()) {
+                if (handsOfBothPlayers[0].size() < handsOfBothPlayers[1].size()) {
                     //dealer gets to move
                     return 1;
                 } else {
@@ -362,6 +362,8 @@ public class CribState extends GameState {
         int stageScoreing = 4;
 
 
+        Log.i("player0 hand",""+handsOfBothPlayers[0].size());
+        Log.i("player1 hand",""+handsOfBothPlayers[1].size());
         if (handsOfBothPlayers[0].size() == 0 && handsOfBothPlayers[1].size() == 0 && cutDeck.size() == 0) {
             //we are in the cut phase of the round
             Log.i("this is the first stage", "setStage: 0");
@@ -403,7 +405,7 @@ public class CribState extends GameState {
         } else {
             //all rounds have been gone through
             //it is now time to start back at the cut for the round
-            stage = 0;
+           // stage = stage;
             Log.i("this is the stage turn", "around point");
             delt = false;//delt is reset becuase we can deal again
             can0Crib = true;
@@ -513,6 +515,10 @@ public class CribState extends GameState {
         Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDeal: "+handsOfBothPlayers[1].toString());
         setStage();
         Log.i("this is in the deal", "size post setstage: "+mainDeck.size());
+       // if(count31 > 0)
+       // {
+       //     setDealer();
+       // }
         count31=0;
         delt = true;
 
