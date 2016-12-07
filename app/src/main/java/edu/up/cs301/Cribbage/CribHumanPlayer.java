@@ -40,6 +40,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 import static edu.up.cs301.game.R.id.cribButtonPos1;
 import static edu.up.cs301.game.R.id.localGameTab;
+import static edu.up.cs301.game.R.id.playerNameEditText;
 
 /**
  * Created by Nick Accuardi on 10/20/2016.
@@ -102,6 +103,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
     int count31 =0;
     int tempCountHolder =0;
+    int oppNum;
+
 
 
 
@@ -127,6 +130,14 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
      * @param info
      */
     public void receiveInfo(GameInfo info) {
+        if(playerNum == 1)
+        {
+            oppNum =0;
+        }
+        else
+        {
+            oppNum = 1;
+        }
 
         Log.i("The CribHumanPlayer", "receiving updated state ("+info.getClass()+")");
         if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo) {
@@ -167,7 +178,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         }
 
         //This displays the back of the
-        if(humanState.eachPlayerCardsPlayed[0].size()==0 &&humanState.eachPlayerCardsPlayed[1].size()==0){
+        if(humanState.eachPlayerCardsPlayed[playerNum].size()==0 &&humanState.eachPlayerCardsPlayed[oppNum].size()==0){
             for (int i = 0; i < humanState.cribDeck.size(); i++) {
                 //humanCribImages[i].setImageBitmap(humanState.getCribDeck().lookAtCard(i).getBitmap());
                 humanCribImages[i].setImageResource(R.drawable.card_back);
@@ -176,15 +187,15 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
 
         //This dispalys the playerhand
-        for(int i =0; i<humanState.handsOfBothPlayers[0].size();i++){
+        for(int i =0; i<humanState.handsOfBothPlayers[playerNum].size();i++){
             humanHandImages[i].setImageBitmap(humanState.getHand(playerNum).lookAtCard(i).getBitmap());
         }
 
-        for (int j = 0; j < humanState.eachPlayerCardsPlayed[0].size(); j++) {
-            humanCribImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[0].lookAtCard(j).getBitmap());
+        for (int j = 0; j < humanState.eachPlayerCardsPlayed[playerNum].size(); j++) {
+            humanCribImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[playerNum].lookAtCard(j).getBitmap());
         }
-        for (int j = 0; j < humanState.eachPlayerCardsPlayed[1].size(); j++) {
-            oppPlayImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[1].lookAtCard(j).getBitmap());
+        for (int j = 0; j < humanState.eachPlayerCardsPlayed[oppNum].size(); j++) {
+            oppPlayImages[j].setImageBitmap(humanState.eachPlayerCardsPlayed[oppNum].lookAtCard(j).getBitmap());
         }
 
 
@@ -291,12 +302,12 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         }else if(humanState.getStage()== 2){
             Log.i("we are in stage 2", "crib");
 
-            if(humanState.handsOfBothPlayers[0].size()>4) {
-                Log.i("hand0size", ""+humanState.handsOfBothPlayers[0].size());
+            if(humanState.handsOfBothPlayers[playerNum].size()>4) {
+                Log.i("hand0size", ""+humanState.handsOfBothPlayers[playerNum].size());
                 for (int i = 0; i < 6; i++) {
                     cribButtons[i].setEnabled(false);
                     playButtons[i].setEnabled(false);
-                    for (int j = 0; j < humanState.handsOfBothPlayers[0].size(); j++) {
+                    for (int j = 0; j < humanState.handsOfBothPlayers[playerNum].size(); j++) {
                         cribButtons[j].setEnabled(true);
                     }
                 }
@@ -316,12 +327,12 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         {
            Log.i("we are in stage 3", "play");
 
-            if(humanState.handsOfBothPlayers[0].size()<=4) {
-                Log.i("hand0size", ""+humanState.handsOfBothPlayers[0].size());
+            if(humanState.handsOfBothPlayers[playerNum].size()<=4) {
+                Log.i("hand0size", ""+humanState.handsOfBothPlayers[playerNum].size());
                 for (int i = 0; i < 6; i++) {
                     cribButtons[i].setEnabled(false);
                     playButtons[i].setEnabled(false);
-                    for (int j = 0; j < humanState.handsOfBothPlayers[0].size(); j++) {
+                    for (int j = 0; j < humanState.handsOfBothPlayers[playerNum].size(); j++) {
 
                         playButtons[j].setEnabled(humanState.isGo(playerNum));
                        // playButtons[j].setEnabled(true);
@@ -353,8 +364,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             goButton.setEnabled(false);
             Log.i("we are in stage 4", "score");
 
-            if(humanState.cutDeck.size()==1 && humanState.eachPlayerCardsPlayed[0].size()==4
-                    && humanState.eachPlayerCardsPlayed[1].size()==4){
+            if(humanState.cutDeck.size()==1 && humanState.eachPlayerCardsPlayed[playerNum].size()==4
+                    && humanState.eachPlayerCardsPlayed[oppNum].size()==4){
                 dealButton.setEnabled(true);
             }
 
@@ -369,21 +380,21 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
             goButton.setEnabled(false);
         }
 
-        humanScore.setText(allPlayerNames[0]+": "+humanState.getScore(0));
-        oppScore.setText(allPlayerNames[1]+": "+humanState.getScore(1));
+        humanScore.setText(allPlayerNames[playerNum]+": "+humanState.getScore(playerNum));
+        oppScore.setText(allPlayerNames[oppNum]+": "+humanState.getScore(oppNum));
 
 
         //to bold if dealer
-        if(humanState.getDealer() ==  0)
+        if(humanState.getDealer() ==  playerNum)
         {
             humanScore.setTypeface(null, Typeface.BOLD);
-            humanScore.setText(" 'Dealer'- "+ allPlayerNames[0]+": "+humanState.getScore(0));
+            humanScore.setText(" 'Dealer'- "+ allPlayerNames[playerNum]+": "+humanState.getScore(playerNum));
             oppScore.setTypeface(null, Typeface.NORMAL);
         }
-        else if(humanState.getDealer() == 1)
+        else if(humanState.getDealer() != playerNum)
         {
             oppScore.setTypeface(null, Typeface.BOLD);
-            oppScore.setText(" 'Dealer'- "+allPlayerNames[1]+": "+humanState.getScore(1));
+            oppScore.setText(" 'Dealer'- "+allPlayerNames[oppNum]+": "+humanState.getScore(oppNum));
             humanScore.setTypeface(null, Typeface.NORMAL);
         }
 
@@ -595,55 +606,55 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         paint.setColor(Color.rgb(162,228,232));
 
         //humanstate circle fill
-        if (humanState.getScore(0) >= 10) {
+        if (humanState.getScore(playerNum) >= 10) {
             canvas.drawCircle(x + 70, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 20) {
+        if (humanState.getScore(playerNum) >= 20) {
             canvas.drawCircle(x + 140, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 30) {
+        if (humanState.getScore(playerNum) >= 30) {
             canvas.drawCircle(x + 210, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 40) {
+        if (humanState.getScore(playerNum) >= 40) {
             canvas.drawCircle(x + 280, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 50) {
+        if (humanState.getScore(playerNum) >= 50) {
             canvas.drawCircle(x + 350, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 60) {
+        if (humanState.getScore(playerNum) >= 60) {
             canvas.drawCircle(x + 420, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 70) {
+        if (humanState.getScore(playerNum) >= 70) {
             canvas.drawCircle(x + 490, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 80) {
+        if (humanState.getScore(playerNum) >= 80) {
             canvas.drawCircle(x + 560, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 90) {
+        if (humanState.getScore(playerNum) >= 90) {
             canvas.drawCircle(x + 630, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 100) {
+        if (humanState.getScore(playerNum) >= 100) {
             canvas.drawCircle(x + 700, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 110) {
+        if (humanState.getScore(playerNum) >= 110) {
             canvas.drawCircle(x + 770, y, rad + 5, paint);
 
         }
-        if (humanState.getScore(0) >= 120) {
+        if (humanState.getScore(playerNum) >= 120) {
             canvas.drawCircle(x + 840, y, rad + 5, paint);
 
         }
-        if(humanState.getScore(0) >= 121){
+        if(humanState.getScore(playerNum) >= 121){
             canvas.drawText("W",x+885,y+185,paint);
         }
 
@@ -651,55 +662,55 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         paint.setColor(Color.rgb(37,32,94));
 
         //oppstate circle fill
-        if (humanState.getScore(1) >= 10) {
+        if (humanState.getScore(oppNum) >= 10) {
 
             canvas.drawCircle(x + 70, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 20) {
+        if (humanState.getScore(oppNum) >= 20) {
 
             canvas.drawCircle(x + 140, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 30) {
+        if (humanState.getScore(oppNum) >= 30) {
 
             canvas.drawCircle(x + 210, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 40) {
+        if (humanState.getScore(oppNum) >= 40) {
 
             canvas.drawCircle(x + 280, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 50) {
+        if (humanState.getScore(oppNum) >= 50) {
 
             canvas.drawCircle(x + 350, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 60) {
+        if (humanState.getScore(oppNum) >= 60) {
 
             canvas.drawCircle(x + 420, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 70) {
+        if (humanState.getScore(oppNum) >= 70) {
 
             canvas.drawCircle(x + 490, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 80) {
+        if (humanState.getScore(oppNum) >= 80) {
 
             canvas.drawCircle(x + 560, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 90) {
+        if (humanState.getScore(oppNum) >= 90) {
 
             canvas.drawCircle(x + 630, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 100) {
+        if (humanState.getScore(oppNum) >= 100) {
 
             canvas.drawCircle(x + 700, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 110) {
+        if (humanState.getScore(oppNum) >= 110) {
 
             canvas.drawCircle(x + 770, y + 350, rad + 5, paint);
         }
-        if (humanState.getScore(1) >= 120) {
+        if (humanState.getScore(oppNum) >= 120) {
 
             canvas.drawCircle(x + 840, y + 350, rad + 5, paint);
         }
-        if(humanState.getScore(1) >= 121){
+        if(humanState.getScore(oppNum) >= 121){
 
             canvas.drawText("W",x+885,y+185,paint);
         }

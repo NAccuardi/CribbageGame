@@ -27,6 +27,8 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
     CribPlayAction3 playAct3;
     CribPlayAction4 playAct4;
     CribGo cribGoAction;
+    CribDeal cribDealAction;
+    int oppNum;
 
     //
 //    private int myPlayerId = computerPlayerState.getPlayerId();
@@ -48,10 +50,18 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
         if (!(info instanceof CribState)) {
             return;
         }
+        if(playerNum == 1)
+        {
+            oppNum = 0;
+        }
+        else
+        {
+            oppNum = 1;
+        }
 
         // update our state variable
         computerPlayerState = (CribState) info;
-        Log.i("COMP play1hand", computerPlayerState.handsOfBothPlayers[1].toString());
+        Log.i("COMP play1hand", computerPlayerState.handsOfBothPlayers[playerNum].toString());
         Log.i("COMP CribDeck", computerPlayerState.cribDeck.toString());
        //if(computerPlayerState.getDealer() == computerPlayerState.getPlayerId())
        //{
@@ -60,7 +70,7 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
        //computerPlayerState.getHand(computerPlayerState.getPlayerId());
 
         if(computerPlayerState.getStage()==2 && computerPlayerState.getWhoseTurn()==playerNum &&
-                computerPlayerState.handsOfBothPlayers[1].size()>4){
+                computerPlayerState.handsOfBothPlayers[playerNum].size()>4){
 
             if(computerPlayerState.canCrib(playerNum))
                 cribact1 = new CribAction1(this);
@@ -132,6 +142,14 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
                 }
 
             }
+        }
+        //computerPlayerState.handsOfBothPlayers[playerNum].size() == 0
+        if(computerPlayerState.getDealer() == playerNum && computerPlayerState.getStage() == 4)
+        {
+            cribDealAction = new CribDeal(this);
+            Log.i("Comp Action:","I tried to send a deal action");
+            game.sendAction(cribDealAction);
+            Log.i("Comp Action:","I SENT a deal action");
         }
 
     }

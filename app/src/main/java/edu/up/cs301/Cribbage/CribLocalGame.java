@@ -69,9 +69,7 @@ public class CribLocalGame extends LocalGame {
 
     }
 
-    protected boolean canMove(int playerIdx) {
-        return playerIdx != 1- state.getWhoseTurn();
-    }
+    protected boolean canMove(int playerIdx) {return playerIdx != 1- state.getWhoseTurn();}
 
     protected String checkIfGameOver() {
 
@@ -186,28 +184,10 @@ public class CribLocalGame extends LocalGame {
 
         if(action instanceof CribPlayAction1){
 
-//            if(state.isGo(state.getWhoseTurn()))
-//            {
-//                if(state.getWhoseTurn() == 0)
-//                {
-//                    state.setTurn(1);
-//                    //state.setScore(1,1);
-//                }
-//                if(state.getWhoseTurn() == 1)
-//                {
-//                    state.setTurn(0);
-//                    //state.setScore(0,1);
-//                }
-//                return true;
-//            }
-
-
             Log.i("Make Move Action: ", "CribPLayAction1");
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(0));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(0,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
-            //score the play deck to see if the player gets points
-            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
@@ -221,8 +201,6 @@ public class CribLocalGame extends LocalGame {
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(1));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(1,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
-            //score the play deck to see if the player gets points
-            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
@@ -236,8 +214,6 @@ public class CribLocalGame extends LocalGame {
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(2));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(2,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
-            //score the play deck to see if the player gets points
-            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
@@ -250,8 +226,6 @@ public class CribLocalGame extends LocalGame {
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(3));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(3,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
-            //score the play deck to see if the player gets points
-            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
@@ -264,8 +238,6 @@ public class CribLocalGame extends LocalGame {
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(4));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(4,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
-            //score the play deck to see if the player gets points
-            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+ state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
@@ -279,8 +251,6 @@ public class CribLocalGame extends LocalGame {
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(5));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(5,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
-            //score the play deck to see if the player gets points
-            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
@@ -290,7 +260,7 @@ public class CribLocalGame extends LocalGame {
             return true;
         }
 
-
+        state.setStage();
         return false;
     }
 
