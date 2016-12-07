@@ -572,21 +572,11 @@ public class CribState extends GameState {
                                     +scoringDeck.runMethod(scoringDeck,e,5)==15){
                                 numberOf15Ses++;
                             }
-
                         }
                     }
                 }
             }
         }
-
-
-
-
-
-
-
-
-
         return (pairs*2)+(nobs*1)+(flush*4)+(numberOf15Ses*2);
     }
 
