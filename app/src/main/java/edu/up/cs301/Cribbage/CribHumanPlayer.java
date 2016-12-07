@@ -41,6 +41,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 import static edu.up.cs301.game.R.id.cribButtonPos1;
 import static edu.up.cs301.game.R.id.localGameTab;
 import static edu.up.cs301.game.R.id.playerNameEditText;
+import static java.lang.Math.abs;
 
 /**
  * Created by Nick Accuardi on 10/20/2016.
@@ -223,8 +224,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
             }
 
-            if (humanState.eachPlayerCardsPlayed[1].size()!=4) {
-                int remaindercomp = 4 - humanState.eachPlayerCardsPlayed[1].size();
+            if (humanState.eachPlayerCardsPlayed[oppNum].size()!=4) {
+                int remaindercomp = 4 - humanState.eachPlayerCardsPlayed[oppNum].size();
                 switch (remaindercomp) {
                     case 4:
                         oppPlayImages[0].setImageResource(R.drawable.card_blank);
@@ -249,7 +250,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
         //This makes the card slots in the human player turn blue as the cards are played
         if(humanState.handsOfBothPlayers[playerNum].size()!=6){
-            int remainderHuman = 6-humanState.handsOfBothPlayers[0].size();
+            int remainderHuman = 6-humanState.handsOfBothPlayers[playerNum].size();
 
             switch (remainderHuman){
 
@@ -387,6 +388,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         //to bold if dealer
         if(humanState.getDealer() ==  playerNum)
         {
+
             humanScore.setTypeface(null, Typeface.BOLD);
             humanScore.setText(" 'Dealer'- "+ allPlayerNames[playerNum]+": "+humanState.getScore(playerNum));
             oppScore.setTypeface(null, Typeface.NORMAL);

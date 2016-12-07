@@ -170,23 +170,23 @@ public class CribComputerComputerAdvanced extends CribComputerPlayer {
                             switch(i){
                                 case 0:
                                     playAct1 = new CribPlayAction1(this);
-                                    sleep(1000);
+                                    sleep(10);
                                     game.sendAction(playAct1);
                                     break;
 
                                 case 1:
                                     playAct2 = new CribPlayAction2(this);
-                                    sleep(1000);
+                                    sleep(10);
                                     game.sendAction(playAct2);
                                     break;
                                 case 2:
                                     playAct3 = new CribPlayAction3(this);
-                                    sleep(1000);
+                                    sleep(10);
                                     game.sendAction(playAct3);
                                     break;
                                 case 3:
                                     playAct4 = new CribPlayAction4(this);
-                                    sleep(1000);
+                                    sleep(10);
                                     game.sendAction(playAct4);
                                     break;
                                 default:
@@ -200,7 +200,7 @@ public class CribComputerComputerAdvanced extends CribComputerPlayer {
                     }
 
                     cribGoAction = new CribGo(this);
-                    sleep(1000);
+                    //sleep(1000);
                     game.sendAction(cribGoAction);
 
 

@@ -12,6 +12,7 @@ import edu.up.cs301.game.infoMsg.GameState;
 
 import static edu.up.cs301.game.R.id.configTableLayout;
 import static edu.up.cs301.game.R.id.mainDeck;
+import static java.lang.Math.abs;
 
 /**
  * Created by Robot Laptop on 11/14/2016.
@@ -125,7 +126,7 @@ public class CribState extends GameState {
     public CribState(CribState origState) {
         //this.score0 = origState.getScore(0);
         //this.score1 = origState.getScore(1);
-        this.dealer = origState.getDealer();
+        this.dealer = origState.dealer;
         this.whoseTurn = origState.getWhoseTurn();
         this.stage = origState.getStage();
         this.winner = origState.isScore121();
@@ -316,13 +317,16 @@ public class CribState extends GameState {
     //sets the dealer to the other player
     public void setDealer() {
             //who ever is the current dealer needs to be changed to who ever is not the dealer
-            if (dealer == 0) {
-                dealer = 1;
-                return;
-            } else {
-                dealer = 0;
-                return;
-            }
+
+           dealer= abs(dealer-1);
+
+            //if (dealer == 0) {
+            //    dealer = 1;
+            //    return;
+            //} else {
+            //    dealer = 0;
+            //    return;
+            //}
     }
 
 
@@ -479,20 +483,20 @@ public class CribState extends GameState {
     public void deal()
     {
         //mainDeck.shuffle();//Disabled for debugging ease
-        Log.i("this is in the deal", "size predelte: "+mainDeck.size());
+        //Log.i("this is in the deal", "size predelte: "+mainDeck.size());
 
         mainDeck.deleteDeck();//nullify the current state of the main deck
 
-        Log.i("this is in the deal", "size postdelte/preadd52: "+mainDeck.size());
+        //Log.i("this is in the deal", "size postdelte/preadd52: "+mainDeck.size());
 
 
         //make sure there is a new deck for the next round and really shuffle it good
         mainDeck.add52().shuffle().shuffle().shuffle();
 
 
-        Log.i("this is in the deal", "size postdd52: "+mainDeck.size());
-        Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand PreDel: "+handsOfBothPlayers[1].size());
-        Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand PreDel: "+handsOfBothPlayers[1].toString());
+        //Log.i("this is in the deal", "size postdd52: "+mainDeck.size());
+        //Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand PreDel: "+handsOfBothPlayers[1].size());
+        //Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand PreDel: "+handsOfBothPlayers[1].toString());
 
         /*This will make sure the remainder of the decks have been cleared. If we are doing a deal
             we want to reseteverything back to an empty state.
@@ -505,17 +509,17 @@ public class CribState extends GameState {
         cutDeck.deleteDeck();
         playDeck.deleteDeck();
 
-        Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand postDel: "+handsOfBothPlayers[1].size());
-        Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDel: "+handsOfBothPlayers[1].toString());
+        //Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand postDel: "+handsOfBothPlayers[1].size());
+        //Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDel: "+handsOfBothPlayers[1].toString());
         int handSize = 6;
         for(int i = 0; i<handSize; i++)
         {
             mainDeck.moveTopCardTo(handsOfBothPlayers[0]);//Changed this from player0hand
             mainDeck.moveTopCardTo(handsOfBothPlayers[1]);//changed from player1hand
-        }Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand postDeal: "+handsOfBothPlayers[1].size());
-        Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDeal: "+handsOfBothPlayers[1].toString());
+        }//Log.i("size play1hand: "+handsOfBothPlayers[0].size(), "sizePlay2Hand postDeal: "+handsOfBothPlayers[1].size());
+        //Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDeal: "+handsOfBothPlayers[1].toString());
         setStage();
-        Log.i("this is in the deal", "size post setstage: "+mainDeck.size());
+       // Log.i("this is in the deal", "size post setstage: "+mainDeck.size());
        // if(count31 > 0)
        // {
        //     setDealer();
@@ -578,7 +582,7 @@ public class CribState extends GameState {
                 }
             }
         }
-        return (pairs*2)+(nobs*1)+(flush*4)+(numberOf15Ses*2);
+        return (pairs*2)+(nobs)+(flush*4)+(numberOf15Ses*2);
     }
 
   //  //scoring algorithm for play/go phase

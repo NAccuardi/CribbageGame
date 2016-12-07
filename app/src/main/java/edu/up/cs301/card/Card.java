@@ -96,8 +96,10 @@ public class Card implements Serializable {
 	 *		true if the two card objects represent the same card, false
      *		otherwise.
      */
-    public boolean equals(Card other) {
-        return this.rank == other.rank && this.suit == other.suit;
+    public boolean equals(Object other) {
+		if(!(other instanceof Card)){return false;}
+		Card c = (Card) other;
+        return this.rank == c.rank && this.suit == c.suit;
     }
 
     /**

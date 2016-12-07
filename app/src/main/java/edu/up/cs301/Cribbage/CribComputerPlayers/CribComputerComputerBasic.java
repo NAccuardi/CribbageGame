@@ -143,7 +143,9 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
         {
             cribDealAction = new CribDeal(this);
             Log.i("Comp Action:","I tried to send a deal action");
+            Log.i("before COmP Deal",""+computerPlayerState.getDealer());
             game.sendAction(cribDealAction);
+            Log.i("after COmP Deal",""+computerPlayerState.getDealer());
             Log.i("Comp Action:","I SENT a deal action");
         }
 

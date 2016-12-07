@@ -234,7 +234,7 @@ public class Deck implements Serializable {
 	{
 		synchronized (this.cards) {
 			if (cards.isEmpty()) return;
-			Log.i("this is in deleteDeck", "Pre delete cards.size: "+cards.size());
+			//Log.i("this is in deleteDeck", "Pre delete cards.size: "+cards.size());
 			int cardSize = cards.size();
 			for(int i = 0; i<cardSize;i++)
 				/*
@@ -245,12 +245,14 @@ public class Deck implements Serializable {
 				ErrorLog 2.0 nick: This problem caused a crash if ran on anything smaller then the maind deck. To combat this I set an int to be
 				the size of the card.size and use that as the exit condition for the for loop. This keeps the arraysize changing
 				from messing with the total size. As of now I think this method is complete and will work for final product.
+
+				ErrogLog: closed by nick
 				 */
 			{
 				cards.remove(0);//Nick- Changed this from i to 0. Trying to hunt an error. The hunt was a success. Read above for more info.
-				Log.i("i = "+i, "cards.size = "+cards.size());
+				//Log.i("i = "+i, "cards.size = "+cards.size());
 			}
-			Log.i("this is in deleteDeck", " post delete cards.size: "+cards.size());
+			//Log.i("this is in deleteDeck", " post delete cards.size: "+cards.size());
 		}
 	}
 	 public Card lookAtCard(int idx)
