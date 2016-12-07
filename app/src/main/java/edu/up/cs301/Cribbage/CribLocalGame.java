@@ -21,6 +21,7 @@ import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
 
 import static edu.up.cs301.game.R.id.handCardPos1;
+import static java.lang.Math.abs;
 
 /**
  * Created by Robot Laptop on 11/14/2016.
@@ -87,9 +88,15 @@ public class CribLocalGame extends LocalGame {
 
     //*************This is where we will handle the moves for each player
     protected boolean makeMove(GameAction action) {
+        state.mustGo(state.getWhoseTurn());
         Log.i("Make Move", "entered make move");
         if(action instanceof CribDeal){
             Log.i("Make Move Action: ", "CribDeal");
+
+            state.setScore(0,state.nicksScoringEndofTurn(state.cutDeck,state.eachPlayerCardsPlayed[0]));
+            state.setScore(1,state.nicksScoringEndofTurn(state.cutDeck,state.eachPlayerCardsPlayed[1]));
+            state.setScore(state.getWhoseTurn(),state.nicksScoringEndofTurn(state.cutDeck,state.eachPlayerCardsPlayed[state.getWhoseTurn()]));
+
             if(!state.delt) {
                 state.deal();
                 state.setStage();
@@ -102,6 +109,10 @@ public class CribLocalGame extends LocalGame {
 
 
         }else if(action instanceof CribGo){
+            state.count31=0;
+            state.bothplayersScores[abs(state.getWhoseTurn()-1)]++;
+            state.mustGoBool=false;
+            state.setTurn(state.getWhoseTurn());
             Log.i("Make Move Action: ", "CribGo");
             return true;
 
@@ -173,26 +184,32 @@ public class CribLocalGame extends LocalGame {
 
         if(action instanceof CribPlayAction1){
 
-            if(state.isGo(state.getWhoseTurn()))
-            {
-                if(state.getWhoseTurn() == 0)
-                {
-                    state.setTurn(1);
-                    state.setScore(1,1);
-                }
-                if(state.getWhoseTurn() == 1)
-                {
-                    state.setTurn(0);
-                    state.setScore(0,1);
-                }
-                return true;
-            }
+//            if(state.isGo(state.getWhoseTurn()))
+//            {
+//                if(state.getWhoseTurn() == 0)
+//                {
+//                    state.setTurn(1);
+//                    //state.setScore(1,1);
+//                }
+//                if(state.getWhoseTurn() == 1)
+//                {
+//                    state.setTurn(0);
+//                    //state.setScore(0,1);
+//                }
+//                return true;
+//            }
+
+
             Log.i("Make Move Action: ", "CribPLayAction1");
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(0));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(0,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
+            //score the play deck to see if the player gets points
+            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
+
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
+
             state.setCount();
             state.setStage();
             return true;
@@ -201,6 +218,9 @@ public class CribLocalGame extends LocalGame {
 
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(1));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(1,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
+
+            //score the play deck to see if the player gets points
+            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
@@ -214,6 +234,9 @@ public class CribLocalGame extends LocalGame {
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(2));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(2,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
+            //score the play deck to see if the player gets points
+            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
+
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
             state.setCount();
@@ -224,6 +247,9 @@ public class CribLocalGame extends LocalGame {
 
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(3));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(3,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
+
+            //score the play deck to see if the player gets points
+            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
@@ -236,6 +262,9 @@ public class CribLocalGame extends LocalGame {
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(4));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(4,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
 
+            //score the play deck to see if the player gets points
+            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
+
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+ state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());
 
@@ -247,6 +276,9 @@ public class CribLocalGame extends LocalGame {
 
             state.playDeck.add(state.handsOfBothPlayers[state.getWhoseTurn()].lookAtCard(5));
             state.handsOfBothPlayers[state.getWhoseTurn()].moveSpecificCard(5,state.eachPlayerCardsPlayed[state.getWhoseTurn()]);
+
+            //score the play deck to see if the player gets points
+            //state.setScore(state.getWhoseTurn(),state.scorePlay(state.playDeck));
 
             Log.i("playDeck", state.playDeck.toString());
             Log.i("each player cards play",state.getWhoseTurn()+  state.eachPlayerCardsPlayed[state.getWhoseTurn()].toString());

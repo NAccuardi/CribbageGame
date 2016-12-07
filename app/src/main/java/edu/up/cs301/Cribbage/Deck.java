@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.up.cs301.card.Card;
+import edu.up.cs301.card.Rank;
+import edu.up.cs301.card.Suit;
 
 /**
  * Deck class - represents a deck of cards (not necessarily a full one)
@@ -193,6 +195,15 @@ public class Deck implements Serializable {
 		}
 	}
 
+	public int runMethod(Deck deck, int onOff, int cardToLookAt){
+		if(onOff==1){
+
+			return deck.lookAtCard(cardToLookAt).getRank().cribValue(1);
+		}
+		return 0;
+	}
+
+
 	/**
 	 * remove the top card from the deck
 	 * 
@@ -205,6 +216,18 @@ public class Deck implements Serializable {
 			if (cards.isEmpty()) return null;
 			return cards.remove(cards.size()-1);
 		}
+	}
+
+
+
+	//Nick Created
+	public Suit getSuit(int i){
+		return cards.get(i).getSuit();
+	}
+
+	//Nick Created
+	public Rank getRank(int i){
+		return cards.get(i).getRank();
 	}
 
 	public void deleteDeck()
@@ -250,6 +273,9 @@ public class Deck implements Serializable {
 			return cards.get(cards.size()-1);
 		}
 	}
+
+
+
 	
 	/**
 	 * creates a printable version of the object, a list
