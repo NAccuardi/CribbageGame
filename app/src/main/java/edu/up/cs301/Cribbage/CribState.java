@@ -256,7 +256,7 @@ public class CribState extends GameState {
                 if (handsOfBothPlayers[0].size() < handsOfBothPlayers[1].size()) {
                     //dealer gets to move
                     return 1;
-                } else if (handsOfBothPlayers[0].size() >= handsOfBothPlayers[1].size()){
+                } else {
                     //non dealer gets to move
                     return 0;
                 }
@@ -277,7 +277,7 @@ public class CribState extends GameState {
                 }
             }
             if (dealer == 1) {
-                if (handsOfBothPlayers[0].size() < handsOfBothPlayers[1].size()) {
+                if (handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size()) {
                     //dealer gets to move
                     return 1;
                 } else {
@@ -513,11 +513,6 @@ public class CribState extends GameState {
         Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDeal: "+handsOfBothPlayers[1].toString());
         setStage();
         Log.i("this is in the deal", "size post setstage: "+mainDeck.size());
-        if(count31 > 0)
-        {
-            setDealer();
-            Log.i("Dealer has been changed"," ");
-        }
         count31=0;
         delt = true;
 
@@ -555,6 +550,7 @@ public class CribState extends GameState {
             if(cutDeck.getSuit(0)==scoringDeck.getSuit(i)&&scoringDeck.getRank(i)==Rank.JACK){
                 nobs++;
             }
+
         }
 
         //Checks for sums of 15
