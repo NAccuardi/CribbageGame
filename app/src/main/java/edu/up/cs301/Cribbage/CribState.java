@@ -233,10 +233,10 @@ public class CribState extends GameState {
                 }
             }
             if (dealer == 1) {
-                if (handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size()) {
+                if (handsOfBothPlayers[0].size() < handsOfBothPlayers[1].size()) {
                     //dealer gets to move
                     return 1;
-                } else {
+                } else if (handsOfBothPlayers[0].size() >= handsOfBothPlayers[1].size()){
                     //non dealer gets to move
                     return 0;
                 }
@@ -257,7 +257,7 @@ public class CribState extends GameState {
                 }
             }
             if (dealer == 1) {
-                if (handsOfBothPlayers[0].size() > handsOfBothPlayers[1].size()) {
+                if (handsOfBothPlayers[0].size() < handsOfBothPlayers[1].size()) {
                     //dealer gets to move
                     return 1;
                 } else {
@@ -359,6 +359,7 @@ public class CribState extends GameState {
                 4 < handsOfBothPlayers[1].size() && handsOfBothPlayers[1].size() <= 6) {
             //we are in the crib Phase
             stage = stageCrib;
+
         } else if (cribDeck.size() == 4 && playDeck.size() < 8)//player1Hand.size() <= 4 &&
         {
 
@@ -374,7 +375,7 @@ public class CribState extends GameState {
             //each player has played all four cards
             //we are now in the scoring phase
 
-            //The scoring shit is straight fucked yo
+            //The scoring shit is straight fucked yo************************************************************
 
             //bothplayersScores[0] += score(eachPlayerCardsPlayed[0],cutDeck);
             //bothplayersScores[1] += score(eachPlayerCardsPlayed[1],cutDeck);
@@ -420,7 +421,7 @@ public class CribState extends GameState {
         //Nick has psuedo code mocked up for this in the slack.
 
 
-        if (handsOfBothPlayers[player].size() != 0) {
+        if (handsOfBothPlayers[player].size() != 0) {//checks
             for (int i = 0; i < handsOfBothPlayers[player].size(); i++) {
                 if ((count31 + handsOfBothPlayers[player].lookAtCard(i).getRank().cribValue(1)) <= 31) {
                     return false;
@@ -430,6 +431,7 @@ public class CribState extends GameState {
             bothplayersScores[1-player]++;
             return true;
         }
+
         return false;
     }
 
@@ -476,8 +478,15 @@ public class CribState extends GameState {
         Log.i("play1hand: "+handsOfBothPlayers[0].toString(), "Play2Hand postDeal: "+handsOfBothPlayers[1].toString());
         setStage();
         Log.i("this is in the deal", "size post setstage: "+mainDeck.size());
+        if(count31 > 0)
+        {
+            setDealer();
+            Log.i("Dealer has been changed"," ");
+        }
         count31=0;
         delt = true;
+
+
 
 
     }

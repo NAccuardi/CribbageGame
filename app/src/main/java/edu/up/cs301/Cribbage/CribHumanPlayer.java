@@ -84,7 +84,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
     TextView humanScore;
     TextView oppScore;
     TextView countTo31;
-    TextView pointMessage;
+    TextView gameStageTV;
     //GO BUTTON
     Button goButton;
     //mainDeck
@@ -377,15 +377,37 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         {
             humanScore.setTypeface(null, Typeface.BOLD);
             humanScore.setText(" 'Dealer'- "+ allPlayerNames[0]+": "+humanState.getScore(0));
+            oppScore.setTypeface(null, Typeface.NORMAL);
         }
         else if(humanState.getDealer() == 1)
         {
             oppScore.setTypeface(null, Typeface.BOLD);
             oppScore.setText(" 'Dealer'- "+allPlayerNames[1]+": "+humanState.getScore(1));
+            humanScore.setTypeface(null, Typeface.NORMAL);
         }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         countTo31.setText("Count: "+humanState.getCount());
+        if(humanState.getStage()==0){
+            gameStageTV.setText("Stage: Cut");
+
+        }
+        else if(humanState.getStage()==1){
+            gameStageTV.setText("Stage: Deal");
+
+        }
+        else if(humanState.getStage()==2){
+            gameStageTV.setText("Stage: Crib");
+
+        }
+        else if(humanState.getStage()==3){
+            gameStageTV.setText("Stage: Play");
+
+        }
+        else if(humanState.getStage()==4){
+            gameStageTV.setText("Stage: Scoring");
+
+        }
 
     }
 
@@ -491,7 +513,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
         this.humanScore = (TextView)activity.findViewById(R.id.humanScore);
         this.oppScore = (TextView)activity.findViewById(R.id.oppScore);
         this.countTo31 = (TextView)activity.findViewById(R.id.countTo31);
-        this.pointMessage = (TextView)activity.findViewById(R.id.pointMessage);
+        this.gameStageTV = (TextView)activity.findViewById(R.id.gameStageTV);
 
     }
 
