@@ -63,11 +63,6 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
         computerPlayerState = (CribState) info;
         Log.i("COMP play1hand", computerPlayerState.handsOfBothPlayers[playerNum].toString());
         Log.i("COMP CribDeck", computerPlayerState.cribDeck.toString());
-       //if(computerPlayerState.getDealer() == computerPlayerState.getPlayerId())
-       //{
-       //   game.sendAction(new CribDeal(this));
-       //}
-       //computerPlayerState.getHand(computerPlayerState.getPlayerId());
 
         if(computerPlayerState.getStage()==2 && computerPlayerState.getWhoseTurn()==playerNum &&
                 computerPlayerState.handsOfBothPlayers[playerNum].size()>4){

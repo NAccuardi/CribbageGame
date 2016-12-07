@@ -1,6 +1,7 @@
 package edu.up.cs301.Cribbage.CribComputerPlayers;
 
 import android.drm.DrmStore;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,12 @@ import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction3;
 import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction4;
 import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction5;
 import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction6;
+import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
+import edu.up.cs301.Cribbage.CribPlayActions.CribGo;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction1;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction2;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction3;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction4;
 import edu.up.cs301.Cribbage.CribState;
 import edu.up.cs301.Cribbage.Deck;
 import edu.up.cs301.card.Card;
@@ -26,17 +33,20 @@ public class CribComputerComputerAdvanced extends CribComputerPlayer {
 
     //most recent state of the game
     private CribState computerPlayerState;
-    private CribMoveAction[] cribActions = new CribMoveAction[6];
     private CribAction1 cribact1;
     private CribAction2 cribact2;
     private CribAction3 cribact3;
     private CribAction4 cribact4;
     private CribAction5 cribact5;
     private CribAction6 cribact6;
+    CribPlayAction1 playAct1;
+    CribPlayAction2 playAct2;
+    CribPlayAction3 playAct3;
+    CribPlayAction4 playAct4;
+    CribGo cribGoAction;
+    CribDeal cribDealAction;
+    private int oppNum;
     private int[] cardsToCrib = new int[2];
-
-
-
 
     public CribComputerComputerAdvanced(String name) {
         super(name);
@@ -45,64 +55,168 @@ public class CribComputerComputerAdvanced extends CribComputerPlayer {
 
     @Override
     protected void receiveInfo(GameInfo info) {
-        cribActions[0] = cribact1;
-        cribActions[1] = cribact2;
-        cribActions[2] = cribact3;
-        cribActions[3] = cribact4;
-        cribActions[4] = cribact5;
-        cribActions[5] = cribact6;
-        cardsToCrib[0] = 0;
-        cardsToCrib[1] = 0;
-
-
         // if we don't have a game-state, ignore
         if (!(info instanceof CribState)) {
             return;
         }
+        //set up the opp's player number
+        if(playerNum == 1)
+        {
+            oppNum = 0;
+        }
+        else
+        {
+            oppNum = 1;
+        }
+        cardsToCrib[0]=0;
+        cardsToCrib[1]=1;
 
         // update our state variable
         computerPlayerState = (CribState) info;
 
-        //if i'm the dealer I want to play good cards to the crib
-        if(computerPlayerState.getDealer() == playerNum)
+        if(computerPlayerState.getStage()==2 && computerPlayerState.getWhoseTurn()==playerNum &&
+                computerPlayerState.handsOfBothPlayers[playerNum].size()>4)
         {
-            //I'm the dealer!
-            Deck temp  = new Deck(computerPlayerState.handsOfBothPlayers[playerNum]);
-            Card[] cards = new Card[temp.size()];
-            int testValue;
-            if(temp.size() == 6)//have not checked for pairs
+            ////////////////////////////////////////////////////////////////////////////////////////
+            //attempting algorithm of inteligence
+            if(computerPlayerState.getDealer() == playerNum)
             {
-                for(int i = 0; i<temp.size(); i++)
+                //I'm the dealer!
+                Deck temp  = new Deck(computerPlayerState.handsOfBothPlayers[playerNum]);
+                Card[] cards = new Card[temp.size()];
+                int testValue;
+                if(temp.size() == 6)//have not checked for pairs
                 {
-                    if (cards[i] != null) {
-                        testValue = cards[i].getRank().value(1);
-                        for (int j = i + 1; j < cards.length; j++) {
-                            if(cards[j] != null) {
-                                if (testValue == cards[j].getRank().value(1)) {
-                                    //send crib actions coresponding to the i and j values
-                                    cardsToCrib[0] = i;
-                                    cardsToCrib[1] = j;
-                                    game.sendAction(cribActions[i]);
+                    for(int i = 0; i<temp.size(); i++)
+                    {
+                        if (cards[i] != null) {
+                            testValue = cards[i].getRank().value(1);
+                            for (int j = i + 1; j < cards.length; j++) {
+                                if(cards[j] != null) {
+                                    if (testValue == cards[j].getRank().value(1)) {
+                                        //send crib actions coresponding to the i and j values
+                                        cardsToCrib[0] = i;
+                                        cardsToCrib[1] = j;
+                                    }
                                 }
                             }
                         }
                     }
+                    Log.i("value of cards crib:", ""+ cardsToCrib[0]);
+                    if(cardsToCrib[0] == 0)
+                    {
+                        cribact1 = new CribAction1(this);
+                        game.sendAction(cribact1);
+                    }
+                    else if(cardsToCrib[0] == 1)
+                    {
+                        cribact2 = new CribAction2(this);
+                        game.sendAction(cribact2);
+                    }
+                    else if(cardsToCrib[0] == 2)
+                    {
+                        cribact3 = new CribAction3(this);
+                        game.sendAction(cribact3);
+                    }
+                    else if(cardsToCrib[0] == 3)
+                    {
+                        cribact4 = new CribAction4(this);
+                        game.sendAction(cribact4);
+                    }
+                    else if(cardsToCrib[0] == 4)
+                    {
+                        cribact5 = new CribAction5(this);
+                        game.sendAction(cribact5);
+                    }
+                    else if(cardsToCrib[0] == 5)
+                    {
+                        cribact6 = new CribAction6(this);
+                        game.sendAction(cribact6);
+                    }
+                    else
+                    {
+                        cribact1 = new CribAction1(this);
+                        game.sendAction(cribact1);
+                    }
                 }
-                //if it does not find something it just plays a random action
-                game.sendAction(cribActions[0]);
-            }
-            if(temp.size() == 5)//have already played one card
-            {
-                game.sendAction(cribActions[cardsToCrib[1]-1]);
-            }
+                if(temp.size() == 5)//have already played one card
+                {
+                    Log.i("COMP cribed random card","");
+                    cribact1 = new CribAction1(this);
+                    game.sendAction(cribact1);
+                }
 
+            }
+            else
+            {
+                cribact1 = new CribAction1(this);
+                game.sendAction(cribact1);
+            }
+            //end inteligent algorithm
+            /////////////////////////////////////////////////////////////////////////////////////////
+            //if (computerPlayerState.canCrib(playerNum))
+            //{
+            //    cribact1 = new CribAction1(this);
+            //    sleep(1000);
+            //    game.sendAction(cribact1);
+            //}
         }
 
+        if(computerPlayerState.getStage() == 3 && computerPlayerState.getWhoseTurn() == playerNum){
+            if(computerPlayerState.handsOfBothPlayers[playerNum].size() > 0) {
+                if (computerPlayerState.handsOfBothPlayers[playerNum].size() != 0) {
+                    for (int i = 0; i < computerPlayerState.handsOfBothPlayers[playerNum].size(); i++) {
+                        if ((computerPlayerState.count31 + computerPlayerState.handsOfBothPlayers[playerNum].lookAtCard(i).getRank().cribValue(1)) <= 31) {
+                            switch(i){
+                                case 0:
+                                    playAct1 = new CribPlayAction1(this);
+                                    sleep(1000);
+                                    game.sendAction(playAct1);
+                                    break;
+
+                                case 1:
+                                    playAct2 = new CribPlayAction2(this);
+                                    sleep(1000);
+                                    game.sendAction(playAct2);
+                                    break;
+                                case 2:
+                                    playAct3 = new CribPlayAction3(this);
+                                    sleep(1000);
+                                    game.sendAction(playAct3);
+                                    break;
+                                case 3:
+                                    playAct4 = new CribPlayAction4(this);
+                                    sleep(1000);
+                                    game.sendAction(playAct4);
+                                    break;
+                                default:
+                                    break;
+
+
+                            }
+
+
+                        }
+                    }
+
+                    cribGoAction = new CribGo(this);
+                    sleep(1000);
+                    game.sendAction(cribGoAction);
 
 
 
-    }
 
+                }
 
-
-}
+            }
+        }
+        //computerPlayerState.handsOfBothPlayers[playerNum].size() == 0
+        if(computerPlayerState.getDealer() == playerNum && computerPlayerState.getStage() == 4)
+        {
+            cribDealAction = new CribDeal(this);
+            Log.i("Comp Action:","I tried to send a deal action");
+            game.sendAction(cribDealAction);
+            Log.i("Comp Action:","I SENT a deal action");
+        }
+    }//end receive info method
+}//end advanced Computer player
