@@ -354,6 +354,7 @@ public class CribState extends GameState {
         //stage is initialized to -1 to indicate that a new game has been started
         //and a dealer needs to be set based on a cut of the deck
         //once that has succusefuully been completed stage is never reset to -1
+        //test
 
         int stageCut = 0;
         int stageDeal = 1;
