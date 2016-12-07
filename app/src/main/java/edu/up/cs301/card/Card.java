@@ -2,6 +2,7 @@ package edu.up.cs301.card;
 
 import java.io.Serializable;
 
+import edu.up.cs301.Cribbage.Deck;
 import edu.up.cs301.game.R;
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -146,6 +147,16 @@ public class Card implements Serializable {
     public Rank getRank() {
     	return rank;
     }
+
+	public void sortTheDeck(Deck deckToBeSorted){
+
+
+
+	}
+
+
+
+
 
     /**
      * Tells the card's suit.

@@ -5,7 +5,11 @@ import android.util.Log;
 import edu.up.cs301.Cribbage.CribComputerPlayer;
 import edu.up.cs301.Cribbage.CribPlayActions.CribActions.CribAction1;
 import edu.up.cs301.Cribbage.CribPlayActions.CribDeal;
+import edu.up.cs301.Cribbage.CribPlayActions.CribGo;
 import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction1;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction2;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction3;
+import edu.up.cs301.Cribbage.CribPlayActions.PlayActions.CribPlayAction4;
 import edu.up.cs301.Cribbage.CribState;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
@@ -19,6 +23,10 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
     private CribState computerPlayerState;
     CribAction1 cribact1;
     CribPlayAction1 playAct1;
+    CribPlayAction2 playAct2;
+    CribPlayAction3 playAct3;
+    CribPlayAction4 playAct4;
+    CribGo cribGoAction;
 
     //
 //    private int myPlayerId = computerPlayerState.getPlayerId();
@@ -64,12 +72,65 @@ public class CribComputerComputerBasic extends CribComputerPlayer {
         if(computerPlayerState.getStage() == 3 && computerPlayerState.getWhoseTurn() == playerNum){
             if(computerPlayerState.handsOfBothPlayers[playerNum].size() > 0) {
 
-                playAct1 = new CribPlayAction1(this);
-                sleep(1000);
-                game.sendAction(playAct1);
-                Log.i("COMP hand", computerPlayerState.handsOfBothPlayers[playerNum].toString());
-                Log.i("COMP playdeck", computerPlayerState.playDeck.toString());
-                Log.i("COMP cards played to pd", computerPlayerState.eachPlayerCardsPlayed[playerNum].toString());
+                //playAct1 = new CribPlayAction1(this);
+                //sleep(1000);
+                //game.sendAction(playAct1);
+                //Log.i("COMP hand", computerPlayerState.handsOfBothPlayers[playerNum].toString());
+                //Log.i("COMP playdeck", computerPlayerState.playDeck.toString());
+                //Log.i("COMP cards played to pd", computerPlayerState.eachPlayerCardsPlayed[playerNum].toString());
+
+                if (computerPlayerState.handsOfBothPlayers[playerNum].size() != 0) {
+                    for (int i = 0; i < computerPlayerState.handsOfBothPlayers[playerNum].size(); i++) {
+                        if ((computerPlayerState.count31 + computerPlayerState.handsOfBothPlayers[playerNum].lookAtCard(i).getRank().cribValue(1)) <= 31) {
+                            //playAct1 = new CribPlayAction1(this);
+                            //sleep(1000);
+                            //game.sendAction(playAct1);
+                            //Log.i("COMP hand", computerPlayerState.handsOfBothPlayers[playerNum].toString());
+                            //Log.i("COMP playdeck", computerPlayerState.playDeck.toString());
+                            //Log.i("COMP cards played to pd", computerPlayerState.eachPlayerCardsPlayed[playerNum].toString());
+
+
+                            switch(i){
+                                case 0:
+                                playAct1 = new CribPlayAction1(this);
+                                sleep(1000);
+                                game.sendAction(playAct1);
+                                    break;
+
+                                case 1:
+                                    playAct2 = new CribPlayAction2(this);
+                                    sleep(1000);
+                                    game.sendAction(playAct2);
+                                    break;
+                                case 2:
+                                    playAct3 = new CribPlayAction3(this);
+                                    sleep(1000);
+                                    game.sendAction(playAct3);
+                                    break;
+                                case 3:
+                                    playAct4 = new CribPlayAction4(this);
+                                    sleep(1000);
+                                    game.sendAction(playAct4);
+                                    break;
+                                default:
+                                    break;
+
+
+                            }
+
+
+                        }
+                    }
+
+                    cribGoAction = new CribGo(this);
+                    sleep(1000);
+                    game.sendAction(cribGoAction);
+
+
+
+
+                }
+
             }
         }
 

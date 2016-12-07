@@ -323,8 +323,8 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
                     playButtons[i].setEnabled(false);
                     for (int j = 0; j < humanState.handsOfBothPlayers[0].size(); j++) {
 
-                        //playButtons[j].setEnabled(!humanState.canTheCardBePLayed[playerNum][j]);
-                        playButtons[j].setEnabled(true);
+                        playButtons[j].setEnabled(humanState.isGo(playerNum));
+                       // playButtons[j].setEnabled(true);
                     }
                 }
             }else{
@@ -339,7 +339,7 @@ public class CribHumanPlayer extends GameHumanPlayer implements Animator,CribPla
 
 
 
-                goButton.setEnabled(false);//This will be dependent on the cards in the players hands.
+                goButton.setEnabled(!humanState.isGo(playerNum));//This will be dependent on the cards in the players hands.
 
             //This will be dependent on the cards in the players hands.
         }
